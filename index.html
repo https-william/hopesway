@@ -1189,18 +1189,35 @@
       background: #FFFFFF !important;
     }
 
-    /* Two-Branch Clean Layout */
+    /* Mobile / Tablet Hand-Drawn Vertical Branching Spine Layout (< 1024px) */
     .leaf-canopy-container {
-      display: grid;
-      grid-template-columns: 1fr;
+      position: relative;
+      display: flex;
+      flex-direction: column;
       gap: 32px;
-      align-items: start;
+      padding-left: 54px; /* Space for the 60px wide vertical tree spine */
+      align-items: stretch;
+      max-width: 820px;
+      margin: 0 auto;
+      box-sizing: border-box;
     }
-    @media (min-width: 900px) {
-      .leaf-canopy-container {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 36px;
+    @media (max-width: 640px) {
+      .care-tree-inner {
+        padding: 0 16px;
       }
+      .leaf-canopy-container {
+        padding-left: 50px;
+      }
+    }
+    .mobile-tree-spine {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 2;
     }
     .branch-limb {
       display: flex;
@@ -3151,8 +3168,9 @@
           </button>
         </div>
 
-        <!-- Dual-Branch Clean Canopy -->
-        <div class="leaf-canopy-container">
+        <!-- Dual-Branch Clean Canopy with Mobile/Tablet Tree Spine -->
+        <div class="leaf-canopy-container" id="leafCanopyContainer">
+          <svg class="mobile-tree-spine" id="mobileTreeSpine" aria-hidden="true"></svg>
           
           <!-- LEFT LIMB: NDIS DISABILITY SUPPORTS -->
           <div class="branch-limb branch-ndis" id="branchNdis">
@@ -4586,6 +4604,203 @@
         document.addEventListener('keydown', (e) => {
           if (e.key === 'Escape' && activeLeaf) {
             closeLeaf(activeLeaf);
+          }
+        });
+      })();
+
+      /* ------ MOBILE/TABLET VERTICAL BRANCHING SPINE (Rough.js) ------ */
+      (function initMobileTreeSpine() {
+        const spineSvg = document.getElementById('mobileTreeSpine');
+        const canopyContainer = document.getElementById('leafCanopyContainer');
+        if (!spineSvg || !canopyContainer) return;
+
+        let resizeTimer = null;
+
+        function renderMobileSpine() {
+          if (window.innerWidth >= 1024) return;
+          if (!window.rough) return;
+
+          const containerRect = canopyContainer.getBoundingClientRect();
+          const H = Math.round(canopyContainer.offsetHeight || containerRect.height);
+          if (H <= 0) return;
+
+          const W = 60;
+          spineSvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+          spineSvg.setAttribute('width', `${W}`);
+          spineSvg.setAttribute('height', `${H}`);
+          spineSvg.style.height = `${H}px`;
+          spineSvg.innerHTML = '';
+
+          const rc = window.rough.svg(spineSvg);
+
+          // 1. Vertical Tapered Trunk running the full height (~28px top, ~18px bottom)
+          const trunkPoly = rc.polygon([
+            [6, 0],
+            [7, Math.round(H * 0.25)],
+            [9, Math.round(H * 0.5)],
+            [8, Math.round(H * 0.75)],
+            [10, H],
+            [28, H],
+            [29, Math.round(H * 0.75)],
+            [31, Math.round(H * 0.5)],
+            [32, Math.round(H * 0.25)],
+            [34, 0]
+          ], {
+            seed: 101,
+            fillStyle: 'hachure',
+            fill: '#6B4423',
+            fillWeight: 2,
+            hachureGap: 4,
+            stroke: '#4A2F18',
+            strokeWidth: 2,
+            roughness: 2.2
+          });
+          spineSvg.appendChild(trunkPoly);
+
+          // Helper to calculate trunk right-edge X at given Y
+          function getTrunkX(y) {
+            const ratio = Math.max(0, Math.min(1, y / H));
+            return 34 - (6 * ratio);
+          }
+
+          // 2. Category Header Rows (Main Bough Split Points)
+          const crowns = canopyContainer.querySelectorAll('.branch-crown');
+          crowns.forEach((crown) => {
+            if (crown.offsetParent === null) return;
+
+            const cRect = crown.getBoundingClientRect();
+            const yCenter = Math.round((cRect.top + cRect.bottom) / 2 - containerRect.top);
+            const xCard = Math.round(cRect.left - containerRect.left);
+            const xTrunk = getTrunkX(yCenter);
+
+            const isNdis = crown.classList.contains('ndis-crown');
+            const boughColor = isNdis ? '#2E6B5E' : '#C98A3E';
+            const strokeColor = isNdis ? '#1C4B40' : '#8C5E1E';
+            const seedBough = isNdis ? 201 : 301;
+            const seedBud = isNdis ? 202 : 302;
+            const yAngleOffset = isNdis ? 12 : -12;
+
+            // Thicker branch stub connecting at upward/downward angle
+            const boughStub = rc.curve([
+              [xTrunk - 4, yCenter + yAngleOffset],
+              [Math.round((xTrunk + xCard) / 2), yCenter + Math.round(yAngleOffset * 0.4)],
+              [xCard, yCenter]
+            ], {
+              seed: seedBough,
+              roughness: 2.0,
+              stroke: boughColor,
+              strokeWidth: 4.5,
+              bowing: 1.2
+            });
+            spineSvg.appendChild(boughStub);
+
+            // Small bud circle at crown left edge
+            const bud = rc.circle(xCard, yCenter, 16, {
+              seed: seedBud,
+              fillStyle: 'solid',
+              fill: boughColor,
+              stroke: strokeColor,
+              strokeWidth: 2,
+              roughness: 1.8
+            });
+            spineSvg.appendChild(bud);
+          });
+
+          // 3. Branch Stubs for the 9 Service Cards
+          const cards = canopyContainer.querySelectorAll('.leaf-node');
+          cards.forEach((card, idx) => {
+            if (card.offsetParent === null) return;
+
+            const cardRect = card.getBoundingClientRect();
+            const yCenter = Math.round((cardRect.top + cardRect.bottom) / 2 - containerRect.top);
+            const xCard = Math.round(cardRect.left - containerRect.left);
+            const xTrunk = getTrunkX(yCenter);
+
+            const isNdis = card.classList.contains('ndis-leaf');
+            const stubColor = isNdis ? '#2E6B5E' : '#C98A3E';
+            const strokeColor = isNdis ? '#1C4B40' : '#8C5E1E';
+
+            // Short horizontal curve stroke (~30-40px, roughness 2.2)
+            const stub = rc.curve([
+              [xTrunk - 4, yCenter],
+              [Math.round((xTrunk + xCard) / 2), yCenter - 1],
+              [xCard, yCenter]
+            ], {
+              seed: 1000 + idx,
+              roughness: 2.2,
+              stroke: stubColor,
+              strokeWidth: 2.5,
+              bowing: 1.1
+            });
+            spineSvg.appendChild(stub);
+
+            // Small bud circle (~14px) sitting right at the card's left edge
+            const bud = rc.circle(xCard, yCenter, 14, {
+              seed: 2000 + idx,
+              fillStyle: 'solid',
+              fill: stubColor,
+              stroke: strokeColor,
+              strokeWidth: 1.5,
+              roughness: 1.8
+            });
+            spineSvg.appendChild(bud);
+          });
+        }
+
+        function initWhenReady() {
+          if (window.rough) {
+            renderMobileSpine();
+          } else {
+            let attempts = 0;
+            const timer = setInterval(() => {
+              attempts++;
+              if (window.rough) {
+                clearInterval(timer);
+                renderMobileSpine();
+              } else if (attempts > 50) {
+                clearInterval(timer);
+              }
+            }, 50);
+          }
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initWhenReady);
+        } else {
+          initWhenReady();
+        }
+
+        // ResizeObserver on canopy container to synchronize on height changes
+        if (window.ResizeObserver) {
+          const ro = new ResizeObserver(() => {
+            if (window.innerWidth < 1024) {
+              renderMobileSpine();
+            }
+          });
+          ro.observe(canopyContainer);
+        }
+
+        // Window resize handler
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            if (window.innerWidth < 1024) {
+              renderMobileSpine();
+            }
+          }, 60);
+        }, { passive: true });
+
+        // Update on card expand/collapse (Details panel toggle)
+        canopyContainer.addEventListener('click', (e) => {
+          if (e.target.closest('.leaf-node') || e.target.closest('.tree-filter-btn')) {
+            setTimeout(renderMobileSpine, 140);
+            setTimeout(renderMobileSpine, 290);
+          }
+        });
+        canopyContainer.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            setTimeout(renderMobileSpine, 140);
+            setTimeout(renderMobileSpine, 290);
           }
         });
       })();
