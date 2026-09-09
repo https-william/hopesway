@@ -2762,303 +2762,234 @@
     }
 
     /* ================================================================
-       HOPESWAY LIVE CARE CHAT & INQUIRY WIDGET
+       REACT BITS CIRCULAR GALLERY & SOCIAL MODAL
        ================================================================ */
-    .hopesway-chat-widget {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      z-index: 9995;
-      font-family: inherit;
-    }
-    @media (max-width: 767px) {
-      .hopesway-chat-widget {
-        bottom: 92px; /* Clears floating call button */
-        right: 24px;
-      }
-    }
-    .hopesway-chat-trigger {
+    .circular-gallery-card-frame {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px 24px 20px;
+      box-shadow: 0 8px 30px rgba(28,43,43,0.05);
       position: relative;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #2E6B5E 0%, #1F4D43 100%);
-      color: #FFFFFF;
-      border: 2px solid #FFFFFF;
-      box-shadow: 0 6px 24px rgba(46, 107, 94, 0.42);
-      cursor: pointer;
+    }
+    .circular-gallery-top-bar {
       display: flex;
       align-items: center;
-      justify-content: center;
-      transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 250ms ease;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
     }
-    .hopesway-chat-trigger:hover {
-      transform: scale(1.08);
-      box-shadow: 0 8px 30px rgba(46, 107, 94, 0.55);
-    }
-    .chat-trigger-pulse {
-      position: absolute;
-      top: -3px;
-      right: -3px;
-      width: 14px;
-      height: 14px;
-      background: #10B981;
-      border: 2.5px solid #FFFFFF;
-      border-radius: 50%;
-    }
-    .chat-trigger-pulse::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: rgba(16, 185, 129, 0.45);
-      animation: chatPulse 2s infinite ease-out;
-    }
-    @keyframes chatPulse {
-      0% { transform: scale(0.8); opacity: 0.9; }
-      100% { transform: scale(2.2); opacity: 0; }
-    }
-    .chat-trigger-teaser {
-      position: absolute;
-      right: 70px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #FFFFFF;
-      color: var(--text);
-      font-size: 12.5px;
-      font-weight: 600;
-      white-space: nowrap;
-      padding: 7px 14px;
-      border-radius: 20px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
-      border: 1px solid var(--border);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      pointer-events: none;
-      opacity: 0.96;
-      transition: opacity 200ms ease, transform 200ms ease;
-    }
-    .chat-trigger-teaser .teaser-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10B981;
-    }
-    @media (max-width: 767px) {
-      .chat-trigger-teaser {
-        display: none;
-      }
-    }
-    .hopesway-chat-drawer {
-      position: fixed;
-      bottom: 98px;
-      right: 28px;
-      width: 360px;
-      max-width: calc(100vw - 32px);
-      max-height: calc(100vh - 120px);
-      overflow-y: auto;
-      background: #FFFFFF;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      box-shadow: 0 16px 44px rgba(28, 43, 43, 0.18);
-      display: none;
-      flex-direction: column;
-      z-index: 9999;
-      animation: drawerSlideUp 280ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @media (max-width: 767px) {
-      .hopesway-chat-drawer {
-        bottom: 160px;
-        right: 16px;
-        left: 16px;
-        width: auto;
-        max-width: none;
-      }
-    }
-    .hopesway-chat-drawer.is-open {
-      display: flex;
-    }
-    @keyframes drawerSlideUp {
-      from { opacity: 0; transform: translateY(14px) scale(0.96); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .chat-drawer-header {
-      background: linear-gradient(135deg, #2E6B5E 0%, #1C4B40 100%);
-      color: #FFFFFF;
-      padding: 16px 18px;
-      border-radius: 19px 19px 0 0;
+    .circular-gallery-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
-    .chat-header-avatar {
-      width: 38px;
-      height: 38px;
+    .circular-gallery-avatar {
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: #FFFFFF;
+      background: var(--brand-light);
+      border: 1.5px solid rgba(46,107,94,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
-    .chat-header-info {
-      flex-grow: 1;
-    }
-    .chat-header-info h3 {
-      font-size: 15px;
-      font-weight: 700;
-      margin: 0;
-      color: #FFFFFF;
-      letter-spacing: -0.2px;
-    }
-    .chat-online-status {
-      font-size: 11.5px;
-      color: rgba(255, 255, 255, 0.85);
-      display: flex;
+    .circular-live-pill {
+      display: inline-flex;
       align-items: center;
-      gap: 5px;
-      margin-top: 2px;
-    }
-    .chat-pulse-dot {
-      width: 7px;
-      height: 7px;
-      background: #34D399;
-      border-radius: 50%;
-      display: inline-block;
-    }
-    .chat-close-btn {
-      background: rgba(255, 255, 255, 0.15);
-      border: none;
-      color: #FFFFFF;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 150ms;
-    }
-    .chat-close-btn:hover {
-      background: rgba(255, 255, 255, 0.28);
-    }
-    .chat-drawer-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .chat-intro-bubble {
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--brand);
       background: var(--brand-light);
-      border-radius: 14px;
-      padding: 12px 14px;
-      color: var(--text);
-      font-size: 13px;
-      line-height: 1.45;
-      border: 1px solid rgba(46,107,94,0.15);
+      padding: 2px 9px;
+      border-radius: 12px;
     }
-    .chat-quick-actions {
-      display: flex;
-      flex-direction: column;
+    .circular-gallery {
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+      cursor: grab;
+      position: relative;
+      background: radial-gradient(circle at 50% 60%, #FAF7F4 0%, #FFFFFF 75%);
+      border-radius: 16px;
+      outline: none;
+      touch-action: pan-y pinch-zoom;
+    }
+    .circular-gallery.is-grabbing,
+    .circular-gallery:active {
+      cursor: grabbing;
+    }
+    .circular-gallery:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+    .gallery-drag-hint {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(28, 43, 43, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
       gap: 8px;
+      pointer-events: none;
+      z-index: 10;
+      transition: opacity 300ms ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      white-space: nowrap;
     }
-    .chat-quick-btn {
+    .circular-gallery-bottom-bar {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      background: #FAF7F4;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      color: var(--text);
-      font-size: 13px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .circular-bottom-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .social-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 13px;
+      border-radius: 20px;
+      font-size: 12.5px;
       font-weight: 600;
       text-decoration: none;
       transition: all 180ms ease;
     }
-    .chat-quick-btn:hover {
-      background: #FFFFFF;
-      border-color: var(--brand);
-      color: var(--brand);
-      transform: translateX(3px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .chat-quick-btn svg {
-      color: var(--brand);
-      flex-shrink: 0;
-    }
-    .chat-form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 4px;
-      padding-top: 12px;
-      border-top: 1px solid var(--border);
-    }
-    .chat-form-field {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .chat-form-field label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-muted);
-    }
-    .chat-form-field input,
-    .chat-form-field textarea {
-      width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 8px 10px;
-      font-size: 13px;
-      font-family: inherit;
-      color: var(--text);
-      background: #FAF7F4;
-      outline: none;
-      transition: border-color 150ms;
-      box-sizing: border-box;
-    }
-    .chat-form-field input:focus,
-    .chat-form-field textarea:focus {
-      border-color: var(--brand);
-      background: #FFFFFF;
-    }
-    .chat-submit-btn {
-      background: var(--brand);
+    .social-pill-btn.fb-pill {
+      background: #1877F2;
       color: #FFFFFF;
-      border: none;
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      display: inline-flex;
+      box-shadow: 0 2px 8px rgba(24,119,242,0.25);
+    }
+    .social-pill-btn.fb-pill:hover {
+      background: #1464cc;
+      transform: translateY(-1px);
+    }
+    .social-pill-btn.ig-pill {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(220,39,67,0.25);
+    }
+    .social-pill-btn.ig-pill:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+    @media (max-width: 768px) {
+      .circular-gallery-card-frame {
+        padding: 16px 12px 14px;
+        border-radius: 18px;
+      }
+      .circular-gallery {
+        height: 420px;
+      }
+      .gallery-drag-hint {
+        font-size: 11px;
+        padding: 5px 11px;
+        bottom: 8px;
+      }
+    }
+    @media (max-width: 480px) {
+      .circular-gallery {
+        height: 370px;
+      }
+    }
+
+    /* Social Modal */
+    .social-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 43, 43, 0.65);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: none;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      z-index: 10000;
+      padding: 20px;
+    }
+    .social-modal-overlay.is-open {
+      display: flex;
+    }
+    .social-modal-box {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 28px 24px;
+      max-width: 420px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.22);
+      border: 1px solid var(--border);
+      animation: modalPop 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalPop {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .social-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-size: 24px;
+      line-height: 1;
+      color: var(--text-muted);
       cursor: pointer;
-      transition: background 180ms ease;
+      border: none;
+      background: none;
+      transition: color 150ms;
     }
-    .chat-submit-btn:hover {
-      background: #24544A;
-    }
-    .chat-success-msg {
-      text-align: center;
-      padding: 24px 16px;
-      background: var(--brand-light);
-      border-radius: 14px;
-      border: 1px solid rgba(46,107,94,0.2);
-    }
-    .chat-success-msg p {
-      margin: 8px 0 0;
-      font-size: 13px;
+    .social-modal-close:hover {
       color: var(--text);
-      line-height: 1.4;
+    }
+    .social-modal-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #FFFFFF;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+    .social-modal-btn.fb-btn {
+      background: #1877F2;
+      box-shadow: 0 4px 14px rgba(24,119,242,0.3);
+    }
+    .social-modal-btn.fb-btn:hover {
+      background: #1464cc;
+      transform: translateY(-1px);
+    }
+    .social-modal-btn.ig-btn {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      box-shadow: 0 4px 14px rgba(220,39,67,0.3);
+    }
+    .social-modal-btn.ig-btn:hover {
+      opacity: 0.94;
+      transform: translateY(-1px);
     }
   </style>
 
@@ -4265,26 +4196,28 @@
         <!-- ============================================================
              COMMUNITY GALLERY / MOMENTS IN CARE CAROUSEL
              ============================================================ -->
+        <!-- ============================================================
+             COMMUNITY GALLERY / CIRCULAR 3D WEBGL CAROUSEL (REACT BITS)
+             ============================================================ -->
         <div class="community-gallery-wrap" id="gallery" style="margin-top:56px;">
-          <div style="text-align:center; max-width:640px; margin:0 auto 28px;">
+          <div style="text-align:center; max-width:680px; margin:0 auto 28px;">
             <div style="display:inline-flex; align-items:center; gap:8px; background:var(--brand-light); color:var(--brand); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:5px 14px; border-radius:20px; border:1px solid rgba(46,107,94,0.18); margin-bottom:10px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
               <span>Everyday Moments In Care</span>
             </div>
-            <h3 style="font-size:28px; font-weight:700; color:var(--text); margin:0 0 8px;">Moments that matter.</h3>
-            <p style="font-size:15.5px; color:var(--text-muted); line-height:1.5; margin:0;">
+            <h3 style="font-size:32px; font-weight:700; color:var(--text); margin:0 0 8px; letter-spacing:-0.5px;">Moments that matter.</h3>
+            <p style="font-size:16px; color:var(--text-muted); line-height:1.5; margin:0;">
               Candid glimpses of connection, independence, and daily life across Queensland.
             </p>
           </div>
 
-          <!-- Rounded Card Frame (Fluid React-Bits Inspired Community Carousel) -->
-          <div class="community-card-frame" style="background:#FFFFFF; border:1px solid var(--border); border-radius:20px; padding:28px 24px; box-shadow:0 8px 30px rgba(28,43,43,0.05); position:relative;">
+          <!-- Circular 3D WebGL Canvas Card Frame -->
+          <div class="circular-gallery-card-frame">
             
-            <!-- Moments Header Banner & Carousel Navigation Controls -->
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid var(--border);">
-              <div style="display:flex; align-items:center; gap:14px;">
-                <!-- Hopesway Botanical Emblem Badge -->
-                <div style="width:48px; height:48px; border-radius:50%; background:var(--brand-light); border:1.5px solid rgba(46,107,94,0.25); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <!-- Top Controls & Status Bar -->
+            <div class="circular-gallery-top-bar">
+              <div class="circular-gallery-brand">
+                <div class="circular-gallery-avatar">
                   <svg viewBox="0 0 180 180" width="28" height="28">
                     <g transform="translate(88, 46) rotate(45)"><rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#EE2737" /></g>
                     <g transform="translate(46.5, 89.5) rotate(45)"><rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#468C2C" /></g>
@@ -4294,26 +4227,25 @@
                 </div>
                 <div>
                   <div style="display:flex; align-items:center; gap:8px;">
-                    <span style="font-size:16px; font-weight:700; color:var(--text);">Hopesway Community Care</span>
-                    <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:600; color:var(--brand); background:var(--brand-light); padding:2px 8px; border-radius:12px;">
-                      <span class="pulse-dot-green" style="width:6px; height:6px; background:var(--brand); border-radius:50%; display:inline-block;"></span>
-                      Everyday Support
+                    <span style="font-size:16px; font-weight:700; color:var(--text);">Hopesway Community Life</span>
+                    <span class="circular-live-pill">
+                      <span class="pulse-dot-green"></span>
+                      Interactive 3D Reel
                     </span>
                   </div>
                   <span style="font-size:13px; color:var(--text-muted); display:block; margin-top:2px;">
-                    Daily living, social connection, and companionship across Gold Coast &amp; North QLD
+                    Gold Coast &amp; North QLD · Daily Support in Motion
                   </span>
                 </div>
               </div>
 
-              <!-- Carousel Navigation & Services CTA -->
+              <!-- Interactive Controls: Drag hint, Arrows, Explore Link -->
               <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
                 <div class="community-carousel-controls">
-                  <span id="communityCarouselCounter" style="font-size:12px; font-weight:600; color:var(--text-muted); padding:6px 12px; background:var(--bg-warm); border:1px solid var(--border); border-radius:16px;">1 / 10</span>
-                  <button id="communityCarouselPrev" class="carousel-nav-btn" aria-label="Previous moment">
+                  <button id="circularGalleryPrev" class="carousel-nav-btn" aria-label="Previous card">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                   </button>
-                  <button id="communityCarouselNext" class="carousel-nav-btn" aria-label="Next moment">
+                  <button id="circularGalleryNext" class="carousel-nav-btn" aria-label="Next card">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                   </button>
                 </div>
@@ -4323,216 +4255,63 @@
               </div>
             </div>
 
-            <!-- 10 Diverse Documentary Moments Carousel Track -->
-            <div class="community-carousel-wrap">
-              <div id="communityCarouselViewport" class="community-carousel-viewport" tabindex="0" aria-label="Moments in care documentary carousel">
-                
-                <!-- Card 1 -->
-                <a href="services.html#daily-activities" class="community-carousel-card">
-                  <div class="community-card-media">
-                    <img src="community-kitchen-prep.jpg" alt="Support worker Liam and Margaret preparing meals together" loading="lazy">
-                    <span class="community-card-pill">Culinary Skills</span>
-                  </div>
-                  <div class="community-card-body">
-                    <div class="community-card-header">
-                      <div class="community-card-names">Liam &amp; Margaret</div>
-                      <div class="community-card-location">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        Hope Island · Gold Coast
-                      </div>
-                    </div>
-                    <p class="community-card-caption">Fresh kitchen meal prep and building confident daily living skills together.</p>
-                    <span class="community-card-cta">Daily Living Support &rarr;</span>
-                  </div>
-                </a>
-
-                <!-- Card 2 -->
-                <a href="services.html#social-community" class="community-carousel-card">
-                  <div class="community-card-media">
-                    <img src="community-garden-walk.jpg" alt="Support worker Amina and Harold walking in botanical garden" loading="lazy">
-                    <span class="community-card-pill">Gentle Movement</span>
-                  </div>
-                  <div class="community-card-body">
-                    <div class="community-card-header">
-                      <div class="community-card-names">Amina &amp; Harold</div>
-                      <div class="community-card-location">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        Southport Botanical Gardens
-                      </div>
-                    </div>
-                    <p class="community-card-caption">Morning sunshine walks, fresh air, and mobility support amidst sub-tropical greenery.</p>
-                    <span class="community-card-cta">Social &amp; Community &rarr;</span>
-                  </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a href="services.html#social-community" class="community-carousel-card">
-                  <div class="community-card-media">
-                    <img src="community-coastal-outing.jpg" alt="Support worker Jarrah and Nathan strolling Burleigh beachfront" loading="lazy">
-                    <span class="community-card-pill">Coastal Outing</span>
-                  </div>
-                  <div class="community-card-body">
-                    <div class="community-card-header">
-                      <div class="community-card-names">Jarrah &amp; Nathan</div>
-                      <div class="community-card-location">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        Burleigh Heads Boardwalk
-                      </div>
-                    </div>
-                    <p class="community-card-caption">Ocean breezes, accessible foreshore pathways, and taking in the Gold Coast surf.</p>
-                    <span class="community-card-cta">Community Participation &rarr;</span>
-                  </div>
-                </a>
-
-                <!-- Card 4 -->
-                <a href="services.html#capacity-building" class="community-carousel-card">
-                  <div class="community-card-media">
-                    <img src="community-art-session.jpg" alt="Support worker Priya and Chloe painting watercolors" loading="lazy">
-                    <span class="community-card-pill">Creative Expression</span>
-                  </div>
-                  <div class="community-card-body">
-                    <div class="community-card-header">
-                      <div class="community-card-names">Priya &amp; Chloe</div>
-                      <div class="community-card-location">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        Robina Creative Studio
-                      </div>
-                    </div>
-                    <p class="community-card-caption">Watercolor creativity, fine motor skill fun, and exploring colorful new ideas.</p>
-                    <span class="community-card-cta">Capacity Building &rarr;</span>
-                  </div>
-                </a>
-
-                <!-- Card 5 -->
-                <a href="services.html#aged-care" class="community-carousel-card">
-                  <div class="community-card-media">
-                    <img src="community-tea-veranda.jpg" alt="Support worker Sarah and Elsie sharing morning tea" loading="lazy">
-                    <span class="community-card-pill">Companionship</span>
-                  </div>
-                  <div class="community-card-body">
-                    <div class="community-card-header">
-                      <div class="community-card-names">Sarah &amp; Elsie</div>
-                      <div class="community-card-location">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        Tamborine Mountain
-                      </div>
-                    </div>
-                    <p class="community-card-caption">Veranda morning tea, listening to treasured life stories, and genuine human presence.</p>
-                    <span class="community-card-cta">In-Home Support &rarr;</span>
-                  </div>
-                </a>
-
-                <!-- Card 6 -->
-                <a href="transport.html" class="community-carousel-card">
-                  <div class="community-card-media">
-                    <img src="hopesway-accessible-van.png" alt="Official Hopesway wheelchair-accessible commuter vehicle" loading="lazy">
-                    <span class="community-card-pill">Accessible Fleet</span>
-                  </div>
-                  <div class="community-card-body">
-                    <div class="community-card-header">
-                      <div class="community-card-names">Hopesway Transit</div>
-                      <div class="community-card-location">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        South East Queensland
-                      </div>
-                    </div>
-                    <p class="community-card-caption">Purpose-built wheelchair-accessible transport for community outings, medical visits, and daily freedom.</p>
-                    <span class="community-card-cta">Accessible Transport &rarr;</span>
-                  </div>
-                </a>
-
-                <!-- Card 7 -->
-                <a href="services.html#sil" class="community-carousel-card">
-                  <div class="community-card-media">
-                    <img src="community-board-games.jpg" alt="Support worker Tyler playing board games with Ben" loading="lazy">
-                    <span class="community-card-pill">Social Connection</span>
-                  </div>
-                  <div class="community-card-body">
-                    <div class="community-card-header">
-                      <div class="community-card-names">Tyler &amp; Ben</div>
-                      <div class="community-card-location">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        Varsity Lakes
-                      </div>
-                    </div>
-                    <p class="community-card-caption">Friendly board game rivalries, strategy laughs, and weekend downtime connection.</p>
-                    <span class="community-card-cta">Independent Living &rarr;</span>
-                  </div>
-                </a>
-
-                <!-- Card 8 -->
-                <a href="services.html#daily-activities" class="community-carousel-card">
-                  <div class="community-card-media">
-                    <img src="community-market-stroll.jpg" alt="Support worker Mei and Grace picking fresh fruit at market" loading="lazy">
-                    <span class="community-card-pill">Market Outing</span>
-                  </div>
-                  <div class="community-card-body">
-                    <div class="community-card-header">
-                      <div class="community-card-names">Mei &amp; Grace</div>
-                      <div class="community-card-location">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        Palm Beach Farmers Market
-                      </div>
-                    </div>
-                    <p class="community-card-caption">Choosing local Queensland produce and practicing budgeting skills in the community.</p>
-                    <span class="community-card-cta">Daily Living Skills &rarr;</span>
-                  </div>
-                </a>
-
-                <!-- Card 9 -->
-                <a href="services.html#respite" class="community-carousel-card">
-                  <div class="community-card-media">
-                    <img src="community-park-bench.jpg" alt="Support worker Jordan and Samuel sketching under eucalyptus tree" loading="lazy">
-                    <span class="community-card-pill">Mindful Recreation</span>
-                  </div>
-                  <div class="community-card-body">
-                    <div class="community-card-header">
-                      <div class="community-card-names">Jordan &amp; Samuel</div>
-                      <div class="community-card-location">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        Helensvale Parkland
-                      </div>
-                    </div>
-                    <p class="community-card-caption">Shaded paperbark tree sketching, mindful recreation, and relaxing park conversation.</p>
-                    <span class="community-card-cta">Respite &amp; Recreation &rarr;</span>
-                  </div>
-                </a>
-
-                <!-- Card 10 -->
-                <a href="services.html#companionship" class="community-carousel-card">
-                  <div class="community-card-media">
-                    <img src="community-music-guitar.jpg" alt="Support worker Kofi playing acoustic guitar with George clapping" loading="lazy">
-                    <span class="community-card-pill">Music &amp; Song</span>
-                  </div>
-                  <div class="community-card-body">
-                    <div class="community-card-header">
-                      <div class="community-card-names">Kofi &amp; George</div>
-                      <div class="community-card-location">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        Surfers Paradise Living
-                      </div>
-                    </div>
-                    <p class="community-card-caption">Acoustic singalongs, vintage tunes, and clapping hands that bring smiles to the whole room.</p>
-                    <span class="community-card-cta">Companionship Care &rarr;</span>
-                  </div>
-                </a>
-
+            <!-- React Bits CircularGallery WebGL Container -->
+            <div id="circularGalleryContainer" class="circular-gallery" tabIndex="0" role="region" aria-label="Circular 3D image gallery. Drag or use arrow keys to navigate.">
+              <!-- Overlay Hint Badge -->
+              <div class="gallery-drag-hint" id="galleryDragHint" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                <span>Drag or scroll to rotate · Tap card to open</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </div>
-
-              <!-- Carousel Progress Indicator Dots -->
-              <div id="communityCarouselDots" class="carousel-progress-bar" aria-hidden="true"></div>
             </div>
 
-            <!-- Card Bottom Bar with direct intake contact link -->
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:16px; padding-top:16px; border-top:1px solid var(--border);">
-              <span style="font-size:13px; color:var(--text-muted);">
-                Every participant's journey is unique. We match support workers based on shared interests and genuine rapport.
-              </span>
+            <!-- Card Bottom Bar with direct Social and Intake links -->
+            <div class="circular-gallery-bottom-bar">
+              <div class="circular-bottom-social">
+                <span style="font-size:13px; font-weight:600; color:var(--text); margin-right:4px;">Follow our community:</span>
+                <a href="https://www.facebook.com/HopeswaySS/" target="_blank" rel="noopener noreferrer" class="social-pill-btn fb-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="social-pill-btn ig-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  <span>Instagram</span>
+                </a>
+              </div>
               <a href="contact.html" style="display:inline-flex; align-items:center; gap:8px; font-size:13.5px; font-weight:600; color:var(--brand); text-decoration:none;">
                 <span>Talk with our intake team &rarr;</span>
               </a>
             </div>
 
+          </div>
+        </div>
+
+        <!-- Social Channels Modal -->
+        <div id="socialModal" class="social-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="socialModalTitle">
+          <div class="social-modal-box">
+            <button class="social-modal-close" onclick="document.getElementById('socialModal').classList.remove('is-open')" aria-label="Close modal">&times;</button>
+            <div style="width:52px; height:52px; border-radius:50%; background:var(--brand-light); border:1.5px solid rgba(46,107,94,0.25); display:flex; align-items:center; justify-content:center; margin:0 auto 12px;">
+              <svg viewBox="0 0 180 180" width="30" height="30">
+                <g transform="translate(88, 46) rotate(45)"><rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#EE2737" /></g>
+                <g transform="translate(46.5, 89.5) rotate(45)"><rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#468C2C" /></g>
+                <g transform="translate(130, 90) rotate(45)"><rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#F4B320" /></g>
+                <g stroke="#392E2D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="88.5" y1="165" x2="88.5" y2="46" /><line x1="88.5" y1="130" x2="46" y2="89" /><line x1="88.5" y1="130" x2="131" y2="89" /></g>
+              </svg>
+            </div>
+            <h3 id="socialModalTitle" style="font-size:22px; font-weight:700; color:var(--text); margin:0 0 6px; text-align:center;">Follow Hopesway Online</h3>
+            <p style="font-size:14px; color:var(--text-muted); margin:0 0 20px; text-align:center; line-height:1.45;">
+              Join our community to see photos, daily activities, and real stories from across Queensland.
+            </p>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <a href="https://www.facebook.com/HopeswaySS/" target="_blank" rel="noopener noreferrer" class="social-modal-btn fb-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span>Visit Facebook (/HopeswaySS)</span>
+              </a>
+              <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="social-modal-btn ig-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <span>Follow Instagram (@hopeswaycare)</span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -4879,6 +4658,14 @@
             <li><a href="mailto:info@hopesway.com.au">info@hopesway.com.au</a></li>
             <li><a href="#">Pimpama, QLD 4209</a></li>
           </ul>
+          <div class="footer-social-links" style="display:flex; align-items:center; gap:10px; margin-top:14px;">
+            <a href="https://www.facebook.com/HopeswaySS/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Hopesway on Facebook" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); display:inline-flex; align-items:center; justify-content:center; color:#FFFFFF; transition:all 200ms ease;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Hopesway on Instagram" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); display:inline-flex; align-items:center; justify-content:center; color:#FFFFFF; transition:all 200ms ease;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -5752,326 +5539,118 @@
       }
     })();
 
-    /* ============================================================
-       COMMUNITY CAROUSEL INTERACTION (React-Bits Inspired)
-       ============================================================ */
-    (function initCommunityCarousel() {
-      const viewport = document.getElementById('communityCarouselViewport');
-      const prevBtn = document.getElementById('communityCarouselPrev');
-      const nextBtn = document.getElementById('communityCarouselNext');
-      const counter = document.getElementById('communityCarouselCounter');
-      const dotsContainer = document.getElementById('communityCarouselDots');
-      if (!viewport) return;
-
-      const cards = viewport.querySelectorAll('.community-carousel-card');
-      const totalCards = cards.length;
-      if (totalCards === 0) return;
-
-      // Build dot indicators
-      if (dotsContainer) {
-        dotsContainer.innerHTML = '';
-        cards.forEach((_, idx) => {
-          const dot = document.createElement('button');
-          dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
-          dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
-          dot.style.border = 'none';
-          dot.style.padding = '0';
-          dot.addEventListener('click', () => {
-            scrollToIndex(idx);
-          });
-          dotsContainer.appendChild(dot);
-        });
-      }
-
-      function getCardWidth() {
-        const card = cards[0];
-        if (!card) return 310;
-        const style = window.getComputedStyle(viewport);
-        const gap = parseFloat(style.gap) || 16;
-        return card.offsetWidth + gap;
-      }
-
-      function updateCarouselState() {
-        const scrollLeft = viewport.scrollLeft;
-        const cardWidth = getCardWidth();
-        let activeIdx = Math.round(scrollLeft / cardWidth);
-        activeIdx = Math.max(0, Math.min(activeIdx, totalCards - 1));
-
-        if (counter) {
-          counter.textContent = `${activeIdx + 1} / ${totalCards}`;
-        }
-
-        if (dotsContainer) {
-          const dots = dotsContainer.querySelectorAll('.carousel-dot');
-          dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === activeIdx);
-          });
-        }
-
-        if (prevBtn) prevBtn.disabled = activeIdx === 0;
-        if (nextBtn) nextBtn.disabled = activeIdx >= totalCards - 1;
-      }
-
-      function scrollToIndex(idx) {
-        const cardWidth = getCardWidth();
-        viewport.scrollTo({
-          left: idx * cardWidth,
-          behavior: 'smooth'
-        });
-      }
-
-      if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-          const cardWidth = getCardWidth();
-          viewport.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-        });
-      }
-
-      if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-          const cardWidth = getCardWidth();
-          viewport.scrollBy({ left: cardWidth, behavior: 'smooth' });
-        });
-      }
-
-      let isDragging = false;
-      let startX = 0;
-      let scrollStart = 0;
-      let hasDragged = false;
-
-      viewport.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        hasDragged = false;
-        startX = e.pageX - viewport.offsetLeft;
-        scrollStart = viewport.scrollLeft;
-        viewport.classList.add('is-dragging');
-      });
-
-      window.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        const x = e.pageX - viewport.offsetLeft;
-        const walk = (x - startX) * 1.4;
-        if (Math.abs(walk) > 5) hasDragged = true;
-        viewport.scrollLeft = scrollStart - walk;
-      });
-
-      window.addEventListener('mouseup', () => {
-        if (isDragging) {
-          isDragging = false;
-          viewport.classList.remove('is-dragging');
-        }
-      });
-
-      // Prevent card link triggers during drag
-      viewport.addEventListener('click', (e) => {
-        if (hasDragged) {
-          e.preventDefault();
-          e.stopPropagation();
-          hasDragged = false;
-        }
-      }, true);
-
-      let scrollTimeout = null;
-      viewport.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(updateCarouselState, 40);
-      }, { passive: true });
-
-      // Keyboard navigation
-      viewport.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-          viewport.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
-        } else if (e.key === 'ArrowRight') {
-          viewport.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
-        }
-      });
-
-      updateCarouselState();
-    })();
-
-    /* ============================================================
-       HOPESWAY LIVE CARE CHAT & LEADCONNECTOR CONTROLLER
-       ============================================================ */
-    (function initHopeswayChat() {
-      const widget = document.getElementById('hopeswayChatWidget');
-      const trigger = document.getElementById('hopeswayChatTrigger');
-      const drawer = document.getElementById('hopeswayChatDrawer');
-      const closeBtn = document.getElementById('chatCloseBtn');
-      const iconOpen = document.getElementById('chatTriggerIconOpen');
-      const iconClose = document.getElementById('chatTriggerIconClose');
-      const form = document.getElementById('chatMessageForm');
-      const successMsg = document.getElementById('chatSuccessMsg');
-      if (!widget || !trigger || !drawer) return;
-
-      function openDrawer() {
-        drawer.classList.add('is-open');
-        drawer.setAttribute('aria-hidden', 'false');
-        trigger.setAttribute('aria-expanded', 'true');
-        if (iconOpen) iconOpen.style.display = 'none';
-        if (iconClose) iconClose.style.display = 'inline-flex';
-        const teaser = trigger.querySelector('.chat-trigger-teaser');
-        if (teaser) teaser.style.display = 'none';
-        const nameInput = drawer.querySelector('#chatName');
-        if (nameInput) setTimeout(() => nameInput.focus(), 150);
-      }
-
-      function closeDrawer() {
-        drawer.classList.remove('is-open');
-        drawer.setAttribute('aria-hidden', 'true');
-        trigger.setAttribute('aria-expanded', 'false');
-        if (iconOpen) iconOpen.style.display = 'inline-flex';
-        if (iconClose) iconClose.style.display = 'none';
-        trigger.focus();
-      }
-
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (drawer.classList.contains('is-open')) {
-          closeDrawer();
-        } else {
-          openDrawer();
-        }
-      });
-
-      if (closeBtn) {
-        closeBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          closeDrawer();
-        });
-      }
-
-      // Close on escape
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
-          closeDrawer();
-        }
-      });
-
-      // Close when clicking outside
-      document.addEventListener('click', (e) => {
-        if (drawer.classList.contains('is-open') && !widget.contains(e.target)) {
-          closeDrawer();
-        }
-      });
-
-      // Handle chat message submit
-      if (form) {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const submitBtn = form.querySelector('.chat-submit-btn');
-          if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = 'Sending...';
-          }
-          setTimeout(() => {
-            form.style.display = 'none';
-            if (successMsg) successMsg.style.display = 'block';
-          }, 600);
-        });
-      }
-
-      // LeadConnector / GHL auto-detection: if native GHL widget ever injects into DOM, yield to it
-      const ghlObserver = new MutationObserver(() => {
-        const nativeGhl = document.querySelector('#chat-widget-container, iframe[src*="leadconnectorhq"]');
-        if (nativeGhl) {
-          widget.style.display = 'none';
-          ghlObserver.disconnect();
-        }
-      });
-      ghlObserver.observe(document.body, { childList: true, subtree: true });
-    })();
   </script>
 
   <!-- ============================================================
-       HOPESWAY LIVE CARE CHAT & INQUIRY WIDGET
+       REACT BITS CIRCULAR GALLERY INITIALIZATION MODULE
        ============================================================ -->
-  <div id="hopeswayChatWidget" class="hopesway-chat-widget">
-    <!-- Chat Drawer Modal -->
-    <div id="hopeswayChatDrawer" class="hopesway-chat-drawer" role="dialog" aria-modal="true" aria-labelledby="chatDrawerTitle" aria-hidden="true">
-      <div class="chat-drawer-header">
-        <div class="chat-header-avatar">
-          <svg viewBox="0 0 180 180" width="28" height="28">
-            <g transform="translate(88, 46) rotate(45)"><rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#EE2737" /></g>
-            <g transform="translate(46.5, 89.5) rotate(45)"><rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#468C2C" /></g>
-            <g transform="translate(130, 90) rotate(45)"><rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#F4B320" /></g>
-            <g stroke="#392E2D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="88.5" y1="165" x2="88.5" y2="46" /><line x1="88.5" y1="130" x2="46" y2="89" /><line x1="88.5" y1="130" x2="131" y2="89" /></g>
-          </svg>
-        </div>
-        <div class="chat-header-info">
-          <h3 id="chatDrawerTitle">Hopesway Care Support</h3>
-          <span class="chat-online-status"><span class="chat-pulse-dot"></span> Online · Response in ~5 mins</span>
-        </div>
-        <button id="chatCloseBtn" class="chat-close-btn" aria-label="Close live chat">&times;</button>
-      </div>
-      
-      <div class="chat-drawer-body">
-        <div class="chat-intro-bubble">
-          <p style="margin:0 0 6px;"><strong>G'day! Welcome to Hopesway.</strong></p>
-          <p style="margin:0;">How can our local team assist you today? Choose an option or send a message below:</p>
-        </div>
+  <script type="module">
+    import { CircularGalleryApp } from './circular-gallery.js';
 
-        <!-- Quick 1-Tap Action Pills -->
-        <div class="chat-quick-actions">
-          <a href="tel:1300314114" class="chat-quick-btn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            <span>Call Intake: 1300 314 114</span>
-          </a>
-          <a href="https://wa.me/61413204907" target="_blank" rel="noopener noreferrer" class="chat-quick-btn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-            <span>WhatsApp / Quick SMS</span>
-          </a>
-          <a href="refer.html" class="chat-quick-btn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-            <span>Make an Online Referral</span>
-          </a>
-        </div>
+    const galleryContainer = document.getElementById('circularGalleryContainer');
+    if (galleryContainer) {
+      const items = [
+        { 
+          image: 'community-kitchen-prep.jpg', 
+          text: 'Cooking & Independence', 
+          link: 'services.html#daily-activities' 
+        },
+        { 
+          image: 'community-garden-walk.jpg', 
+          text: 'Gentle Mobility', 
+          link: 'services.html#social-community' 
+        },
+        { 
+          image: 'community-coastal-outing.jpg', 
+          text: 'Coastal Outing', 
+          link: 'services.html#social-community' 
+        },
+        { 
+          image: 'community-art-session.jpg', 
+          text: 'Creative Expression', 
+          link: 'services.html#capacity-building' 
+        },
+        { 
+          image: 'community-tea-veranda.jpg', 
+          text: 'Companionship Care', 
+          link: 'services.html#aged-care' 
+        },
+        { 
+          image: 'hopesway-accessible-van.png', 
+          text: 'Accessible Transport Fleet', 
+          link: 'transport.html' 
+        },
+        { 
+          image: 'community-board-games.jpg', 
+          text: 'Social Connection', 
+          link: 'services.html#sil' 
+        },
+        { 
+          image: 'community-market-stroll.jpg', 
+          text: 'Daily Living Skills', 
+          link: 'services.html#daily-activities' 
+        },
+        { 
+          image: 'community-park-bench.jpg', 
+          text: 'Mindful Recreation', 
+          link: 'services.html#respite' 
+        },
+        { 
+          image: 'community-music-guitar.jpg', 
+          text: 'Music & Song', 
+          link: 'services.html#companionship' 
+        },
+        { 
+          image: 'community-social-card.svg', 
+          text: 'Follow Our Journey →', 
+          link: 'https://www.facebook.com/HopeswaySS/', 
+          isSocial: true 
+        }
+      ];
 
-        <!-- Direct Message Form -->
-        <form id="chatMessageForm" class="chat-form">
-          <div class="chat-form-field">
-            <label for="chatName">Your Name</label>
-            <input type="text" id="chatName" name="name" placeholder="e.g. Sarah Mitchell" required>
-          </div>
-          <div class="chat-form-field">
-            <label for="chatContact">Phone or Email</label>
-            <input type="text" id="chatContact" name="contact" placeholder="e.g. 0412 345 678" required>
-          </div>
-          <div class="chat-form-field">
-            <label for="chatMessage">How can we support you?</label>
-            <textarea id="chatMessage" name="message" rows="2" placeholder="NDIS plan, aged care support, respite inquiry..." required></textarea>
-          </div>
-          <button type="submit" class="chat-submit-btn">
-            <span>Send Direct Message</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-          </button>
-        </form>
-        <div id="chatSuccessMsg" class="chat-success-msg" style="display:none;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E6B5E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 6px; display:block;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <p><strong>Message received!</strong><br>Our intake coordinator will reach out to you within minutes.</p>
-        </div>
-      </div>
-    </div>
+      const isMobile = window.innerWidth < 768;
+      const app = new CircularGalleryApp(galleryContainer, {
+        items,
+        bend: isMobile ? 1.4 : 2.4,
+        textColor: '#1C2B2B',
+        borderRadius: 0.06,
+        font: isMobile ? '600 17px Outfit, sans-serif' : '600 21px Outfit, sans-serif',
+        scrollSpeed: 2.2,
+        scrollEase: 0.08,
+        onCardClick: (media) => {
+          if (media.isSocial) {
+            const modal = document.getElementById('socialModal');
+            if (modal) {
+              modal.classList.add('is-open');
+              modal.setAttribute('aria-hidden', 'false');
+            } else {
+              window.open('https://www.facebook.com/HopeswaySS/', '_blank', 'noopener,noreferrer');
+            }
+          } else if (media.link) {
+            window.location.href = media.link;
+          }
+        }
+      });
 
-    <!-- Floating Chat Trigger Button -->
-    <button id="hopeswayChatTrigger" class="hopesway-chat-trigger" aria-label="Open live chat with Hopesway care coordinator" aria-expanded="false">
-      <span class="chat-trigger-pulse"></span>
-      <span id="chatTriggerIconOpen" class="chat-trigger-icon-chat">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-        </svg>
-      </span>
-      <span id="chatTriggerIconClose" class="chat-trigger-icon-close" style="display:none;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </span>
-      <!-- Teaser Pill -->
-      <span class="chat-trigger-teaser">
-        <span class="teaser-dot"></span> Chat with Care Team
-      </span>
-    </button>
-  </div>
+      // Wire Prev & Next navigation buttons
+      const prevBtn = document.getElementById('circularGalleryPrev');
+      const nextBtn = document.getElementById('circularGalleryNext');
+      if (prevBtn) prevBtn.addEventListener('click', () => app.scrollPrev());
+      if (nextBtn) nextBtn.addEventListener('click', () => app.scrollNext());
+
+      // Hide drag hint on first interaction
+      const hint = document.getElementById('galleryDragHint');
+      const hideHint = () => {
+        if (hint && hint.parentNode) {
+          hint.style.opacity = '0';
+          setTimeout(() => hint.remove(), 350);
+        }
+      };
+      galleryContainer.addEventListener('mousedown', hideHint, { once: true });
+      galleryContainer.addEventListener('touchstart', hideHint, { once: true });
+      galleryContainer.addEventListener('wheel', hideHint, { once: true });
+    }
+  </script>
 
   <!-- LeadConnector / GHL Webchat Widget -->
   <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a424feacf2c64bbfad2ecb2"></script>
