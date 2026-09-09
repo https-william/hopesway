@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <g transform="translate(88, 46) rotate(45)">
+    <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#EE2737" />
+  </g>
+  <g transform="translate(46.5, 89.5) rotate(45)">
+    <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#468C2C" />
+  </g>
+  <g transform="translate(130, 90) rotate(45)">
+    <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#F4B320" />
+  </g>
+  <g stroke="#392E2D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="88.5" y1="165" x2="88.5" y2="46" />
+    <line x1="88.5" y1="130" x2="46" y2="89" />
+    <line x1="88.5" y1="130" x2="131" y2="89" />
+  </g>
+</svg>

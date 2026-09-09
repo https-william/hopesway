@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supported Independent Living &amp; NDIS Services in Gold Coast | Hopesway</title>
+  <meta name="description" content="Explore registered NDIS support categories with Hopesway: Supported Independent Living (SIL), Support Coordination, Respite, Assist-Travel, and In-Home Aged Care.">
+
+  <!-- Google Fonts: Outfit (400, 500, 600, 700) + Fraunces (italic 400, 500) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,400;1,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.svg">
+
+  <style>
+    /* ================================================================
+       RESET & BASE STYLING
+       ================================================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale; overflow-x: hidden; width: 100%; box-sizing: border-box; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1C2B2B;
+      background: #FAF7F4;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul, ol { list-style: none; }
+    h1, h2, h3, h4 { line-height: 1.15; letter-spacing: -0.02em; }
+
+    /* Custom Selection */
+    ::selection {
+      background: #2E6B5E;
+      color: #FFFFFF;
+    }
+
+    /* Custom Thin Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #FAF7F4; }
+    ::-webkit-scrollbar-thumb {
+      background: #2E6B5E;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: #1A4A3F; }
+
+    /* ================================================================
+       DESIGN TOKENS
+       ================================================================ */
+    :root {
+      --bg: #FAF7F4;
+      --surface: #FFFFFF;
+      --border: #E5E0D8;
+      --brand: #2E6B5E;
+      --brand-light: #EAF4F1;
+      --brand-dark: #1A4A3F;
+      --accent: #E4572E;
+      --accent-hover: #C94420;
+      /* Logo Specific Brand Colors */
+      --logo-red: #EE2737;
+      --logo-green: #468C2C;
+      --logo-gold: #F4B320;
+      --logo-trunk: #392E2D;
+      --text: #1C2B2B;
+      --text-muted: #6B7280;
+      --shadow-card: 0 2px 12px rgba(0,0,0,0.07);
+      --shadow-card-hover: 0 8px 28px rgba(0,0,0,0.12);
+      --radius-card: 16px;
+      --radius-btn: 12px;
+      --radius-input: 10px;
+      --nav-h: 72px;
+    }
+
+    /* Secondary Display Font: Fraunces (italic only) */
+    .font-display {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .font-display-500 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    /* Tactile Grain Overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background: #FAF7F4;
+      pointer-events: none;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.28;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+
+    /* Containers & Layout */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    @media (min-width: 768px) {
+      .container { padding: 0 40px; }
+    }
+
+    /* Primary CTA Button (Coral) */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      border-radius: var(--radius-btn);
+      border: none;
+      transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(228, 87, 46, 0.3);
+    }
+
+    /* ================================================================
+       NAVIGATION (VERBATIM SITE-WIDE PARITY)
+       ================================================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-h);
+      background: rgba(250, 247, 244, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: background 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+    }
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 4px 20px rgba(28, 43, 43, 0.07);
+      border-bottom-color: rgba(229, 224, 216, 0.8);
+    }
+    .nav-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    @media (min-width: 768px) {
+      .nav-inner { padding: 0 32px; }
+    }
+    @media (min-width: 1100px) {
+      .nav-inner { padding: 0 40px; }
+    }
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand-logo-icon {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .nav-brand:hover .brand-logo-icon {
+      transform: scale(1.08) rotate(3deg);
+    }
+    .brand-text-col {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .brand-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--brand-dark);
+      letter-spacing: -0.025em;
+    }
+    .brand-subtext {
+      font-size: 10.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 480px) {
+      .brand-subtext { display: none; }
+    }
+
+    /* Primary Nav Links */
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 6px;
+    }
+    @media (min-width: 980px) {
+      .nav-links { display: flex; }
+    }
+    .nav-item {
+      position: relative;
+    }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 13px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--text);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: color 180ms ease, background-color 180ms ease;
+    }
+    .nav-link:hover {
+      color: var(--brand);
+      background-color: rgba(46, 107, 94, 0.06);
+    }
+    .nav-link.active {
+      color: var(--brand);
+      font-weight: 600;
+      background-color: var(--brand-light);
+    }
+    .nav-chevron {
+      width: 13px;
+      height: 13px;
+      transition: transform 200ms ease;
+      opacity: 0.7;
+    }
+    .nav-item:hover .nav-chevron,
+    .nav-item:focus-within .nav-chevron {
+      transform: rotate(180deg);
+      opacity: 1;
+    }
+
+    /* Flyout Dropdown for Services */
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: 590px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 18px 42px rgba(28, 43, 43, 0.12);
+      padding: 18px 20px 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease, transform 220ms ease;
+      z-index: 1050;
+    }
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: 0;
+      width: 100%;
+      height: 16px;
+    }
+    .nav-item:hover .nav-dropdown,
+    .nav-item:focus-within .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .dropdown-header-strip {
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dropdown-pill {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--brand);
+      background: var(--brand-light);
+      padding: 3px 9px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+    .dropdown-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .dropdown-col-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--brand-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dropdown-card-link {
+      display: block;
+      padding: 7px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 150ms ease, transform 150ms ease;
+    }
+    .dropdown-card-link:hover {
+      background: var(--brand-light);
+      transform: translateX(2px);
+    }
+    .dropdown-card-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--brand-dark);
+      display: block;
+      line-height: 1.25;
+    }
+    .dropdown-card-desc {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin-top: 2px;
+      display: block;
+    }
+    .dropdown-trust-box {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(234, 244, 241, 0.6);
+      border: 1px dashed rgba(46, 107, 94, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .dropdown-trust-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    .dropdown-trust-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+    .dropdown-footer {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12.5px;
+    }
+    .dropdown-footer a {
+      color: var(--brand);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 150ms ease;
+    }
+    .dropdown-footer a:hover {
+      color: var(--brand-dark);
+      text-decoration: underline;
+    }
+    .dropdown-tag {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    /* Right Action Bar (Direct Phone Pill + CTA) */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .nav-phone-pill {
+      display: none;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 14px 6px 10px;
+      background: var(--brand-light);
+      border: 1px solid rgba(46, 107, 94, 0.22);
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+    }
+    @media (min-width: 680px) {
+      .nav-phone-pill { display: inline-flex; }
+    }
+    .nav-phone-pill:hover {
+      background: #d8ece7;
+      border-color: var(--brand);
+      transform: translateY(-1px);
+    }
+    .phone-icon-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 200ms ease;
+    }
+    .nav-phone-pill:hover .phone-icon-dot {
+      transform: scale(1.08);
+    }
+    .phone-text-wrap {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .phone-label {
+      font-size: 10.5px;
+      color: var(--brand);
+      font-weight: 500;
+    }
+    .phone-num {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      letter-spacing: -0.01em;
+    }
+    .nav-cta {
+      display: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      gap: 6px;
+      align-items: center;
+    }
+    @media (min-width: 860px) {
+      .nav-cta { display: inline-flex; }
+    }
+
+    /* Mobile Hamburger */
+    .nav-hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 42px;
+      height: 42px;
+      padding: 8px;
+      border-radius: 10px;
+      background: rgba(46, 107, 94, 0.06);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 150ms ease;
+    }
+    @media (min-width: 980px) {
+      .nav-hamburger { display: none; }
+    }
+    .nav-hamburger:hover {
+      background: rgba(46, 107, 94, 0.12);
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--brand-dark);
+      border-radius: 2px;
+      transition: transform 200ms ease, opacity 200ms ease;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile Menu Drawer */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      width: 100%;
+      max-height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 20px 24px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 12px 32px rgba(28, 43, 43, 0.12);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-call-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--brand-light);
+      border: 1px solid rgba(46, 107, 94, 0.22);
+      border-radius: 12px;
+      color: var(--brand-dark);
+      text-decoration: none;
+    }
+    .mobile-call-banner:hover { background: #d8ece7; }
+    .mobile-nav-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-link {
+      padding: 11px 14px;
+      font-size: 15.5px;
+      font-weight: 500;
+      color: var(--text);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 150ms ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mobile-link:hover,
+    .mobile-link.active {
+      background: var(--brand-light);
+      color: var(--brand);
+      font-weight: 600;
+    }
+    .mobile-sub-services {
+      padding: 4px 0 6px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .mobile-sub-link {
+      padding: 7px 10px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      border-radius: 6px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mobile-sub-link:hover {
+      color: var(--brand);
+      background: rgba(46, 107, 94, 0.05);
+    }
+    .mobile-sub-bullet {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--brand);
+      flex-shrink: 0;
+    }
+    .mobile-menu .btn-primary {
+      width: 100%;
+      justify-content: center;
+      padding: 13px;
+      margin-top: 4px;
+    }
+    .mobile-menu-footer {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      text-align: center;
+      padding-top: 6px;
+    }
+
+    /* ================================================================
+       SECTION: HERO (FULL WIDTH ABOVE SIDEBAR)
+       ================================================================ */
+    .services-hero {
+      position: relative;
+      padding: 160px 64px 64px;
+      text-align: center;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      .services-hero {
+        padding: 128px 24px 44px;
+      }
+    }
+    /* Hero Biophilic Canopy Background Art */
+    .hero-canopy-art {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 680px;
+      height: 460px;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.35;
+    }
+    .hero-tag-label {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 16px;
+    }
+    .services-hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--text);
+      max-width: 820px;
+      margin: 0 auto 20px;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+    @media (max-width: 768px) {
+      .services-hero h1 {
+        font-size: 34px;
+      }
+    }
+    .hero-accent {
+      color: var(--brand);
+      font-size: 1.08em;
+      padding: 0 4px;
+    }
+    .services-hero-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .services-hero-subtitle {
+        font-size: 16px;
+      }
+    }
+
+    /* ================================================================
+       MOBILE HORIZONTAL SCROLL-SNAP PILL NAV
+       ================================================================ */
+    .mobile-services-pill-nav {
+      display: none;
+    }
+    @media (max-width: 960px) {
+      .mobile-services-pill-nav {
+        display: block;
+        position: sticky;
+        top: var(--nav-h);
+        z-index: 850;
+        background: rgba(250, 247, 244, 0.96);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 0;
+      }
+      .pill-nav-track {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 0 20px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .pill-nav-track::-webkit-scrollbar {
+        display: none;
+      }
+      .mobile-pill {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+      }
+      .mobile-pill.active {
+        background: var(--brand);
+        color: #FFFFFF;
+        border-color: var(--brand);
+        font-weight: 600;
+      }
+    }
+
+    /* ================================================================
+       STRUCTURE: STICKY SIDEBAR + CONTENT LAYOUT
+       ================================================================ */
+    .services-main-layout {
+      position: relative;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px 40px;
+      display: flex;
+      gap: 56px;
+      align-items: flex-start;
+    }
+    @media (min-width: 1100px) {
+      .services-main-layout {
+        padding: 0 40px 40px;
+        gap: 64px;
+      }
+    }
+    @media (max-width: 960px) {
+      .services-main-layout {
+        display: block;
+        padding: 0 20px 20px;
+      }
+    }
+
+    /* Sticky Left Sidebar (280px, Hidden on Mobile) */
+    .services-sidebar-wrap {
+      width: 280px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 96px;
+      display: block;
+    }
+    @media (max-width: 960px) {
+      .services-sidebar-wrap {
+        display: none;
+      }
+    }
+    .services-sticky-sidebar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 18px 14px;
+      box-shadow: var(--shadow-card);
+    }
+    .sidebar-header {
+      padding: 6px 12px 12px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+    .sidebar-pill {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: background 180ms ease, color 180ms ease, border-color 180ms ease, font-weight 180ms ease;
+    }
+    .sidebar-link:hover {
+      background: rgba(46, 107, 94, 0.05);
+      color: var(--brand);
+    }
+    .sidebar-link.active {
+      border-left: 3px solid var(--brand);
+      font-weight: 700;
+      background: var(--brand-light);
+      color: var(--brand);
+    }
+    .sidebar-arrow {
+      opacity: 0.5;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+    .sidebar-link.active .sidebar-arrow {
+      opacity: 1;
+      transform: translateX(2px);
+    }
+    .sidebar-callout {
+      margin-top: 16px;
+      padding: 14px 12px;
+      border-radius: 10px;
+      background: rgba(234, 244, 241, 0.5);
+      border: 1px dashed rgba(46, 107, 94, 0.3);
+    }
+    .callout-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      display: block;
+      margin-bottom: 3px;
+    }
+    .callout-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    .callout-phone-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brand);
+      text-decoration: none;
+    }
+    .callout-phone-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Right Content Column */
+    .services-content-col {
+      width: calc(100% - 280px);
+      max-width: 900px;
+      min-width: 0;
+    }
+    @media (max-width: 960px) {
+      .services-content-col {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    /* ================================================================
+       INDIVIDUAL SERVICE SECTIONS (6 SECTIONS)
+       ================================================================ */
+    .service-section {
+      position: relative;
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+      scroll-margin-top: 110px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1), transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .service-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .service-section {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .service-section {
+        padding: 56px 0;
+        scroll-margin-top: 120px;
+      }
+    }
+    .service-section:last-child {
+      border-bottom: none;
+    }
+
+    /* Large Fraunces Italic Watermark Number Top-Left (72px, 0.15 opacity) */
+    .service-num-watermark {
+      position: absolute;
+      top: 56px;
+      left: 0;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--brand);
+      opacity: 0.15;
+      user-select: none;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @media (max-width: 768px) {
+      .service-num-watermark {
+        top: 36px;
+        font-size: 60px;
+      }
+    }
+
+    /* Service Title (H2, 32px, 700, #1C2B2B) */
+    
+    .service-category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--brand);
+      background: var(--brand-light);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(46, 107, 94, 0.2);
+    }
+
+    .service-title {
+      position: relative;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-top: 24px;
+      margin-bottom: 16px;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .service-title {
+        font-size: 26px;
+        margin-top: 18px;
+        margin-bottom: 12px;
+      }
+    }
+
+    /* 2-Sentence Plain-English Description */
+    .service-desc {
+      position: relative;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin-bottom: 24px;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .service-desc {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+    }
+
+    /* "Who this is for" Subheading */
+    .who-title {
+      position: relative;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 1;
+    }
+    .who-title::after {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--brand);
+      opacity: 0.3;
+    }
+
+    /* 3 Bullet Points with Custom Green Checkmark SVG */
+    .who-list {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+      max-width: 780px;
+      z-index: 1;
+    }
+    .who-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15.5px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .who-check-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--brand-light);
+      border: 1px solid rgba(46, 107, 94, 0.25);
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Outlined Button ("Ask about [Service Name] →") */
+    .btn-service-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--brand);
+      background: transparent;
+      border: 1.5px solid var(--brand);
+      border-radius: var(--radius-btn);
+      text-decoration: none;
+      transition: background 200ms ease, color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+    }
+    .btn-service-outline:hover {
+      background: var(--brand);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(46, 107, 94, 0.2);
+    }
+
+    /* ================================================================
+       FINAL SECTION (FULL WIDTH BANNER OUTSIDE SIDEBAR LAYOUT)
+       ================================================================ */
+
+    /* Split Layout Grid for Services with Real Photography */
+    .service-split-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: 36px;
+      align-items: start;
+      margin-top: 16px;
+    }
+    .service-text-pane {
+      min-width: 0;
+    }
+    .service-media-pane {
+      min-width: 0;
+    }
+    .service-photo-frame {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 14px 38px rgba(28, 43, 43, 0.09), 0 3px 8px rgba(28, 43, 43, 0.04);
+      border: 1px solid rgba(46, 107, 94, 0.14);
+      background: #FFFFFF;
+      transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .service-photo-frame:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(28, 43, 43, 0.14), 0 5px 12px rgba(28, 43, 43, 0.06);
+    }
+    .service-photo {
+      width: 100%;
+      height: 330px;
+      object-fit: cover;
+      display: block;
+      transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .service-photo-frame:hover .service-photo {
+      transform: scale(1.03);
+    }
+    .service-photo-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #1C2B2B;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      z-index: 2;
+    }
+    .photo-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #2E6B5E;
+      flex-shrink: 0;
+    }
+    .service-photo-caption {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(28, 43, 43, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #FFFFFF;
+      line-height: 1.25;
+      z-index: 2;
+    }
+    .service-photo-caption svg {
+      flex-shrink: 0;
+      color: #68A691;
+    }
+    .service-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .btn-service-subtle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 20px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--brand);
+      background: var(--brand-light);
+      border-radius: var(--radius-btn);
+      text-decoration: none;
+      transition: background 200ms ease, color 200ms ease, transform 200ms ease;
+    }
+    .btn-service-subtle:hover {
+      background: rgba(46, 107, 94, 0.16);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 860px) {
+      .service-split-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .service-media-pane {
+        order: -1;
+      }
+      .service-photo {
+        height: 250px;
+      }
+    }
+    @media (max-width: 480px) {
+      .service-photo {
+        height: 210px;
+      }
+      .service-photo-badge {
+        font-size: 11px;
+        padding: 5px 11px;
+      }
+      .service-btn-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-service-outline,
+      .btn-service-subtle {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+
+    .services-final-cta {
+      position: relative;
+      background: linear-gradient(135deg, #2E6B5E, #1A4A3F);
+      padding: 96px 64px;
+      text-align: center;
+      color: #FFFFFF;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      .services-final-cta {
+        padding: 64px 24px;
+      }
+    }
+    /* Subtle protective canopy art in final CTA */
+    .cta-canopy-art {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 380px;
+      pointer-events: none;
+      opacity: 0.15;
+      stroke: #FAF7F4;
+    }
+    .services-final-cta h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    @media (max-width: 768px) {
+      .services-final-cta h2 {
+        font-size: 28px;
+      }
+    }
+    .services-final-cta p {
+      font-size: 18px;
+      color: #EAF4F1;
+      max-width: 500px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .services-final-cta p {
+        font-size: 16px;
+        margin-bottom: 28px;
+      }
+    }
+    .final-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 36px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      border-radius: var(--radius-btn);
+      border: none;
+      text-decoration: none;
+      transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+    .final-cta-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(228, 87, 46, 0.4);
+    }
+    .final-cta-phone-note {
+      margin-top: 20px;
+      font-size: 14px;
+      color: rgba(234, 244, 241, 0.85);
+    }
+    .final-cta-phone-note a {
+      color: #FFFFFF;
+      font-weight: 700;
+      text-decoration: underline;
+      margin-left: 4px;
+    }
+
+    /* ================================================================
+       FOOTER (VERBATIM SITE-WIDE PARITY)
+       ================================================================ */
+    .footer {
+      background: #1C2B2B;
+      color: #FAF7F4;
+      padding: 64px 0 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer-roots-art {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 48px;
+      pointer-events: none;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    @media (min-width: 768px) {
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+    }
+    .footer-brand {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #FAF7F4;
+      margin-bottom: 12px;
+    }
+    .footer-tagline {
+      color: rgba(250, 247, 244, 0.7);
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    .footer-reg {
+      font-size: 12px;
+      color: rgba(250, 247, 244, 0.5);
+      border: 1px solid rgba(250, 247, 244, 0.2);
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .footer h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #FAF7F4;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .footer ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer a {
+      font-size: 14px;
+      color: rgba(250, 247, 244, 0.7);
+      transition: color 150ms;
+    }
+    .footer a:hover { color: #FAF7F4; }
+    .footer-bottom {
+      border-top: 1px solid rgba(250, 247, 244, 0.12);
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(250, 247, 244, 0.5);
+    }
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+    .footer-ndis {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--brand-light);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================================
+       NAVIGATION (EXACT HOMEPAGE & ABOUT PARITY, SERVICES ACTIVE)
+       ================================================================ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand" aria-label="Hopesway Home">
+        <svg class="brand-logo-icon" viewBox="0 0 180 180" width="34" height="34" aria-hidden="true">
+          <g transform="translate(88, 46) rotate(45)">
+            <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#EE2737" />
+          </g>
+          <g transform="translate(46.5, 89.5) rotate(45)">
+            <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#468C2C" />
+          </g>
+          <g transform="translate(130, 90) rotate(45)">
+            <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#F4B320" />
+          </g>
+          <g stroke="#392E2D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <line x1="88.5" y1="165" x2="88.5" y2="46" />
+            <line x1="88.5" y1="130" x2="46" y2="89" />
+            <line x1="88.5" y1="130" x2="131" y2="89" />
+          </g>
+        </svg>
+        <div class="brand-text-col">
+          <span class="brand-name">Hopesway</span>
+          <span class="brand-subtext">NDIS &amp; Aged Care · QLD</span>
+        </div>
+      </a>
+
+      <div class="nav-links" id="navLinks" role="navigation" aria-label="Main Navigation">
+        <div class="nav-item">
+          <a href="index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-item">
+          <a href="about.html" class="nav-link">About Us</a>
+        </div>
+        <div class="nav-item nav-has-dropdown">
+          <a href="services.html" class="nav-link active" aria-haspopup="true" aria-expanded="false">
+            <span>Services</span>
+            <svg class="nav-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </a>
+          <div class="nav-dropdown" role="menu" aria-label="Services Overview">
+            <div class="dropdown-header-strip">
+              <span class="dropdown-pill">Personalised Care &amp; Living Support · Pimpama &amp; Gold Coast</span>
+            </div>
+            <div class="dropdown-grid">
+              <div class="dropdown-col">
+                <div class="dropdown-col-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  <span>NDIS Disability Supports</span>
+                </div>
+                <a href="services.html#sil" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Supported Independent Living (SIL)</span>
+                  <span class="dropdown-card-desc">24/7 supported living in welcoming, peaceful community homes</span>
+                </a>
+                <a href="services.html#support-coordination" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Support Coordination</span>
+                  <span class="dropdown-card-desc">Unpack funding and connect with vetted local allied health</span>
+                </a>
+                <a href="services.html#respite" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Respite &amp; Short Term (STA)</span>
+                  <span class="dropdown-card-desc">Recharging getaways for participants and essential family relief</span>
+                </a>
+                <a href="services.html#daily-activities" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Daily Life &amp; Social Activities</span>
+                  <span class="dropdown-card-desc">Hands-on life skills, fitness, community outings, and cooking</span>
+                </a>
+                <a href="services.html#transport" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Community Transport</span>
+                  <span class="dropdown-card-desc">Safe, dependable rides to appointments and weekend sports</span>
+                </a>
+              </div>
+              <div class="dropdown-col">
+                <div class="dropdown-col-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                  <span>In-Home Aged Care</span>
+                </div>
+                <a href="services.html#aged-care" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Commonwealth Home Support (CHSP)</span>
+                  <span class="dropdown-card-desc">Stay independent in your own beloved home with tailored assistance</span>
+                </a>
+                <a href="services.html#aged-care" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Personal Care &amp; Domestic Help</span>
+                  <span class="dropdown-card-desc">Dignified daily grooming, medication prompts, and light meal prep</span>
+                </a>
+                <a href="services.html#aged-care" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Companionship &amp; Social Wellness</span>
+                  <span class="dropdown-card-desc">Friendly coffee catch-ups, walks, and genuine peace of mind</span>
+                </a>
+                <div class="dropdown-trust-box">
+                  <span class="dropdown-trust-num">Registered NDIS Provider</span>
+                  <span class="dropdown-trust-text">Registration #4050172088 · Verified background checks &amp; CPR certified</span>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <span class="dropdown-tag">Need guidance choosing the right pathway?</span>
+              <a href="services.html">
+                <span>View Full Services Guide</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="team.html" class="nav-link">Our Team</a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <a href="tel:1300694673" class="nav-phone-pill" aria-label="Call Hopesway on 1300 694 673">
+          <span class="phone-icon-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </span>
+          <span class="phone-text-wrap">
+            <span class="phone-label">Need a chat?</span>
+            <span class="phone-num">1300 694 673</span>
+          </span>
+        </a>
+        <a href="contact.html" class="btn-primary nav-cta">
+          <span>Enquire Now</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+    <a href="tel:1300694673" class="mobile-call-banner">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="phone-icon-dot">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        <div style="display:flex;flex-direction:column;line-height:1.2;">
+          <span style="font-size:11px;color:var(--brand);font-weight:600;">Direct Phone Support</span>
+          <span style="font-size:15px;color:var(--brand-dark);font-weight:700;">1300 694 673</span>
+        </div>
+      </div>
+      <span style="font-size:12px;color:var(--brand);font-weight:600;">Tap to call &rarr;</span>
+    </a>
+
+    <div class="mobile-nav-group">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="about.html" class="mobile-link">About Us</a>
+      
+      <div class="mobile-accordion-item">
+        <a href="services.html" class="mobile-link active">
+          <span>Services</span>
+          <span style="font-size:12px;color:var(--brand);font-weight:600;">Active Guide</span>
+        </a>
+        <div class="mobile-sub-services">
+          <a href="#sil" class="mobile-sub-link"><span class="mobile-sub-bullet"></span>Supported Independent Living (SIL)</a>
+          <a href="#support-coordination" class="mobile-sub-link"><span class="mobile-sub-bullet"></span>Support Coordination</a>
+          <a href="#respite" class="mobile-sub-link"><span class="mobile-sub-bullet"></span>Respite / Short Term (STA)</a>
+          <a href="#daily-activities" class="mobile-sub-link"><span class="mobile-sub-bullet"></span>Daily Life &amp; Social Outings</a>
+          <a href="#transport" class="mobile-sub-link"><span class="mobile-sub-bullet"></span>Community Transport</a>
+          <a href="#aged-care" class="mobile-sub-link"><span class="mobile-sub-bullet"></span>In-Home Aged Care &amp; CHSP</a>
+        </div>
+      </div>
+
+      <a href="team.html" class="mobile-link">Our Team</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+    </div>
+
+    <a href="contact.html" class="btn-primary" style="text-align:center;justify-content:center;">Enquire Now</a>
+    <div class="mobile-menu-footer">
+      <span>NDIS Registered Provider #4050172088 · Pimpama, QLD</span>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       HERO (ABOVE SIDEBAR LAYOUT, FULL WIDTH)
+       ================================================================ -->
+  <header class="services-hero">
+    <!-- Subtle Australian hinterland canopy and dawn light biophilic line art -->
+    <svg class="hero-canopy-art" viewBox="0 0 680 460" fill="none" aria-hidden="true">
+      <circle cx="340" cy="230" r="180" stroke="var(--logo-gold)" stroke-width="1.2" stroke-dasharray="5 7" opacity="0.3"/>
+      <circle cx="340" cy="230" r="110" stroke="var(--brand)" stroke-width="1" stroke-dasharray="4 6" opacity="0.2"/>
+      <path d="M40 380 Q180 280 340 330 T640 290" stroke="var(--brand)" stroke-width="1.4" opacity="0.35"/>
+      <path d="M20 420 Q200 340 380 370 T660 350" stroke="var(--logo-green)" stroke-width="1.2" stroke-dasharray="6 6" opacity="0.25"/>
+      <path d="M80 360 Q180 200 280 180 T460 110" stroke="var(--logo-trunk)" stroke-width="1.6" stroke-linecap="round" opacity="0.3"/>
+      <path d="M190 280 Q250 250 310 270" stroke="var(--logo-green)" stroke-width="1.3" opacity="0.4"/>
+      <path d="M250 230 Q320 200 370 220" stroke="var(--brand)" stroke-width="1.3" opacity="0.4"/>
+      <g transform="translate(310, 270) rotate(45)"><rect x="-5" y="-5" width="10" height="10" rx="2.5" fill="var(--logo-green)" opacity="0.45"/></g>
+      <g transform="translate(370, 220) rotate(45)"><rect x="-5" y="-5" width="10" height="10" rx="2.5" fill="var(--logo-gold)" opacity="0.45"/></g>
+      <g transform="translate(460, 110) rotate(45)"><rect x="-5" y="-5" width="10" height="10" rx="2.5" fill="var(--logo-red)" opacity="0.45"/></g>
+    </svg>
+
+    <div class="container">
+      <span class="hero-tag-label">OUR SUPPORTS</span>
+      <h1>Support that fits <span style="position:relative; display:inline-block;"><span class="font-display hero-accent">your</span><svg class="doodle-accent" viewBox="0 0 110 16" fill="none" style="position:absolute; left:-2px; bottom:-6px; width:104%; height:12px; pointer-events:none;" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 C 28 3, 72 13, 108 5 M8 12 C 40 7, 78 12, 102 8" stroke="#2E6B5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> life, not the other way around.</h1>
+      <p class="services-hero-subtitle">
+        Seven registered NDIS and aged care categories. Explore each one below, or jump straight to what you need using the menu.
+      </p>
+    </div>
+  </header>
+
+  <!-- ================================================================
+       MOBILE HORIZONTAL SCROLL-SNAP PILL NAV (STICKY UNDER NAV)
+       ================================================================ -->
+  <div class="mobile-services-pill-nav" aria-label="Services Mobile Jump Menu">
+    <div class="pill-nav-track" id="mobilePillTrack">
+      <a href="#sil" class="mobile-pill active" data-target="sil">01. SIL Housing</a>
+      <a href="#support-coordination" class="mobile-pill" data-target="support-coordination">02. Coordination</a>
+      <a href="#respite" class="mobile-pill" data-target="respite">03. Respite / STA</a>
+      <a href="#daily-activities" class="mobile-pill" data-target="daily-activities">04. Daily Life</a>
+      <a href="#transport" class="mobile-pill" data-target="transport">05. Transport</a>
+      <a href="#aged-care" class="mobile-pill" data-target="aged-care">06. Aged Care</a>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       STRUCTURE: STICKY SIDEBAR + CONTENT LAYOUT
+       ================================================================ -->
+  <div class="services-main-layout">
+
+    <!-- Sticky Left Sidebar (280px wide, desktop) -->
+    <aside class="services-sidebar-wrap" aria-label="Services Navigation">
+      <div class="services-sticky-sidebar">
+        <div class="sidebar-header">
+          <span class="sidebar-pill" style="position:relative; display:inline-block;">
+            <svg class="doodle-accent doodle-circle" viewBox="0 0 180 44" fill="none" style="position:absolute; top:-6px; left:-10px; width:calc(100% + 20px); height:calc(100% + 12px); pointer-events:none;" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M12 22 C 10 8, 65 3, 140 5 C 172 6, 178 24, 158 35 C 130 45, 40 43, 15 32 C 4 25, 14 11, 50 7" stroke="#2E6B5E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+            </svg>
+            EXPLORE SUPPORTS
+          </span>
+        </div>
+        <nav class="sidebar-nav" id="sidebarNav">
+          <a href="#sil" class="sidebar-link active" data-target="sil">
+            <span>01. Supported Living (SIL)</span>
+            <svg class="sidebar-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <a href="#support-coordination" class="sidebar-link" data-target="support-coordination">
+            <span>02. Support Coordination</span>
+            <svg class="sidebar-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <a href="#respite" class="sidebar-link" data-target="respite">
+            <span>03. Respite &amp; Short Term</span>
+            <svg class="sidebar-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <a href="#daily-activities" class="sidebar-link" data-target="daily-activities">
+            <span>04. Daily Life &amp; Community</span>
+            <svg class="sidebar-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <a href="#transport" class="sidebar-link" data-target="transport">
+            <span>05. Transport Support</span>
+            <svg class="sidebar-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <a href="#aged-care" class="sidebar-link" data-target="aged-care">
+            <span>06. In-Home Aged Care</span>
+            <svg class="sidebar-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </nav>
+
+        <div class="sidebar-callout">
+          <span class="callout-title">Need help deciding?</span>
+          <p class="callout-desc">Speak directly with our local coordinator for honest, zero-pressure advice.</p>
+          <a href="tel:1300694673" class="callout-phone-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>1300 694 673</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right Content Column (calc(100% - 280px), max-width 900px) -->
+    <main class="services-content-col" id="main-content">
+
+      <!-- ================================================================
+           SERVICE 01 — SUPPORTED INDEPENDENT LIVING (SIL)
+           ================================================================ -->
+      <section class="service-section" id="sil">
+        <span class="service-num-watermark font-display">01</span>
+        <div class="service-category-pill">Registered Category: Supported Independent Living · Daily Tasks / Shared Living</div>
+        <h2 class="service-title">Supported Independent Living (SIL)</h2>
+        <div class="service-split-grid">
+          <div class="service-text-pane">
+            <p class="service-desc">
+              The biggest worry families have is that moving into SIL means handing over control to an impersonal facility where their loved one is just another room number. At Hopesway, you choose who you live with and keep your own daily rhythms, from when you wake up to what's for dinner, with our staff quietly supporting your independence around the clock.
+            </p>
+            <h3 class="who-title">Who this is for</h3>
+            <ul class="who-list">
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Adults with an NDIS plan who want the freedom and comfort of living semi-independently in a welcoming shared or solo home.</span>
+          </li>
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Participants transitioning out of the family home who need reliable, 24/7 on-site support with cooking, personal care, and medications.</span>
+          </li>
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Families seeking long-term security, carefully matched housemates, and genuine stability across Pimpama and Northern Gold Coast.</span>
+          </li>
+            </ul>
+            <div class="service-btn-group">
+              <a href="index.html#contact" class="btn-service-outline">Ask about Supported Independent Living &rarr;</a>
+              <a href="refer.html" class="btn-service-subtle">Refer a participant &rarr;</a>
+            </div>
+          </div>
+          <div class="service-media-pane">
+            <div class="service-photo-frame">
+              <img src="svc-sil.jpg" alt="Supported Independent Living participant and support worker in modern kitchen" class="service-photo" loading="lazy" width="600" height="420">
+              <div class="service-photo-badge">
+                <span class="photo-badge-dot"></span>
+                <span>1:1 &amp; Shared Independent Living</span>
+              </div>
+              <div class="service-photo-caption">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Northern Gold Coast &amp; Brisbane</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SERVICE 02 — SUPPORT COORDINATION
+           ================================================================ -->
+      <section class="service-section" id="support-coordination">
+        <span class="service-num-watermark font-display">02</span>
+        <div class="service-category-pill">Registered Category: Support Coordination · Plan Navigation</div>
+        <h2 class="service-title">Support Coordination</h2>
+        <div class="service-split-grid">
+          <div class="service-text-pane">
+            <p class="service-desc">
+              Most participants feel completely lost trying to decode dense 40-page NDIS plan budgets, terrified of accidentally leaving thousands in therapy funding unspent. We take the confusion and endless paperwork off your plate, tracking down trusted local specialists and fighting to make sure your funding actually delivers what was promised.
+            </p>
+            <h3 class="who-title">Who this is for</h3>
+            <ul class="who-list">
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Families feeling overwhelmed by bureaucratic NDIS portals, complicated line items, and uncooperative service agreements.</span>
+          </li>
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Participants who want an experienced advocate coordinating their occupational therapists, speech pathologists, and daily support teams.</span>
+          </li>
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Anyone approaching an upcoming NDIS plan review who wants airtight progress reports and evidence prepared to safeguard their funding.</span>
+          </li>
+            </ul>
+            <div class="service-btn-group">
+              <a href="index.html#contact" class="btn-service-outline">Ask about Support Coordination &rarr;</a>
+              <a href="refer.html" class="btn-service-subtle">Refer a participant &rarr;</a>
+            </div>
+          </div>
+          <div class="service-media-pane">
+            <div class="service-photo-frame">
+              <img src="svc-coordination.jpg" alt="Support coordinator meeting with mother and participant over NDIS plan" class="service-photo" loading="lazy" width="600" height="420">
+              <div class="service-photo-badge">
+                <span class="photo-badge-dot"></span>
+                <span>Specialist &amp; Level 2 Coordination</span>
+              </div>
+              <div class="service-photo-caption">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Direct Advocacy &amp; Planning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SERVICE 03 — SHORT TERM ACCOMMODATION &AMP; RESPITE
+           ================================================================ -->
+      <section class="service-section" id="respite">
+        <span class="service-num-watermark font-display">03</span>
+        <div class="service-category-pill">Registered Category: Short Term Accommodation (STA) · Specialised Disability Accommodation (SDA)</div>
+        <h2 class="service-title">Short Term Accommodation &amp; Respite</h2>
+        <div class="service-split-grid">
+          <div class="service-text-pane">
+            <p class="service-desc">
+              Loving carers often feel intense guilt even thinking about taking a weekend off, wondering if anyone else will understand their family member's unique routines and emotional triggers. Our respite stays feel like a genuine, refreshing holiday with engaging activities and home-cooked meals, giving primary carers total peace of mind to recharge.
+            </p>
+            <h3 class="who-title">Who this is for</h3>
+            <ul class="who-list">
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Dedicated primary carers needing planned or short-notice relief to rest, recover from illness, or attend to personal commitments.</span>
+          </li>
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Participants eager for an enjoyable weekend break away from home to practice practical independence, make new friends, and explore the coast.</span>
+          </li>
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Families needing emergency interim support during sudden hospital discharge or urgent home modifications.</span>
+          </li>
+            </ul>
+            <div class="service-btn-group">
+              <a href="index.html#contact" class="btn-service-outline">Ask about Short Term Accommodation &amp; Respite &rarr;</a>
+              <a href="refer.html" class="btn-service-subtle">Refer a participant &rarr;</a>
+            </div>
+          </div>
+          <div class="service-media-pane">
+            <div class="service-photo-frame">
+              <img src="svc-respite.jpg" alt="Participant and support worker smiling together during respite holiday stay" class="service-photo" loading="lazy" width="600" height="420">
+              <div class="service-photo-badge">
+                <span class="photo-badge-dot"></span>
+                <span>Short-Term &amp; Emergency Stays</span>
+              </div>
+              <div class="service-photo-caption">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Coastal Retreats &amp; Carer Relief</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SERVICE 04 — DAILY LIFE &AMP; COMMUNITY PARTICIPATION
+           ================================================================ -->
+      <section class="service-section" id="daily-activities">
+        <span class="service-num-watermark font-display">04</span>
+        <div class="service-category-pill">Registered Category: Development-Life Skills · Community Participation · Therapeutic Supports</div>
+        <h2 class="service-title">Daily Life &amp; Community Participation</h2>
+        <div class="service-split-grid">
+          <div class="service-text-pane">
+            <p class="service-desc">
+              Too many programs promise 'community access' only to leave participants sitting in sterile group centres watching television all morning. We focus entirely on what you genuinely love doing, whether that's hitting the gym, taking cooking classes, catching a train to Brisbane, or volunteering at an animal sanctuary.
+            </p>
+            <h3 class="who-title">Who this is for</h3>
+            <ul class="who-list">
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Participants wanting to build practical confidence with everyday tasks like grocery budgeting, meal planning, and public transport navigation.</span>
+          </li>
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Young adults seeking an active, relatable support buddy who shares their hobbies, gaming interests, artistic passions, or sporting goals.</span>
+          </li>
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Anyone experiencing social isolation who wants a supportive, encouraging push to participate meaningfully in local Gold Coast community life.</span>
+          </li>
+            </ul>
+            <div class="service-btn-group">
+              <a href="index.html#contact" class="btn-service-outline">Ask about Daily Life &amp; Community Participation &rarr;</a>
+              <a href="refer.html" class="btn-service-subtle">Refer a participant &rarr;</a>
+            </div>
+          </div>
+          <div class="service-media-pane">
+            <div class="service-photo-frame">
+              <img src="svc-daily-life.jpg" alt="Support worker and participant collaborating during creative art activity" class="service-photo" loading="lazy" width="600" height="420">
+              <div class="service-photo-badge">
+                <span class="photo-badge-dot"></span>
+                <span>Skill Building &amp; Social Outings</span>
+              </div>
+              <div class="service-photo-caption">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Community Hubs &amp; Clubs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SERVICE 05 — TRANSPORT SUPPORT
+           ================================================================ -->
+      <section class="service-section" id="transport">
+        <span class="service-num-watermark font-display">05</span>
+        <div class="service-category-pill">Registered Category: Assist-Travel / Community Transport</div>
+        <h2 class="service-title">Transport Support</h2>
+        <div class="service-split-grid">
+          <div class="service-text-pane">
+            <p class="service-desc">
+              Relying on taxis or rideshares often means stressful last-minute cancellations, missed specialist appointments, and drivers who don't understand mobility aids or sensory needs. Our dedicated drivers arrive early in clean, accessible vehicles, walking you right to the reception desk so getting from A to B is completely stress-free.
+            </p>
+            <h3 class="who-title">Who this is for</h3>
+            <ul class="who-list">
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Participants who cannot drive or find public buses and trains overwhelming, inaccessible, or unpredictable.</span>
+          </li>
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Individuals needing reliable, scheduled transport to therapy clinics, hospital outpatient appointments, university lectures, or workplace shifts.</span>
+          </li>
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Families who need peace of mind knowing their loved one is safely accompanied door-to-door by CPR-trained, background-checked staff.</span>
+          </li>
+            </ul>
+            <div class="service-btn-group">
+              <a href="transport.html" class="btn-service-outline">Book Transport Online &rarr;</a>
+              <a href="index.html#contact" class="btn-service-subtle">Ask about Transport Support &rarr;</a>
+            </div>
+          </div>
+          <div class="service-media-pane">
+            <div class="service-photo-frame">
+              <img src="svc-transport.jpg" alt="Support worker assisting participant beside accessible vehicle in park" class="service-photo" loading="lazy" width="600" height="420">
+              <div class="service-photo-badge">
+                <span class="photo-badge-dot"></span>
+                <span>Accessible Transport Fleet</span>
+              </div>
+              <div class="service-photo-caption">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Door-to-Door Scheduled Trips</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SERVICE 06 — AGED CARE SUPPORT (CHSP / HOME CARE PACKAGES)
+           ================================================================ -->
+      <section class="service-section" id="aged-care">
+        <span class="service-num-watermark font-display">06</span>
+        <div class="service-category-pill">Registered Categories: Household Tasks · Community Nursing Care · CHSP &amp; HCP</div>
+        <h2 class="service-title">Aged Care Support (CHSP / Home Care Packages)</h2>
+        <div class="service-split-grid">
+          <div class="service-text-pane">
+            <p class="service-desc">
+              Aging parents dread the thought of losing their independence and being forced into residential aged care before they are ready. We provide a gentle, respectful helping hand around the house: help with morning routines, warm home-cooked meals, and garden maintenance, so you can stay safely where you feel comfortable.
+            </p>
+            <h3 class="who-title">Who this is for</h3>
+            <ul class="who-list">
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Older Australians wanting to live safely, independently, and happily in their own family home for as long as possible.</span>
+          </li>
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Seniors holding Commonwealth Home Support Programme (CHSP) or Home Care Packages needing flexible, trusted domestic and personal care.</span>
+          </li>
+          <li class="who-item">
+            <span class="who-check-circle">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Adult children looking for dependable, compassionate carers who treat their aging mum or dad like cherished extended family.</span>
+          </li>
+            </ul>
+            <div class="service-btn-group">
+              <a href="index.html#contact" class="btn-service-outline">Ask about Aged Care Support &rarr;</a>
+              <a href="refer.html" class="btn-service-subtle">Refer a participant &rarr;</a>
+            </div>
+          </div>
+          <div class="service-media-pane">
+            <div class="service-photo-frame">
+              <img src="svc-aged-care.jpg" alt="Compassionate carer sharing morning tea with elderly participant on veranda" class="service-photo" loading="lazy" width="600" height="420">
+              <div class="service-photo-badge">
+                <span class="photo-badge-dot"></span>
+                <span>Dignified Home Care &amp; CHSP</span>
+              </div>
+              <div class="service-photo-caption">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>In-Home Independence Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ================================================================
+       FINAL SECTION (FULL WIDTH, OUTSIDE SIDEBAR LAYOUT)
+       ================================================================ -->
+  <section class="services-final-cta" aria-labelledby="cta-heading">
+    <!-- Gentle shelter canopy art -->
+    <svg class="cta-canopy-art" viewBox="0 0 800 380" fill="none" aria-hidden="true">
+      <path d="M50 340 Q250 180 400 210 T750 340" stroke="#FAF7F4" stroke-width="1.2" opacity="0.3"/>
+      <circle cx="400" cy="180" r="90" stroke="#FAF7F4" stroke-width="1" stroke-dasharray="4 6" opacity="0.25"/>
+      <path d="M400 90 L400 50" stroke="#FAF7F4" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+      <path d="M470 120 L500 90" stroke="#FAF7F4" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+      <path d="M330 120 L300 90" stroke="#FAF7F4" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+    </svg>
+
+    <div class="container">
+      <h2 id="cta-heading">Not sure which service fits?</h2>
+      <p>
+        Talk to us for five minutes and we'll point you in the right direction. No pressure, no obligation.
+      </p>
+      <div style="position:relative; display:inline-block;">
+        <a href="contact.html" class="final-cta-btn">
+          <span>Enquire Now</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <!-- Doodle Arrow pointing from whitespace towards Enquire Now -->
+        <svg class="doodle-accent doodle-arrow" viewBox="0 0 54 42" fill="none" style="position:absolute; top:-26px; right:-36px; width:38px; height:30px; pointer-events:none;" aria-hidden="true">
+          <path d="M48 6 C 36 2, 20 8, 16 24" stroke="#E4572E" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M26 22 L 15 25 L 14 14" stroke="#E4572E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="final-cta-phone-note">
+        <span>Or phone our Pimpama care team directly on</span>
+        <a href="tel:1300694673">1300 694 673</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER (VERBATIM SITE-WIDE PARITY)
+       ================================================================ -->
+  <footer class="footer">
+    <!-- Grounded Earth Strata & Deep Living Roots Line Art -->
+    <svg class="footer-roots-art" viewBox="0 0 1440 48" fill="none" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 8 C360 24 720 0 1080 18 T1440 8" stroke="var(--brand)" stroke-width="1.2" opacity="0.35"/>
+      <path d="M0 18 C400 36 800 12 1200 28 T1440 18" stroke="var(--logo-green)" stroke-width="1" stroke-dasharray="6 6" opacity="0.25"/>
+      <path d="M220 12 Q280 34 320 28" stroke="var(--logo-gold)" stroke-width="1.2" opacity="0.4"/>
+      <path d="M680 8 Q740 38 800 24" stroke="var(--logo-green)" stroke-width="1.2" opacity="0.4"/>
+      <path d="M1120 14 Q1180 38 1240 28" stroke="var(--logo-gold)" stroke-width="1.2" opacity="0.4"/>
+      <g transform="translate(740, 38) rotate(45)"><rect x="-3" y="-3" width="6" height="6" rx="1.5" fill="var(--logo-red)" opacity="0.5"/></g>
+    </svg>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand" style="display:flex;align-items:center;gap:10px;">
+            <svg class="brand-logo-icon" viewBox="0 0 180 180" width="28" height="28" aria-hidden="true">
+              <g transform="translate(88, 46) rotate(45)">
+                <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#EE2737" />
+              </g>
+              <g transform="translate(46.5, 89.5) rotate(45)">
+                <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#468C2C" />
+              </g>
+              <g transform="translate(130, 90) rotate(45)">
+                <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#F4B320" />
+              </g>
+              <g stroke="#FAF7F4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <line x1="88.5" y1="165" x2="88.5" y2="46" />
+                <line x1="88.5" y1="130" x2="46" y2="89" />
+                <line x1="88.5" y1="130" x2="131" y2="89" />
+              </g>
+            </svg>
+            <span>Hopesway</span>
+          </div>
+          <div class="footer-tagline">Your care, your way.</div>
+          <div class="footer-reg">NDIS Registered Provider #4050172088</div>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#sil">Supported Independent Living</a></li>
+            <li><a href="#support-coordination">Support Coordination</a></li>
+            <li><a href="#respite">Respite / STA</a></li>
+            <li><a href="#daily-activities">Daily Activities</a></li>
+            <li><a href="#transport">Transport</a></li>
+            <li><a href="#aged-care">Aged Care</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="locations.html">Where We Work</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="refer.html">Referrals</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <ul>
+            <li><a href="tel:1300694673">1300 694 673</a></li>
+            <li><a href="mailto:info@hopesway.com.au">info@hopesway.com.au</a></li>
+            <li><a href="#">Pimpama, QLD 4209</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Hopesway Care (ABN 54 425 985 105) &amp; Hopesway Support Services (ABN 41 659 270 765).</span>
+        <span class="footer-ndis">NDIS Registered Provider #4050172088 · Head Office: Pimpama QLD 4209 · 1300 694 673</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================================
+       SCRIPTS: SCROLLSPY, INTERSECTION OBSERVER, MOBILE PILL SYNC
+       ================================================================ -->
+  <script>
+    (function() {
+      'use strict';
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ------ NAV SCROLL SHADOW ------ */
+      const nav = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true });
+
+      /* ------ MOBILE HAMBURGER TOGGLE ------ */
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', String(open));
+      });
+      mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      /* ------ SERVICE SECTIONS: FADE IN ON SCROLL (400ms) ------ */
+      const serviceSections = document.querySelectorAll('.service-section');
+      if (!prefersReducedMotion) {
+        const fadeObs = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        serviceSections.forEach(sec => fadeObs.observe(sec));
+      } else {
+        serviceSections.forEach(sec => sec.classList.add('is-visible'));
+      }
+
+      /* ------ STICKY SIDEBAR & MOBILE PILL SYNC (SCROLLSPY) ------ */
+      const sidebarLinks = document.querySelectorAll('.sidebar-link');
+      const mobilePills = document.querySelectorAll('.mobile-pill');
+
+      const spyObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const currentId = entry.target.id;
+
+            // Update Desktop Sidebar Links
+            sidebarLinks.forEach(link => {
+              const isMatch = link.getAttribute('href') === '#' + currentId;
+              link.classList.toggle('active', isMatch);
+            });
+
+            // Update Mobile Scroll-Snap Pills
+            mobilePills.forEach(pill => {
+              const isMatch = pill.getAttribute('href') === '#' + currentId;
+              pill.classList.toggle('active', isMatch);
+              if (isMatch) {
+                pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+              }
+            });
+          }
+        });
+      }, { threshold: 0.25, rootMargin: '-10% 0px -55% 0px' });
+
+      serviceSections.forEach(sec => spyObs.observe(sec));
+    })();
+  </script>
+
+  <!-- LeadConnector / GHL Webchat Widget -->
+  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="YOUR_WIDGET_ID"></script>
+</body>
+</html>

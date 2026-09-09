@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NDIS &amp; Aged Care Areas We Service in Queensland | Hopesway</title>
+  <meta name="description" content="Hopesway provides in-home and community care across Gold Coast, Pimpama, Coomera, Logan, and North Queensland (Townsville, Ingham, Charters Towers, Ayr).">
+
+  <!-- Google Fonts: Outfit (400, 500, 600, 700) + Fraunces (italic 400, 500) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,400;1,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.svg">
+
+  <style>
+    /* ================================================================
+       RESET & BASE STYLING
+       ================================================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: clip;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1C2B2B;
+      background: #FAF7F4;
+      overflow-x: clip;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul, ol { list-style: none; }
+    h1, h2, h3, h4 { line-height: 1.15; letter-spacing: -0.02em; }
+
+    /* Custom Selection */
+    ::selection {
+      background: #2E6B5E;
+      color: #FFFFFF;
+    }
+
+    /* Custom Thin Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #FAF7F4; }
+    ::-webkit-scrollbar-thumb {
+      background: #2E6B5E;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: #1A4A3F; }
+
+    /* ================================================================
+       DESIGN TOKENS
+       ================================================================ */
+    :root {
+      --bg: #FAF7F4;
+      --surface: #FFFFFF;
+      --border: #E5E0D8;
+      --brand: #2E6B5E;
+      --brand-light: #EAF4F1;
+      --brand-dark: #1A4A3F;
+      --accent: #E4572E;
+      --accent-hover: #C94420;
+      --logo-red: #EE2737;
+      --logo-green: #468C2C;
+      --logo-gold: #F4B320;
+      --logo-trunk: #392E2D;
+      --text: #1C2B2B;
+      --text-muted: #6B7280;
+      --shadow-card: 0 4px 18px rgba(28, 43, 43, 0.06);
+      --shadow-card-hover: 0 14px 36px rgba(28, 43, 43, 0.12);
+      --radius-card: 16px;
+      --radius-btn: 12px;
+      --nav-h: 72px;
+    }
+
+    /* Secondary Display Font: Fraunces (italic only) */
+    .font-display {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .font-display-500 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+    }
+
+    /* ================================================================
+       NAVIGATION (VERBATIM SITE-WIDE PARITY)
+       ================================================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-h);
+      background: rgba(250, 247, 244, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: box-shadow 200ms ease;
+    }
+    .nav.scrolled {
+      box-shadow: 0 4px 20px rgba(28, 43, 43, 0.06);
+    }
+    .nav-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 20px; }
+    }
+
+    /* Brand Logo */
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand-logo-icon {
+      width: 34px;
+      height: 34px;
+      display: block;
+      transition: transform 250ms ease;
+    }
+    .nav-brand:hover .brand-logo-icon {
+      transform: rotate(6deg) scale(1.04);
+    }
+    .brand-text-col {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .brand-name {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--brand-dark);
+    }
+    .brand-subtext {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* Desktop Navigation Links */
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+    @media (min-width: 980px) {
+      .nav-links { display: flex; }
+    }
+    .nav-item {
+      position: relative;
+    }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      border-radius: 8px;
+      transition: color 150ms ease, background-color 150ms ease;
+      text-decoration: none;
+    }
+    .nav-link:hover {
+      color: var(--brand);
+      background-color: rgba(46, 107, 94, 0.06);
+    }
+    .nav-link.active {
+      color: var(--brand);
+      font-weight: 600;
+      background-color: var(--brand-light);
+    }
+    .nav-chevron {
+      width: 13px;
+      height: 13px;
+      transition: transform 200ms ease;
+      opacity: 0.7;
+    }
+    .nav-item:hover .nav-chevron,
+    .nav-item:focus-within .nav-chevron {
+      transform: rotate(180deg);
+      opacity: 1;
+    }
+
+    /* Flyout Dropdown for Services */
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: 590px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 18px 42px rgba(28, 43, 43, 0.12);
+      padding: 18px 20px 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease, transform 220ms ease;
+      z-index: 1050;
+    }
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: 0;
+      width: 100%;
+      height: 16px;
+    }
+    .nav-item:hover .nav-dropdown,
+    .nav-item:focus-within .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .dropdown-header-strip {
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dropdown-pill {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--brand);
+      background: var(--brand-light);
+      padding: 3px 9px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+    .dropdown-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .dropdown-col-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dropdown-card-link {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: background 150ms ease, transform 150ms ease;
+      text-decoration: none;
+      margin-bottom: 4px;
+    }
+    .dropdown-card-link:hover {
+      background: var(--brand-light);
+      transform: translateX(2px);
+    }
+    .dropdown-card-title {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.25;
+    }
+    .dropdown-card-desc {
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.35;
+    }
+    .dropdown-trust-box {
+      margin-top: 8px;
+      padding: 10px;
+      background: #FDFBF9;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+    }
+    .dropdown-trust-num {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .dropdown-trust-text {
+      display: block;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+    .dropdown-footer {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12.5px;
+    }
+    .dropdown-tag {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .dropdown-footer a {
+      color: var(--brand);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Actions & Buttons in Nav */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-phone-pill {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px 6px 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      transition: border-color 150ms ease, box-shadow 150ms ease;
+      text-decoration: none;
+    }
+    @media (min-width: 1120px) {
+      .nav-phone-pill { display: inline-flex; }
+    }
+    .nav-phone-pill:hover {
+      border-color: var(--brand);
+      box-shadow: 0 2px 8px rgba(46, 107, 94, 0.12);
+    }
+    .phone-icon-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--brand-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand);
+    }
+    .phone-text-wrap {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .phone-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .phone-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brand-dark);
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: var(--radius-btn);
+      transition: background-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(228, 87, 46, 0.22);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(228, 87, 46, 0.32);
+    }
+    .nav-cta {
+      display: none;
+    }
+    @media (min-width: 600px) {
+      .nav-cta { display: inline-flex; }
+    }
+    .nav-hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+    @media (min-width: 980px) {
+      .nav-hamburger { display: none; }
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 200ms ease, opacity 200ms ease;
+    }
+    .nav-hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav-hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile Drawer Menu */
+    .mobile-menu {
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      width: 100%;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 16px 36px rgba(28, 43, 43, 0.1);
+      padding: 20px 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transform: translateY(-120%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), opacity 240ms ease;
+      z-index: 999;
+      max-height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+    }
+    .mobile-menu.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-call-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: var(--brand-light);
+      border-radius: 12px;
+      border: 1px solid rgba(46, 107, 94, 0.2);
+    }
+    .mobile-nav-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-link {
+      padding: 10px 12px;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      border-radius: 8px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 150ms ease, color 150ms ease;
+    }
+    .mobile-link:hover,
+    .mobile-link.active {
+      background: var(--brand-light);
+      color: var(--brand);
+      font-weight: 600;
+    }
+    .mobile-sub-services {
+      padding: 4px 0 6px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .mobile-sub-link {
+      padding: 7px 10px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      border-radius: 6px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mobile-sub-link:hover {
+      color: var(--brand);
+      background: rgba(46, 107, 94, 0.05);
+    }
+    .mobile-sub-bullet {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--brand);
+      flex-shrink: 0;
+    }
+    .mobile-menu-footer {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      text-align: center;
+      padding-top: 6px;
+    }
+
+    /* ================================================================
+       HERO SECTION
+       ================================================================ */
+    .locations-hero {
+      position: relative;
+      margin-top: var(--nav-h);
+      padding: 80px 24px 48px;
+      text-align: center;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .locations-hero {
+        padding: 110px 32px 64px;
+      }
+    }
+    .locations-hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .locations-label {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 16px;
+      background: var(--brand-light);
+      padding: 6px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(46, 107, 94, 0.16);
+    }
+    .locations-hero h1 {
+      font-size: 46px;
+      font-weight: 700;
+      color: #1C2B2B;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 768px) {
+      .locations-hero h1 {
+        font-size: 32px;
+      }
+    }
+    .hero-accent {
+      color: var(--brand);
+      font-size: 1.05em;
+      padding: 0 4px;
+    }
+    .locations-hero-desc {
+      font-size: 19px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 28px;
+      line-height: 1.62;
+    }
+    @media (max-width: 640px) {
+      .locations-hero-desc {
+        font-size: 16.5px;
+      }
+    }
+
+    /* Quick Region Feature Pills */
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brand-dark);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 999px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    }
+    .hero-pill svg {
+      color: var(--brand);
+      flex-shrink: 0;
+    }
+
+    /* Decorative Background Botanical Doodles */
+    .hero-botanical-left {
+      position: absolute;
+      top: 20px;
+      left: calc(50% - 600px);
+      width: 220px;
+      height: 220px;
+      pointer-events: none;
+      opacity: 0.18;
+      z-index: 1;
+    }
+    .hero-botanical-right {
+      position: absolute;
+      top: 40px;
+      right: calc(50% - 580px);
+      width: 200px;
+      height: 200px;
+      pointer-events: none;
+      opacity: 0.18;
+      z-index: 1;
+    }
+    @media (max-width: 1100px) {
+      .hero-botanical-left,
+      .hero-botanical-right { display: none; }
+    }
+
+    /* ================================================================
+       TWO-REGION CARDS SECTION
+       ================================================================ */
+    .regions-section {
+      padding: 0 24px 80px;
+    }
+    @media (max-width: 768px) {
+      .regions-section { padding: 0 16px 60px; }
+    }
+    .regions-container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .regions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+    @media (max-width: 900px) {
+      .regions-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+
+    .region-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 250ms ease, box-shadow 250ms ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .region-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card-hover);
+    }
+    @media (max-width: 640px) {
+      .region-card {
+        padding: 26px 20px;
+      }
+    }
+
+    /* Region Card Top Header */
+    .region-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .region-title-wrap h2 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      letter-spacing: -0.015em;
+      margin-bottom: 4px;
+    }
+    .region-kicker {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .region-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--brand-light);
+      border: 1px solid rgba(46, 107, 94, 0.2);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--brand);
+    }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand);
+    }
+
+    /* Dot-Map Style SVG Doodle Container */
+    .map-doodle-wrap {
+      width: 100%;
+      height: 190px;
+      background: #FDFBF8;
+      border: 1px solid rgba(46, 107, 94, 0.12);
+      border-radius: 14px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-doodle-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Region Towns Pill Tag Grid */
+    .region-towns-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .town-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 24px;
+    }
+    .town-pill {
+      background: #EAF4F1;
+      color: #2E6B5E;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 7px 15px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 150ms ease, transform 150ms ease;
+    }
+    .town-pill:hover {
+      background: rgba(46, 107, 94, 0.22);
+      transform: translateY(-1px);
+    }
+    .town-pin-icon {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+
+    .region-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 26px;
+      border-top: 1px dashed var(--border);
+      padding-top: 16px;
+    }
+
+    /* Card Footer Buttons */
+    .region-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-region-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--brand);
+      color: #FFFFFF;
+      font-size: 14.5px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: var(--radius-btn);
+      text-decoration: none;
+      transition: background 150ms ease, transform 150ms ease;
+    }
+    .btn-region-primary:hover {
+      background: var(--brand-dark);
+      transform: translateY(-1px);
+    }
+    .btn-region-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--brand);
+      border: 1.5px solid var(--brand);
+      font-size: 14.5px;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: var(--radius-btn);
+      text-decoration: none;
+      transition: background 150ms ease, color 150ms ease;
+    }
+    .btn-region-outline:hover {
+      background: var(--brand-light);
+    }
+
+    /* ================================================================
+       GROWING / UNLISTED AREAS BANNER
+       ================================================================ */
+    .grow-notice-box {
+      max-width: 1180px;
+      margin: 32px auto 0;
+      padding: 24px 32px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #EAF4F1 100%);
+      border: 1.5px dashed rgba(46, 107, 94, 0.35);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      box-shadow: 0 4px 16px rgba(28, 43, 43, 0.04);
+      flex-wrap: wrap;
+    }
+    @media (max-width: 640px) {
+      .grow-notice-box {
+        padding: 20px;
+      }
+    }
+    .grow-notice-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+      min-width: 280px;
+    }
+    .grow-icon-circle {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: var(--brand);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .grow-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      margin-bottom: 2px;
+    }
+    .grow-desc {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .grow-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 11px 22px;
+      border-radius: var(--radius-btn);
+      text-decoration: none;
+      transition: background 150ms ease, transform 150ms ease;
+      white-space: nowrap;
+    }
+    .grow-cta-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    /* ================================================================
+       FAQ-STYLE MICRO-COPY SECTION ("Do you travel to me?")
+       ================================================================ */
+    .faq-section {
+      padding: 80px 24px 100px;
+      background: #FFFFFF;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 768px) {
+      .faq-section {
+        padding: 60px 16px 80px;
+      }
+    }
+    .faq-inner {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .faq-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 48px;
+    }
+    .faq-header-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--brand);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .faq-header h3 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 768px) {
+      .faq-header h3 { font-size: 26px; }
+    }
+    .faq-header p {
+      font-size: 16.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .faq-accordion-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .faq-item {
+      background: #FAF7F4;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 200ms ease;
+    }
+    .faq-item:hover {
+      border-color: rgba(46, 107, 94, 0.35);
+    }
+    .faq-question {
+      width: 100%;
+      padding: 22px 24px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 17.5px;
+      font-weight: 600;
+      color: var(--brand-dark);
+      cursor: pointer;
+    }
+    @media (max-width: 640px) {
+      .faq-question {
+        padding: 18px 20px;
+        font-size: 16px;
+      }
+    }
+    .faq-chevron {
+      width: 20px;
+      height: 20px;
+      color: var(--brand);
+      flex-shrink: 0;
+      transition: transform 250ms ease;
+    }
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 24px 24px;
+      font-size: 15.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    @media (max-width: 640px) {
+      .faq-answer {
+        padding: 0 20px 20px;
+        font-size: 14.5px;
+      }
+    }
+    .faq-answer strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ================================================================
+       FINAL DIRECT INTAKE STRIP
+       ================================================================ */
+    .locations-final-strip {
+      background: linear-gradient(135deg, #2E6B5E 0%, #1A4A3F 100%);
+      color: #FFFFFF;
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .locations-final-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .locations-final-strip h2 {
+      font-size: 34px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 768px) {
+      .locations-final-strip h2 { font-size: 26px; }
+    }
+    .locations-final-strip p {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.88);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .final-cta-btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-final-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      color: var(--brand-dark);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 12px 26px;
+      border-radius: var(--radius-btn);
+      text-decoration: none;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+    .btn-final-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .btn-final-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #FFFFFF;
+      border: 1.5px solid rgba(255, 255, 255, 0.6);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 11px 24px;
+      border-radius: var(--radius-btn);
+      text-decoration: none;
+      transition: border-color 150ms ease, background 150ms ease;
+    }
+    .btn-final-outline:hover {
+      border-color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ================================================================
+       SITE FOOTER (VERBATIM SITE-WIDE PARITY)
+       ================================================================ */
+    .footer {
+      background: #1C2B2B;
+      color: #FAF7F4;
+      padding: 80px 0 40px;
+      position: relative;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 48px;
+      margin-bottom: 64px;
+    }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 580px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #FAF7F4;
+      margin-bottom: 16px;
+    }
+    .footer-brand-icon {
+      width: 36px;
+      height: 36px;
+    }
+    .footer-tagline {
+      font-size: 15px;
+      color: #9CA3AF;
+      margin-bottom: 8px;
+    }
+    .footer-reg {
+      font-size: 12px;
+      color: #6B7280;
+    }
+    .footer h4 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--brand-light);
+      margin-bottom: 16px;
+    }
+    .footer ul li {
+      margin-bottom: 10px;
+    }
+    .footer ul li a {
+      font-size: 14px;
+      color: #9CA3AF;
+      transition: color 150ms ease;
+    }
+    .footer ul li a:hover {
+      color: #FAF7F4;
+    }
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 13px;
+      color: #6B7280;
+      flex-wrap: wrap;
+    }
+    .footer-ndis {
+      color: #9CA3AF;
+    }
+  </style>
+
+  <!-- Schema.org Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do support workers come directly to my home?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, absolutely. Every support shift begins wherever is most comfortable and convenient for you, whether that is your family home, independent unit, workplace, educational institution, local pool, or community club. You never have to worry about commuting to a sterile office to receive support."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you charge for travel to regional or outer areas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All travel is billed strictly in accordance with official NDIS Pricing Arrangements and Price Limits guidelines (Category 04 and Category 15). We cluster shifts smartly with locally based workers so that travel time is kept to the absolute minimum allowed, with zero surprise invoices."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you provide transport during our support shifts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Our team provides accompanied transport in clean, fully insured, roadworthy vehicles for groceries, medical appointments, social outings, sports, or work. Participants can also book dedicated transport through our transport booking portal."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I live between the major towns in North Queensland?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We regularly support participants in smaller surrounding rural localities between Townsville, Ayr, Ingham, and Charters Towers. Let our regional intake team know your location and we will arrange cluster coverage or dedicated support schedules that work for you."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ================================================================
+       NAVIGATION
+       ================================================================ -->
+  <nav class="nav" id="nav" aria-label="Main Navigation">
+    <div class="nav-inner">
+      <!-- Brand Logo -->
+      <a href="index.html" class="nav-brand" aria-label="Hopesway Home">
+        <svg class="brand-logo-icon" viewBox="0 0 180 180" width="34" height="34" aria-hidden="true">
+          <g transform="translate(88, 46) rotate(45)">
+            <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#EE2737" />
+          </g>
+          <g transform="translate(46.5, 89.5) rotate(45)">
+            <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#468C2C" />
+          </g>
+          <g transform="translate(130, 90) rotate(45)">
+            <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#F4B320" />
+          </g>
+          <g stroke="#392E2D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <line x1="88.5" y1="165" x2="88.5" y2="46" />
+            <line x1="88.5" y1="130" x2="46" y2="89" />
+            <line x1="88.5" y1="130" x2="131" y2="89" />
+          </g>
+        </svg>
+        <div class="brand-text-col">
+          <span class="brand-name">Hopesway</span>
+          <span class="brand-subtext">Support Services · QLD</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="nav-links">
+        <div class="nav-item">
+          <a href="index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-item">
+          <a href="about.html" class="nav-link">About Us</a>
+        </div>
+        <div class="nav-item">
+          <a href="services.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            <span>Services</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <!-- Flyout Mega Menu -->
+          <div class="nav-dropdown" role="menu">
+            <div class="dropdown-header-strip">
+              <span style="font-size:12px;font-weight:700;color:var(--brand-dark);letter-spacing:0.04em;text-transform:uppercase;">Hopesway Service Pathways</span>
+              <span class="dropdown-pill">Personalised Care &amp; Living Support · Queensland</span>
+            </div>
+            <div class="dropdown-grid">
+              <div class="dropdown-col">
+                <div class="dropdown-col-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  <span>NDIS Disability Supports</span>
+                </div>
+                <a href="services.html#sil" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Supported Independent Living (SIL)</span>
+                  <span class="dropdown-card-desc">24/7 supported living in welcoming, peaceful community homes</span>
+                </a>
+                <a href="services.html#support-coordination" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Support Coordination</span>
+                  <span class="dropdown-card-desc">Unpack funding and connect with vetted local allied health</span>
+                </a>
+                <a href="services.html#respite" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Respite &amp; Short Term (STA)</span>
+                  <span class="dropdown-card-desc">Recharging getaways for participants and essential family relief</span>
+                </a>
+                <a href="services.html#daily-activities" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Daily Life &amp; Social Activities</span>
+                  <span class="dropdown-card-desc">Hands-on life skills, fitness, community outings, and cooking</span>
+                </a>
+                <a href="transport.html" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Book Transport Online</span>
+                  <span class="dropdown-card-desc">Safe, dependable rides to appointments and workplace shifts</span>
+                </a>
+              </div>
+              <div class="dropdown-col">
+                <div class="dropdown-col-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                  <span>In-Home Aged Care</span>
+                </div>
+                <a href="services.html#aged-care" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Commonwealth Home Support (CHSP)</span>
+                  <span class="dropdown-card-desc">Stay independent in your own beloved home with tailored assistance</span>
+                </a>
+                <a href="services.html#aged-care" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Personal Care &amp; Domestic Help</span>
+                  <span class="dropdown-card-desc">Dignified daily grooming, medication prompts, and light meal prep</span>
+                </a>
+                <a href="services.html#aged-care" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Companionship &amp; Social Wellness</span>
+                  <span class="dropdown-card-desc">Friendly coffee catch-ups, walks, and genuine peace of mind</span>
+                </a>
+                <div class="dropdown-trust-box">
+                  <span class="dropdown-trust-num">Registered NDIS Provider</span>
+                  <span class="dropdown-trust-text">Registration #4050172088 · Northern Gold Coast &amp; North QLD hubs</span>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <span class="dropdown-tag">Need guidance choosing the right pathway?</span>
+              <a href="services.html">
+                <span>View Full Services Guide</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="locations.html" class="nav-link active">Where We Work</a>
+        </div>
+        <div class="nav-item">
+          <a href="team.html" class="nav-link">Our Team</a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-item">
+          <a href="refer.html" class="nav-link">Refer a Participant</a>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <a href="tel:1300694673" class="nav-phone-pill" aria-label="Call Hopesway on 1300 694 673">
+          <span class="phone-icon-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </span>
+          <span class="phone-text-wrap">
+            <span class="phone-label">Intake Line</span>
+            <span class="phone-num">1300 694 673</span>
+          </span>
+        </a>
+        <a href="contact.html#contact-form" class="btn-primary nav-cta">
+          <span>Enquire Now</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+    <a href="tel:1300694673" class="mobile-call-banner">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="phone-icon-dot">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        <div style="display:flex;flex-direction:column;line-height:1.2;">
+          <span style="font-size:11px;color:var(--brand);font-weight:600;">Direct Intake Line</span>
+          <span style="font-size:15px;color:var(--brand-dark);font-weight:700;">1300 694 673</span>
+        </div>
+      </div>
+      <span style="font-size:12px;color:var(--brand);font-weight:600;">Tap to call &rarr;</span>
+    </a>
+
+    <div class="mobile-nav-group">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="about.html" class="mobile-link">About Us</a>
+      <a href="services.html" class="mobile-link">Services</a>
+      <a href="locations.html" class="mobile-link active">Where We Work</a>
+      <a href="transport.html" class="mobile-link">Book Transport</a>
+      <a href="team.html" class="mobile-link">Our Team</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="refer.html" class="mobile-link">Refer a Participant</a>
+    </div>
+
+    <a href="contact.html#contact-form" class="btn-primary" style="text-align:center;justify-content:center;">Enquire Now</a>
+    <div class="mobile-menu-footer">
+      <span>NDIS Registered Provider #4050172088 · Queensland Wide</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- ================================================================
+         HERO SECTION
+         ================================================================ -->
+    <section class="locations-hero">
+      <!-- Background Botanical Leaves -->
+      <svg class="hero-botanical-left" viewBox="0 0 220 220" fill="none" aria-hidden="true">
+        <path d="M20 200 Q90 120 70 40 T200 10" stroke="var(--brand)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M60 140 Q100 120 130 140 Q100 160 60 140 Z" fill="rgba(46,107,94,0.12)" stroke="var(--brand)" stroke-width="1.2"/>
+        <path d="M80 80 Q120 60 150 80 Q120 100 80 80 Z" fill="rgba(70,140,44,0.14)" stroke="var(--logo-green)" stroke-width="1.2"/>
+        <circle cx="75" cy="130" r="4" fill="var(--logo-gold)" opacity="0.6"/>
+      </svg>
+      <svg class="hero-botanical-right" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+        <path d="M180 180 Q120 110 130 40 T30 20" stroke="var(--brand)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M130 130 Q90 110 70 130 Q90 150 130 130 Z" fill="rgba(46,107,94,0.12)" stroke="var(--brand)" stroke-width="1.2"/>
+        <circle cx="120" cy="120" r="4" fill="var(--logo-gold)" opacity="0.6"/>
+      </svg>
+
+      <div class="locations-hero-inner">
+        <span class="locations-label">WHERE WE WORK</span>
+        <h1>Support across Queensland, <span class="font-display hero-accent" style="position:relative; display:inline-block;">wherever you call home.<svg class="doodle-accent" viewBox="0 0 160 18" fill="none" style="position:absolute; left:-2px; bottom:-6px; width:104%; height:14px; pointer-events:none;" preserveAspectRatio="none" aria-hidden="true"><path d="M3 11 C 38 4, 105 15, 157 7 M12 15 C 56 9, 114 14, 148 10" stroke="#2E6B5E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h1>
+        <p class="locations-hero-desc">
+          From the Gold Coast to North Queensland, our team travels to you.
+        </p>
+
+        <!-- Quick Trust Capabilities -->
+        <div class="hero-pills" aria-label="Coverage highlights">
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>South East &amp; North QLD Hubs</span>
+          </div>
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+            <span>In-Home &amp; Community Care</span>
+          </div>
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Rapid 24-Hour Intake</span>
+          </div>
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>Standard NDIS Travel Rates</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         TWO-REGION CARDS SECTION
+         ================================================================ -->
+    <section class="regions-section" id="regions">
+      <div class="regions-container">
+        <div class="regions-grid">
+
+          <!-- ==========================================
+               REGION 1 — GOLD COAST & SURROUNDS
+               ========================================== -->
+          <div class="region-card">
+            <div>
+              <div class="region-header">
+                <div class="region-title-wrap">
+                  <h2>Gold Coast &amp; Surrounds</h2>
+                  <span class="region-kicker">South East Queensland Corridor</span>
+                </div>
+                <div class="region-badge">
+                  <span class="badge-dot"></span>
+                  <span>Primary Service Hub</span>
+                </div>
+              </div>
+
+              <!-- Dot-Map Style SVG Doodle for Gold Coast -->
+              <div class="map-doodle-wrap" aria-hidden="true">
+                <svg class="map-doodle-svg" viewBox="0 0 520 190" fill="none">
+                  <!-- Loose organic coastal contour -->
+                  <path d="M420 10 Q430 60 410 110 T430 180" stroke="#2E6B5E" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.35"/>
+                  <path d="M460 20 Q480 80 450 140 T470 190" stroke="#68A691" stroke-width="1" opacity="0.2"/>
+                  <!-- Gentle connecting pathway lines -->
+                  <path d="M110 45 Q190 70 270 50 T400 95" stroke="#E5E0D8" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+                  <path d="M180 135 Q260 110 320 140 T410 120" stroke="#E5E0D8" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+                  <path d="M260 50 L260 120" stroke="#E5E0D8" stroke-width="1.5" stroke-dasharray="4 4"/>
+                  
+                  <!-- Dotted location pins with labels -->
+                  <!-- Pimpama (HQ) -->
+                  <g transform="translate(350, 85)">
+                    <circle cx="0" cy="0" r="9" fill="rgba(46,107,94,0.18)" />
+                    <circle cx="0" cy="0" r="4.5" fill="#2E6B5E" />
+                    <text x="14" y="4" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" fill="#1C2B2B">Pimpama (HQ)</text>
+                  </g>
+                  <!-- Coomera -->
+                  <g transform="translate(370, 135)">
+                    <circle cx="0" cy="0" r="7" fill="rgba(228,87,46,0.15)" />
+                    <circle cx="0" cy="0" r="3.5" fill="#E4572E" />
+                    <text x="12" y="4" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#6B7280">Coomera</text>
+                  </g>
+                  <!-- Upper Coomera -->
+                  <g transform="translate(290, 140)">
+                    <circle cx="0" cy="0" r="7" fill="rgba(46,107,94,0.15)" />
+                    <circle cx="0" cy="0" r="3.5" fill="#2E6B5E" />
+                    <text x="-95" y="4" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#6B7280">Upper Coomera</text>
+                  </g>
+                  <!-- Ormeau -->
+                  <g transform="translate(270, 48)">
+                    <circle cx="0" cy="0" r="7" fill="rgba(70,140,44,0.15)" />
+                    <circle cx="0" cy="0" r="3.5" fill="#468C2C" />
+                    <text x="12" y="4" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#6B7280">Ormeau</text>
+                  </g>
+                  <!-- Beenleigh -->
+                  <g transform="translate(190, 65)">
+                    <circle cx="0" cy="0" r="7" fill="rgba(46,107,94,0.15)" />
+                    <circle cx="0" cy="0" r="3.5" fill="#2E6B5E" />
+                    <text x="-65" y="-6" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#6B7280">Beenleigh</text>
+                  </g>
+                  <!-- Logan -->
+                  <g transform="translate(100, 40)">
+                    <circle cx="0" cy="0" r="7" fill="rgba(244,179,32,0.2)" />
+                    <circle cx="0" cy="0" r="3.5" fill="#F4B320" />
+                    <text x="12" y="4" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#6B7280">Logan</text>
+                  </g>
+                  <!-- Jimboomba -->
+                  <g transform="translate(140, 130)">
+                    <circle cx="0" cy="0" r="7" fill="rgba(46,107,94,0.15)" />
+                    <circle cx="0" cy="0" r="3.5" fill="#2E6B5E" />
+                    <text x="12" y="4" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#6B7280">Jimboomba</text>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Region Towns Pill Tag List -->
+              <span class="region-towns-title">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                Active Suburbs &amp; Districts
+              </span>
+              <div class="town-pills" aria-label="Towns served in Gold Coast region">
+                <span class="town-pill">
+                  <svg class="town-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Pimpama
+                </span>
+                <span class="town-pill">
+                  <svg class="town-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Coomera
+                </span>
+                <span class="town-pill">
+                  <svg class="town-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Ormeau
+                </span>
+                <span class="town-pill">
+                  <svg class="town-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Upper Coomera
+                </span>
+                <span class="town-pill">
+                  <svg class="town-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Jimboomba
+                </span>
+                <span class="town-pill">
+                  <svg class="town-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Beenleigh
+                </span>
+                <span class="town-pill">
+                  <svg class="town-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Logan
+                </span>
+              </div>
+
+              <p class="region-desc">
+                Our home base is located in Pimpama, placing our support coordinators, SIL homes, and daily care teams directly in the heart of Northern Gold Coast. We provide rapid shift coverage, community outings, and accompanied appointment travel throughout the entire M1 corridor.
+              </p>
+            </div>
+
+            <div class="region-card-actions">
+              <a href="contact.html#contact-form" class="btn-region-primary">
+                <span>Enquire in Gold Coast</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <a href="transport.html" class="btn-region-outline">Book Transport &rarr;</a>
+            </div>
+          </div>
+
+          <!-- ==========================================
+               REGION 2 — NORTH QUEENSLAND
+               ========================================== -->
+          <div class="region-card">
+            <div>
+              <div class="region-header">
+                <div class="region-title-wrap">
+                  <h2>North Queensland</h2>
+                  <span class="region-kicker">Regional &amp; Coastal Network</span>
+                </div>
+                <div class="region-badge">
+                  <span class="badge-dot" style="background:#E4572E;"></span>
+                  <span>Regional Support Hub</span>
+                </div>
+              </div>
+
+              <!-- Dot-Map Style SVG Doodle for North Queensland -->
+              <div class="map-doodle-wrap" aria-hidden="true">
+                <svg class="map-doodle-svg" viewBox="0 0 520 190" fill="none">
+                  <!-- Tropical coastline contour -->
+                  <path d="M430 10 Q370 70 340 120 T360 185" stroke="#2E6B5E" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.35"/>
+                  <path d="M470 25 Q410 85 380 135 T400 190" stroke="#68A691" stroke-width="1" opacity="0.2"/>
+                  <!-- Inland connection pathways -->
+                  <path d="M345 50 L345 105" stroke="#E5E0D8" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+                  <path d="M345 105 L130 145" stroke="#E5E0D8" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+                  <path d="M345 105 L415 155" stroke="#E5E0D8" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+                  
+                  <!-- Dotted location pins with labels -->
+                  <!-- Ingham (North) -->
+                  <g transform="translate(345, 45)">
+                    <circle cx="0" cy="0" r="7" fill="rgba(70,140,44,0.18)" />
+                    <circle cx="0" cy="0" r="3.5" fill="#468C2C" />
+                    <text x="14" y="4" font-family="'Outfit', sans-serif" font-size="12" font-weight="600" fill="#1C2B2B">Ingham</text>
+                  </g>
+                  <!-- Townsville (Central Coastal Hub) -->
+                  <g transform="translate(345, 105)">
+                    <circle cx="0" cy="0" r="9" fill="rgba(46,107,94,0.2)" />
+                    <circle cx="0" cy="0" r="4.5" fill="#2E6B5E" />
+                    <text x="16" y="4" font-family="'Outfit', sans-serif" font-size="12.5" font-weight="700" fill="#1C2B2B">Townsville (Hub)</text>
+                  </g>
+                  <!-- Ayr (South-East) -->
+                  <g transform="translate(415, 155)">
+                    <circle cx="0" cy="0" r="7" fill="rgba(244,179,32,0.2)" />
+                    <circle cx="0" cy="0" r="3.5" fill="#F4B320" />
+                    <text x="14" y="4" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="600" fill="#6B7280">Ayr</text>
+                  </g>
+                  <!-- Charters Towers (Inland) -->
+                  <g transform="translate(130, 145)">
+                    <circle cx="0" cy="0" r="7" fill="rgba(228,87,46,0.18)" />
+                    <circle cx="0" cy="0" r="3.5" fill="#E4572E" />
+                    <text x="-105" y="4" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="600" fill="#6B7280">Charters Towers</text>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Region Towns Pill Tag List -->
+              <span class="region-towns-title">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                Active Regional Hubs
+              </span>
+              <div class="town-pills" aria-label="Towns served in North Queensland region">
+                <span class="town-pill">
+                  <svg class="town-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Townsville
+                </span>
+                <span class="town-pill">
+                  <svg class="town-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Charters Towers
+                </span>
+                <span class="town-pill">
+                  <svg class="town-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Ingham
+                </span>
+                <span class="town-pill">
+                  <svg class="town-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Ayr
+                </span>
+              </div>
+
+              <p class="region-desc">
+                We believe participants in North Queensland deserve the exact same reliable, dignified support as those in major cities. Our dedicated local workers travel directly to family properties, stations, and regional townships, delivering in-home personal care and community access.
+              </p>
+            </div>
+
+            <div class="region-card-actions">
+              <a href="contact.html#contact-form" class="btn-region-primary">
+                <span>Enquire in North QLD</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <a href="refer.html" class="btn-region-outline">Refer a Participant &rarr;</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Growing Service Note Below Both Cards -->
+        <div class="grow-notice-box">
+          <div class="grow-notice-left">
+            <div class="grow-icon-circle" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+            </div>
+            <div>
+              <div class="grow-title">Don't see your area listed? We're growing. Get in touch and we'll let you know if we can help.</div>
+              <div class="grow-desc">Our regional coordination network is expanding rapidly across Queensland. Speak with our local intake desk today.</div>
+            </div>
+          </div>
+          <a href="contact.html" class="grow-cta-btn">
+            <span>Get in Touch</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+       FAQ-STYLE MICRO-COPY SECTION ("Do you travel to me?")
+       ================================================================ -->
+    <section class="faq-section" id="travel-faqs">
+      <div class="faq-inner">
+        <div class="faq-header">
+          <span class="faq-header-label">TRAVEL &amp; COVERAGE DETAILS</span>
+          <h3>Frequently Asked Questions About Travel</h3>
+          <p>Transparent, reassuring answers on how our support workers travel to you under your NDIS or Home Care package.</p>
+        </div>
+
+        <div class="faq-accordion-group">
+          <!-- Item 1 -->
+          <div class="faq-item open">
+            <button class="faq-question" type="button" aria-expanded="true">
+              <span>Do you travel directly to my home or community venue?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              <strong>Yes, absolutely.</strong> Every support shift begins wherever is most comfortable and convenient for you, whether that is your family home, independent unit, workplace, educational institution, local pool, or community club. You never have to worry about commuting to a sterile office to receive support.
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>How are provider travel fees calculated under my NDIS plan?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              We bill provider travel strictly in accordance with the official <strong>NDIS Pricing Arrangements and Price Limits</strong>. For our established service clusters across Gold Coast, Logan, Townsville, and surrounds, travel time is claimed from your plan's Core (Category 04) or Capacity Building (Category 15) funding, capped at NDIS standard limits. There are <strong>never any unexpected out-of-pocket surcharges</strong>.
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Can your support workers drive me to medical appointments and activities?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. In addition to in-home care, our workers operate clean, fully insured vehicles (including wheelchair-accessible vans) to provide door-to-door transport. We accompany you right into hospital outpatient clinics, therapy appointments, or grocery stores, ensuring you feel safe, unhurried, and respected throughout the outing.
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>What if I live in a rural suburb outside the main town centres?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              We frequently coordinate care for participants living in rural communities surrounding Charters Towers, Ingham, Ayr, and the Scenic Rim / Jimboomba corridor. We group appointments and schedule local support workers to minimize your plan travel costs. Simply give our intake desk a call at <strong>1300 694 673</strong> and we'll check our route availability for your address.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+       FINAL DIRECT INTAKE STRIP
+       ================================================================ -->
+    <section class="locations-final-strip">
+      <div class="locations-final-inner">
+        <h2>Ready to organise support in your area?</h2>
+        <p>
+          Whether you are an NDIS participant, family member, or Support Coordinator seeking reliable placement, our local team is ready to help with 24-hour turnaround.
+        </p>
+        <div class="final-cta-btn-group">
+          <a href="refer.html" class="btn-final-white">
+            <span>Refer a Participant &rarr;</span>
+          </a>
+          <a href="tel:1300694673" class="btn-final-outline">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Call 1300 694 673</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================================================
+       FOOTER (VERBATIM SITE-WIDE PARITY)
+       ================================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-logo">
+            <svg class="footer-brand-icon" viewBox="0 0 180 180" width="36" height="36" aria-hidden="true">
+              <g transform="translate(88, 46) rotate(45)">
+                <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#EE2737" />
+              </g>
+              <g transform="translate(46.5, 89.5) rotate(45)">
+                <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#468C2C" />
+              </g>
+              <g transform="translate(130, 90) rotate(45)">
+                <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#F4B320" />
+              </g>
+              <g stroke="#FAF7F4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <line x1="88.5" y1="165" x2="88.5" y2="46" />
+                <line x1="88.5" y1="130" x2="46" y2="89" />
+                <line x1="88.5" y1="130" x2="131" y2="89" />
+              </g>
+            </svg>
+            <span>Hopesway</span>
+          </div>
+          <div class="footer-tagline">Your care, your way.</div>
+          <div class="footer-reg">NDIS Registered Provider #4050172088</div>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#sil">Supported Independent Living</a></li>
+            <li><a href="services.html#support-coordination">Support Coordination</a></li>
+            <li><a href="services.html#respite">Respite / STA</a></li>
+            <li><a href="services.html#daily-activities">Daily Activities</a></li>
+            <li><a href="transport.html">Book Transport</a></li>
+            <li><a href="services.html#aged-care">Aged Care</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="locations.html" style="color:var(--brand-light);font-weight:600;">Where We Work</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="refer.html">Referrals</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <ul>
+            <li><a href="tel:1300694673">1300 694 673</a></li>
+            <li><a href="mailto:hello@hopesway.com.au">hello@hopesway.com.au</a></li>
+            <li><a href="#">Pimpama, QLD 4209</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Hopesway Care (ABN 54 425 985 105) &amp; Hopesway Support Services (ABN 41 659 270 765).</span>
+        <span class="footer-ndis">NDIS Registered Provider #4050172088 · Head Office: Pimpama QLD 4209 · 1300 694 673</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================================
+       SCRIPTS: FAQ ACCORDION, HAMBURGER & NAV SCROLL
+       ================================================================ -->
+  <script>
+    (function() {
+      'use strict';
+
+      /* ------ NAV SCROLL SHADOW ------ */
+      const nav = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true });
+
+      /* ------ MOBILE HAMBURGER TOGGLE ------ */
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', String(open));
+      });
+      mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      /* ------ FAQ ACCORDION TOGGLE ------ */
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+          // Close others for clean accordion experience
+          faqItems.forEach(other => {
+            other.classList.remove('open');
+            other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
+  </script>
+
+  <!-- LeadConnector / GHL Webchat Widget -->
+  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="YOUR_WIDGET_ID"></script>
+</body>
+</html>

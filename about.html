@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Our Local Care Team in Pimpama &amp; Gold Coast | Hopesway</title>
+  <meta name="description" content="Learn about Hopesway, a registered NDIS and aged care provider in Pimpama, QLD. Founded to provide dependable, respectful support that puts families first.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,400;1,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.svg">
+  <style>
+    /* ================================================================
+       RESET & BASE
+       ================================================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; width: 100%; box-sizing: border-box; }
+    body { font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1C2B2B;
+      background: #FAF7F4; overflow-x: hidden; width: 100%; position: relative; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul, ol { list-style: none; }
+    h1, h2, h3, h4 { line-height: 1.15; letter-spacing: -0.02em; }
+
+    /* ================================================================
+       PREMIUM DETAIL 1 — CUSTOM TEXT SELECTION
+       ================================================================ */
+    ::selection {
+      background: #2E6B5E;
+      color: #FFFFFF;
+    }
+    ::-moz-selection {
+      background: #2E6B5E;
+      color: #FFFFFF;
+    }
+
+    /* ================================================================
+       PREMIUM DETAIL 2 — CUSTOM THIN SCROLLBAR
+       ================================================================ */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF7F4;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2E6B5E;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #1A4A3F;
+    }
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: #2E6B5E #FAF7F4;
+    }
+
+    /* ================================================================
+       DESIGN TOKENS (Identical to Homepage)
+       ================================================================ */
+    :root {
+      --bg: #FAF7F4;
+      --surface: #FFFFFF;
+      --border: #E5E0D8;
+      --brand: #2E6B5E;
+      --brand-light: #EAF4F1;
+      --brand-dark: #1A4A3F;
+      --accent: #E4572E;
+      --accent-hover: #C94420;
+      /* Logo Specific Brand Colors */
+      --logo-red: #EE2737;
+      --logo-green: #468C2C;
+      --logo-gold: #F4B320;
+      --logo-trunk: #392E2D;
+      --text: #1C2B2B;
+      --text-muted: #6B7280;
+      --shadow-card: 0 2px 12px rgba(0,0,0,0.07);
+      --shadow-card-hover: 0 8px 28px rgba(0,0,0,0.12);
+      --radius-card: 16px;
+      --radius-btn: 12px;
+      --radius-input: 10px;
+      --nav-h: 72px;
+    }
+
+    /* ================================================================
+       DISPLAY FONT — Fraunces (italic only)
+       Used for: pull-quotes, section numbers (01, 02), and hero accent word
+       NEVER for body copy, nav, or buttons
+       ================================================================ */
+    .font-display {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .font-display-500 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+    }
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.15rem;
+      color: var(--brand);
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+    .section-num::after {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--brand);
+      opacity: 0.35;
+    }
+
+    /* ================================================================
+       UTILITIES & CONTAINERS
+       ================================================================ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    @media (min-width: 768px) {
+      .container { padding: 0 48px; }
+    }
+    @media (min-width: 1280px) {
+      .container { padding: 0 64px; }
+    }
+
+    /* ================================================================
+       BUTTONS & MAGNETIC INTERACTION
+       ================================================================ */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: var(--accent);
+      color: #FAFAFA;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: var(--radius-btn);
+      box-shadow: 0 4px 16px rgba(228,87,46,0.22);
+      transition: background 200ms ease, box-shadow 200ms ease, transform 150ms cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 6px 22px rgba(228,87,46,0.32);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: transparent;
+      color: var(--brand);
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid var(--brand);
+      border-radius: var(--radius-btn);
+      transition: background 200ms ease, color 200ms ease;
+    }
+    .btn-secondary:hover {
+      background: var(--brand);
+      color: #FAFAFA;
+    }
+
+    /* ================================================================
+       NAVIGATION (Exact Homepage Parity)
+       ================================================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-h);
+      background: rgba(250, 247, 244, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: background 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+    }
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 4px 20px rgba(28, 43, 43, 0.07);
+      border-bottom-color: rgba(229, 224, 216, 0.8);
+    }
+    .nav-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    @media (min-width: 768px) {
+      .nav-inner { padding: 0 32px; }
+    }
+    @media (min-width: 1100px) {
+      .nav-inner { padding: 0 40px; }
+    }
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand-logo-icon {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .nav-brand:hover .brand-logo-icon {
+      transform: scale(1.08) rotate(3deg);
+    }
+    .brand-text-col {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .brand-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--brand-dark);
+      letter-spacing: -0.025em;
+    }
+    .brand-subtext {
+      font-size: 10.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 480px) {
+      .brand-subtext { display: none; }
+    }
+
+    /* Primary Nav Links */
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 6px;
+    }
+    @media (min-width: 980px) {
+      .nav-links { display: flex; }
+    }
+    .nav-item {
+      position: relative;
+    }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 13px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--text);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: color 180ms ease, background-color 180ms ease;
+    }
+    .nav-link:hover {
+      color: var(--brand);
+      background-color: rgba(46, 107, 94, 0.06);
+    }
+    .nav-link.active {
+      color: var(--brand);
+      font-weight: 600;
+      background-color: var(--brand-light);
+    }
+    .nav-chevron {
+      width: 13px;
+      height: 13px;
+      transition: transform 200ms ease;
+      opacity: 0.7;
+    }
+    .nav-item:hover .nav-chevron,
+    .nav-item:focus-within .nav-chevron {
+      transform: rotate(180deg);
+      opacity: 1;
+    }
+
+    /* Flyout Dropdown for Services */
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: 590px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 18px 42px rgba(28, 43, 43, 0.12);
+      padding: 18px 20px 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease, transform 220ms ease;
+      z-index: 1050;
+    }
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: 0;
+      width: 100%;
+      height: 16px;
+    }
+    .nav-item:hover .nav-dropdown,
+    .nav-item:focus-within .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .dropdown-header-strip {
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dropdown-pill {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--brand);
+      background: var(--brand-light);
+      padding: 3px 9px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+    .dropdown-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .dropdown-col-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--brand-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dropdown-card-link {
+      display: block;
+      padding: 7px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 150ms ease, transform 150ms ease;
+    }
+    .dropdown-card-link:hover {
+      background: var(--brand-light);
+      transform: translateX(2px);
+    }
+    .dropdown-card-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--brand-dark);
+      display: block;
+      line-height: 1.25;
+    }
+    .dropdown-card-desc {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin-top: 2px;
+      display: block;
+    }
+    .dropdown-trust-box {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(234, 244, 241, 0.6);
+      border: 1px dashed rgba(46, 107, 94, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .dropdown-trust-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    .dropdown-trust-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+    .dropdown-footer {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12.5px;
+    }
+    .dropdown-footer a {
+      color: var(--brand);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 150ms ease;
+    }
+    .dropdown-footer a:hover {
+      color: var(--brand-dark);
+      text-decoration: underline;
+    }
+    .dropdown-tag {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    /* Right Action Bar (Direct Phone Pill + CTA) */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .nav-phone-pill {
+      display: none;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 14px 6px 10px;
+      background: var(--brand-light);
+      border: 1px solid rgba(46, 107, 94, 0.22);
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+    }
+    @media (min-width: 680px) {
+      .nav-phone-pill { display: inline-flex; }
+    }
+    .nav-phone-pill:hover {
+      background: #d8ece7;
+      border-color: var(--brand);
+      transform: translateY(-1px);
+    }
+    .phone-icon-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 200ms ease;
+    }
+    .nav-phone-pill:hover .phone-icon-dot {
+      transform: scale(1.08);
+    }
+    .phone-text-wrap {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .phone-label {
+      font-size: 10.5px;
+      color: var(--brand);
+      font-weight: 500;
+    }
+    .phone-num {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      letter-spacing: -0.01em;
+    }
+    .nav-cta {
+      display: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      gap: 6px;
+      align-items: center;
+    }
+    @media (min-width: 860px) {
+      .nav-cta { display: inline-flex; }
+    }
+
+    /* Mobile Hamburger */
+    .nav-hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 42px;
+      height: 42px;
+      padding: 8px;
+      border-radius: 10px;
+      background: rgba(46, 107, 94, 0.06);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 150ms ease;
+    }
+    @media (min-width: 980px) {
+      .nav-hamburger { display: none; }
+    }
+    .nav-hamburger:hover {
+      background: rgba(46, 107, 94, 0.12);
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--brand-dark);
+      border-radius: 2px;
+      transition: transform 200ms ease, opacity 200ms ease;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile Menu Drawer */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      width: 100%;
+      max-height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 20px 24px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 12px 32px rgba(28, 43, 43, 0.12);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-call-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--brand-light);
+      border: 1px solid rgba(46, 107, 94, 0.22);
+      border-radius: 12px;
+      color: var(--brand-dark);
+      text-decoration: none;
+    }
+    .mobile-call-banner:hover { background: #d8ece7; }
+    .mobile-nav-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-link {
+      padding: 11px 14px;
+      font-size: 15.5px;
+      font-weight: 500;
+      color: var(--text);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 150ms ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mobile-link:hover,
+    .mobile-link.active {
+      background: var(--brand-light);
+      color: var(--brand);
+      font-weight: 600;
+    }
+    .mobile-sub-services {
+      padding: 4px 0 6px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .mobile-sub-link {
+      padding: 7px 10px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      border-radius: 6px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mobile-sub-link:hover {
+      color: var(--brand);
+      background: rgba(46, 107, 94, 0.05);
+    }
+    .mobile-sub-bullet {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--brand);
+      flex-shrink: 0;
+    }
+    .mobile-menu .btn-primary {
+      width: 100%;
+      justify-content: center;
+      padding: 13px;
+      margin-top: 4px;
+    }
+    .mobile-menu-footer {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      text-align: center;
+      padding-top: 6px;
+    }
+
+    /* ================================================================
+       SECTION 1 — HERO WITH SUBTLE GRAIN OVERLAY & SPLIT REVEAL
+       ================================================================ */
+    .about-hero {
+      position: relative;
+      overflow: hidden;
+      padding-top: 180px;
+      padding-bottom: 96px;
+      background-color: #FAF7F4;
+    }
+    /* 3-4% Grain Texture Overlay on Hero Only */
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.038;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+      z-index: 1;
+    }
+    .about-hero-branch-art {
+      position: absolute;
+      top: 10%;
+      right: 2%;
+      width: 240px;
+      height: 440px;
+      pointer-events: none;
+      opacity: 0.16;
+      z-index: 0;
+    }
+    .about-hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      margin-left: 64px;
+      margin-right: auto;
+    }
+    @media (max-width: 900px) {
+      .about-hero-inner {
+        margin-left: 24px;
+        margin-right: 24px;
+      }
+    }
+    @media (min-width: 1400px) {
+      .about-hero-inner {
+        margin-left: calc((100vw - 1280px) / 2 + 64px);
+      }
+    }
+    .about-hero-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .about-hero-label::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: var(--brand);
+      border-radius: 2px;
+    }
+    .about-hero h1 {
+      font-size: clamp(34px, 4.8vw, 52px);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+    /* Split-text word reveal styling */
+    .word-span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 550ms cubic-bezier(0.16, 1, 0.3, 1), transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .word-span.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .accent-word {
+      font-size: 1.06em;
+      color: var(--brand);
+      display: inline-block;
+    }
+    .about-hero-desc {
+      font-size: 19px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 620px;
+      margin-top: 28px;
+    }
+
+    /* ================================================================
+       SECTION 2 — FOUNDER NOTE
+       ================================================================ */
+    .founder-note {
+      background: var(--brand-light);
+      padding: 96px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      .founder-note { padding: 72px 24px; }
+    }
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (min-width: 900px) {
+      .founder-grid {
+        grid-template-columns: 38% 62%;
+        gap: 64px;
+      }
+    }
+    .founder-photo-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .founder-photo-card {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 4 / 5;
+      border-radius: 20px;
+      background: linear-gradient(160deg, #FFFFFF 0%, #D4EDE7 100%);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 32px rgba(46, 107, 94, 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 300ms ease, box-shadow 300ms ease;
+    }
+    .founder-photo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(46, 107, 94, 0.18);
+    }
+    .founder-portrait-svg {
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .founder-caption {
+      margin-top: 14px;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+    .founder-content-col {
+      position: relative;
+    }
+    .founder-quote-mark {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-size: 100px;
+      line-height: 0.5;
+      color: var(--brand);
+      opacity: 0.25;
+      margin-bottom: -20px;
+      user-select: none;
+    }
+    .founder-pull-quote {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(22px, 3vw, 28px);
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .founder-story-text {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 600px;
+    }
+
+    /* ================================================================
+       SECTION 3 — OUR VALUES (T.R.U.E.)
+       ================================================================ */
+    .values-section {
+      background: #FAF7F4;
+      padding: 96px 64px;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .values-section { padding: 72px 24px; }
+    }
+    .values-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .values-header h2 {
+      font-size: clamp(30px, 4vw, 36px);
+      font-weight: 700;
+      color: var(--text);
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (min-width: 640px) {
+      .values-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 1024px) {
+      .values-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .value-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 36px 28px;
+      box-shadow: var(--shadow-card);
+      transition: transform 250ms ease, box-shadow 250ms ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .value-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card-hover);
+    }
+    /* Watermark Letter (T, R, U, E) in Fraunces */
+    .value-letter-watermark {
+      position: absolute;
+      top: -8px;
+      right: 12px;
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 68px;
+      color: var(--brand);
+      opacity: 0.16;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      transition: opacity 250ms ease, transform 250ms ease;
+    }
+    .value-card:hover .value-letter-watermark {
+      opacity: 0.35;
+      transform: scale(1.08);
+    }
+    .value-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--brand-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand);
+      margin-bottom: 20px;
+    }
+    .value-icon-box svg {
+      width: 22px;
+      height: 22px;
+    }
+    .value-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .value-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ================================================================
+       SECTION 4 — OUR APPROACH (Scroll-drawn Timeline)
+       ================================================================ */
+    .approach-section {
+      background: #FAF7F4;
+      padding: 96px 64px;
+      border-top: 1px solid var(--border);
+    }
+    @media (max-width: 768px) {
+      .approach-section { padding: 72px 24px; }
+    }
+    .approach-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .approach-header h2 {
+      font-size: clamp(30px, 4vw, 36px);
+      font-weight: 700;
+      color: var(--text);
+    }
+    .approach-timeline-wrap {
+      position: relative;
+      max-width: 820px;
+      margin: 0 auto;
+      padding-left: 48px;
+    }
+    @media (max-width: 600px) {
+      .approach-timeline-wrap { padding-left: 36px; }
+    }
+    /* Background vertical line */
+    .timeline-track-line {
+      position: absolute;
+      top: 16px;
+      bottom: 24px;
+      left: 17px;
+      width: 2px;
+      background: var(--border);
+    }
+    @media (max-width: 600px) {
+      .timeline-track-line { left: 11px; }
+    }
+    /* Animated filled vertical line */
+    .timeline-draw-line {
+      position: absolute;
+      top: 16px;
+      left: 17px;
+      width: 2px;
+      height: 0%;
+      background: var(--brand);
+      transition: height 350ms ease-out;
+    }
+    @media (max-width: 600px) {
+      .timeline-draw-line { left: 11px; }
+    }
+    .timeline-step {
+      position: relative;
+      margin-bottom: 48px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 500ms ease, transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .timeline-step:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-step.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Step circle node on line */
+    .timeline-node {
+      position: absolute;
+      top: 24px;
+      left: -40px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--brand);
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(46, 107, 94, 0.16);
+      z-index: 2;
+      transition: transform 300ms ease, background 300ms ease;
+    }
+    @media (max-width: 600px) {
+      .timeline-node { left: -32px; width: 16px; height: 16px; }
+    }
+    .timeline-step.visible .timeline-node {
+      transform: scale(1.15);
+      background: var(--brand);
+      box-shadow: 0 0 0 5px rgba(46, 107, 94, 0.22);
+    }
+    .timeline-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .timeline-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .timeline-step-tag {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--brand);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .timeline-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .timeline-card p {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ================================================================
+       SECTION 5 — CREDENTIALS STRIP (Brand Dark)
+       ================================================================ */
+    .credentials-strip {
+      background: var(--brand-dark);
+      padding: 56px 64px;
+      color: #FAFAFA;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .credentials-strip { padding: 48px 24px; }
+    }
+    .credentials-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 640px) {
+      .credentials-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 1024px) {
+      .credentials-inner {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+      }
+    }
+    .credential-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      text-align: left;
+      padding: 12px 20px;
+      position: relative;
+    }
+    @media (min-width: 1024px) {
+      .credential-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 20%;
+        height: 60%;
+        width: 1px;
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+    .credential-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .credential-icon svg {
+      width: 20px;
+      height: 20px;
+      color: #FAFAFA;
+    }
+    .credential-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: #FAFAFA;
+      line-height: 1.35;
+    }
+
+    /* ================================================================
+       SECTION 6 — CTA
+       ================================================================ */
+    .about-cta {
+      background: #FAF7F4;
+      padding: 96px 64px;
+      text-align: center;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .about-cta { padding: 72px 24px; }
+    }
+    .about-cta-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .about-cta h2 {
+      font-size: clamp(32px, 4vw, 40px);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .about-cta-sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+    .about-cta-btns {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 36px;
+    }
+    @media (max-width: 500px) {
+      .about-cta-btns { flex-direction: column; }
+      .about-cta-btns .btn-primary,
+      .about-cta-btns .btn-secondary { width: 100%; justify-content: center; }
+    }
+
+    /* ================================================================
+       FOOTER (Exact Homepage Parity)
+       ================================================================ */
+    .footer {
+      position: relative;
+      overflow: hidden;
+      background: #1C2B2B;
+      padding: 64px 0 0;
+    }
+    .footer-roots-art {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 48px;
+      pointer-events: none;
+      opacity: 0.22;
+      z-index: 0;
+    }
+    .footer > .container {
+      position: relative;
+      z-index: 1;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    @media (min-width: 768px) {
+      .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+    }
+    .footer-brand {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #FAFAFA;
+      margin-bottom: 8px;
+    }
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .footer-reg {
+      font-size: 12px;
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+    .footer h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #FAFAFA;
+      margin-bottom: 16px;
+    }
+    .footer ul li {
+      margin-bottom: 10px;
+    }
+    .footer ul li a {
+      font-size: 14px;
+      color: var(--text-muted);
+      transition: color 200ms;
+    }
+    .footer ul li a:hover { color: var(--brand-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(107,114,128,0.3);
+      margin-top: 48px;
+      padding: 24px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-bottom span {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-bottom .footer-ndis {
+      color: var(--brand);
+      font-weight: 600;
+    }
+
+    /* Accessible reduced motion fallback */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .word-span {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .timeline-step {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .timeline-draw-line {
+        height: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================================
+       NAVIGATION
+       ================================================================ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand" aria-label="Hopesway Home">
+        <svg class="brand-logo-icon" viewBox="0 0 180 180" width="34" height="34" aria-hidden="true">
+          <g transform="translate(88, 46) rotate(45)">
+            <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#EE2737" />
+          </g>
+          <g transform="translate(46.5, 89.5) rotate(45)">
+            <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#468C2C" />
+          </g>
+          <g transform="translate(130, 90) rotate(45)">
+            <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#F4B320" />
+          </g>
+          <g stroke="#392E2D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <line x1="88.5" y1="165" x2="88.5" y2="46" />
+            <line x1="88.5" y1="130" x2="46" y2="89" />
+            <line x1="88.5" y1="130" x2="131" y2="89" />
+          </g>
+        </svg>
+        <div class="brand-text-col">
+          <span class="brand-name">Hopesway</span>
+          <span class="brand-subtext">NDIS &amp; Aged Care · QLD</span>
+        </div>
+      </a>
+
+      <div class="nav-links" id="navLinks" role="navigation" aria-label="Main Navigation">
+        <div class="nav-item">
+          <a href="index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-item">
+          <a href="about.html" class="nav-link active">About Us</a>
+        </div>
+        <div class="nav-item nav-has-dropdown">
+          <a href="services.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            <span>Services</span>
+            <svg class="nav-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </a>
+          <div class="nav-dropdown" role="menu" aria-label="Services Overview">
+            <div class="dropdown-header-strip">
+              <span class="dropdown-pill">Personalised Care &amp; Living Support · Pimpama &amp; Gold Coast</span>
+            </div>
+            <div class="dropdown-grid">
+              <div class="dropdown-col">
+                <div class="dropdown-col-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  <span>NDIS Disability Supports</span>
+                </div>
+                <a href="services.html#sil" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Supported Independent Living (SIL)</span>
+                  <span class="dropdown-card-desc">24/7 supported living in welcoming, peaceful community homes</span>
+                </a>
+                <a href="services.html#support-coordination" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Support Coordination</span>
+                  <span class="dropdown-card-desc">Unpack funding and connect with vetted local allied health</span>
+                </a>
+                <a href="services.html#respite" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Respite &amp; Short Term (STA)</span>
+                  <span class="dropdown-card-desc">Recharging getaways for participants and essential family relief</span>
+                </a>
+                <a href="services.html#daily-activities" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Daily Life &amp; Social Activities</span>
+                  <span class="dropdown-card-desc">Hands-on life skills, fitness, community outings, and cooking</span>
+                </a>
+                <a href="services.html#transport" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Community Transport</span>
+                  <span class="dropdown-card-desc">Safe, dependable rides to appointments and weekend sports</span>
+                </a>
+              </div>
+              <div class="dropdown-col">
+                <div class="dropdown-col-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                  <span>In-Home Aged Care</span>
+                </div>
+                <a href="services.html#aged-care" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Commonwealth Home Support (CHSP)</span>
+                  <span class="dropdown-card-desc">Stay independent in your own beloved home with tailored assistance</span>
+                </a>
+                <a href="services.html#aged-care" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Personal Care &amp; Domestic Help</span>
+                  <span class="dropdown-card-desc">Dignified daily grooming, medication prompts, and light meal prep</span>
+                </a>
+                <a href="services.html#aged-care" class="dropdown-card-link" role="menuitem">
+                  <span class="dropdown-card-title">Companionship &amp; Social Wellness</span>
+                  <span class="dropdown-card-desc">Friendly coffee catch-ups, walks, and genuine peace of mind</span>
+                </a>
+                <div class="dropdown-trust-box">
+                  <span class="dropdown-trust-num">Registered NDIS Provider</span>
+                  <span class="dropdown-trust-text">Registration #4050172088 · Verified background checks &amp; CPR certified</span>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <span class="dropdown-tag">Need guidance choosing the right pathway?</span>
+              <a href="services.html">
+                <span>View Full Services Guide</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="team.html" class="nav-link">Our Team</a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <a href="tel:1300694673" class="nav-phone-pill" aria-label="Call Hopesway on 1300 694 673">
+          <span class="phone-icon-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </span>
+          <span class="phone-text-wrap">
+            <span class="phone-label">Need a chat?</span>
+            <span class="phone-num">1300 694 673</span>
+          </span>
+        </a>
+        <a href="contact.html" class="btn-primary nav-cta magnetic-btn">
+          <span>Enquire Now</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+    <a href="tel:1300694673" class="mobile-call-banner">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="phone-icon-dot">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        <div style="display:flex;flex-direction:column;line-height:1.2;">
+          <span style="font-size:11px;color:var(--brand);font-weight:600;">Direct Phone Support</span>
+          <span style="font-size:15px;color:var(--brand-dark);font-weight:700;">1300 694 673</span>
+        </div>
+      </div>
+      <span style="font-size:12px;color:var(--brand);font-weight:600;">Tap to call &rarr;</span>
+    </a>
+
+    <div class="mobile-nav-group">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="about.html" class="mobile-link active">About Us</a>
+      
+      <div class="mobile-accordion-item">
+        <a href="services.html" class="mobile-link">
+          <span>Services</span>
+          <span style="font-size:12px;color:var(--brand);font-weight:600;">View All &rarr;</span>
+        </a>
+        <div class="mobile-sub-services">
+          <a href="services.html#sil" class="mobile-sub-link"><span class="mobile-sub-bullet"></span>Supported Independent Living (SIL)</a>
+          <a href="services.html#support-coordination" class="mobile-sub-link"><span class="mobile-sub-bullet"></span>Support Coordination</a>
+          <a href="services.html#respite" class="mobile-sub-link"><span class="mobile-sub-bullet"></span>Respite / Short Term (STA)</a>
+          <a href="services.html#daily-activities" class="mobile-sub-link"><span class="mobile-sub-bullet"></span>Daily Life &amp; Social Outings</a>
+          <a href="services.html#transport" class="mobile-sub-link"><span class="mobile-sub-bullet"></span>Community Transport</a>
+          <a href="services.html#aged-care" class="mobile-sub-link"><span class="mobile-sub-bullet"></span>In-Home Aged Care &amp; CHSP</a>
+        </div>
+      </div>
+
+      <a href="team.html" class="mobile-link">Our Team</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+    </div>
+
+    <a href="contact.html" class="btn-primary" style="text-align:center;justify-content:center;">Enquire Now</a>
+    <div class="mobile-menu-footer">
+      <span>NDIS Registered Provider #4050172088 · Pimpama, QLD</span>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ================================================================
+         SECTION 1 — HERO
+         ================================================================ -->
+    <section class="about-hero" id="hero">
+      <!-- Subtle Australian native branch line art accent in margin -->
+      <svg class="about-hero-branch-art" viewBox="0 0 240 440" fill="none" aria-hidden="true">
+        <path d="M-20 440 Q40 280 30 160 T120 0" stroke="var(--logo-green)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M30 320 Q80 290 120 310" stroke="var(--logo-green)" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M30 230 Q90 200 140 220" stroke="var(--brand)" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M30 150 Q100 120 150 140" stroke="var(--logo-green)" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M60 80 Q130 60 170 80" stroke="var(--logo-gold)" stroke-width="1.2" stroke-linecap="round"/>
+        <g transform="translate(120, 310) rotate(45)"><rect x="-4" y="-4" width="8" height="8" rx="2" fill="var(--logo-green)" opacity="0.5"/></g>
+        <g transform="translate(140, 220) rotate(45)"><rect x="-4" y="-4" width="8" height="8" rx="2" fill="var(--brand)" opacity="0.5"/></g>
+        <g transform="translate(150, 140) rotate(45)"><rect x="-4" y="-4" width="8" height="8" rx="2" fill="var(--logo-gold)" opacity="0.5"/></g>
+        <g transform="translate(170, 80) rotate(45)"><rect x="-4" y="-4" width="8" height="8" rx="2" fill="var(--logo-red)" opacity="0.5"/></g>
+      </svg>
+      <div class="about-hero-inner">
+        <div class="about-hero-label">OUR STORY</div>
+        <h1 id="heroHeadline" aria-label="We started Hopesway because families deserve more than a service. They deserve people who show up.">
+          We started Hopesway because <span class="font-display-500 accent-word" style="color: #2E6B5E; position:relative; display:inline-block;">families<svg class="doodle-accent" viewBox="0 0 130 18" fill="none" style="position:absolute; left:-2px; bottom:-10px; width:104%; height:14px; pointer-events:none;" preserveAspectRatio="none" aria-hidden="true"><path d="M3 11 C 35 4, 80 15, 126 6 M10 14 C 45 8, 90 14, 120 10" stroke="#2E6B5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> deserve more than a service. They deserve people who show up.
+        </h1>
+        <p class="about-hero-desc">
+          Hopesway was built on a simple belief: that NDIS and aged care support should feel personal, not procedural. We're a Gold Coast-based team supporting participants and their families across Pimpama and surrounds.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION 2 — FOUNDER NOTE
+         ================================================================ -->
+    <section class="founder-note" id="founder">
+      <div class="founder-grid">
+        <div class="founder-photo-col">
+          <div class="founder-photo-card">
+            <!-- Warm vector portrait illustration for Ayo Isiade -->
+            <svg class="founder-portrait-svg" viewBox="0 0 320 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ayo Isiade Portrait">
+              <!-- Soft botanical background radiance -->
+              <circle cx="160" cy="180" r="130" fill="rgba(234, 244, 241, 0.7)"/>
+              <ellipse cx="160" cy="180" rx="105" ry="125" stroke="var(--logo-green)" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.3"/>
+              
+              <!-- Subtle botanical wreath surrounding portrait -->
+              <path d="M70 260 C50 190 60 110 120 70" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" opacity="0.4"/>
+              <path d="M250 260 C270 190 260 110 200 70" stroke="var(--logo-gold)" stroke-width="1.6" stroke-linecap="round" opacity="0.4"/>
+              <g transform="translate(120, 70) rotate(45)"><rect x="-4" y="-4" width="8" height="8" rx="2" fill="var(--logo-green)" opacity="0.6"/></g>
+              <g transform="translate(200, 70) rotate(45)"><rect x="-4" y="-4" width="8" height="8" rx="2" fill="var(--logo-red)" opacity="0.6"/></g>
+              <g transform="translate(60, 180) rotate(45)"><rect x="-3" y="-3" width="6" height="6" rx="1.5" fill="var(--logo-gold)" opacity="0.6"/></g>
+              <g transform="translate(260, 180) rotate(45)"><rect x="-3" y="-3" width="6" height="6" rx="1.5" fill="var(--logo-green)" opacity="0.6"/></g>
+
+              <!-- Warm, dignified portrait silhouette of Ayo -->
+              <!-- Shoulders & Torso -->
+              <path d="M65 390 C75 320 110 290 160 290 C210 290 245 320 255 390 Z" fill="#2E6B5E" opacity="0.95"/>
+              <path d="M142 290 L160 330 L178 290 Z" fill="#EAF4F1"/>
+              
+              <!-- Neck -->
+              <rect x="145" y="240" width="30" height="55" rx="8" fill="#D59B72"/>
+              
+              <!-- Head / Face -->
+              <ellipse cx="160" cy="190" rx="46" ry="58" fill="#C68A62"/>
+              
+              <!-- Clean cropped hair & ears -->
+              <path d="M112 175 C112 135 130 130 160 130 C190 130 208 135 208 175 C208 170 200 145 160 145 C120 145 112 170 112 175 Z" fill="#2A1E1D"/>
+              <ellipse cx="114" cy="192" rx="6" ry="12" fill="#BA7F58"/>
+              <ellipse cx="206" cy="192" rx="6" ry="12" fill="#BA7F58"/>
+
+              <!-- Glasses frame (clean, professional, approachable) -->
+              <rect x="126" y="174" width="28" height="20" rx="6" stroke="#2A1E1D" stroke-width="2.5" fill="none"/>
+              <rect x="166" y="174" width="28" height="20" rx="6" stroke="#2A1E1D" stroke-width="2.5" fill="none"/>
+              <line x1="154" y1="182" x2="166" y2="182" stroke="#2A1E1D" stroke-width="2.5"/>
+              
+              <!-- Warm eyes behind glasses -->
+              <circle cx="140" cy="184" r="3" fill="#2A1E1D"/>
+              <circle cx="180" cy="184" r="3" fill="#2A1E1D"/>
+              
+              <!-- Approachable, warm smile -->
+              <path d="M144 218 Q160 230 176 218" stroke="#7A3D20" stroke-width="3" stroke-linecap="round" fill="none"/>
+              
+              <!-- Logo leaf pin on lapel -->
+              <g transform="translate(195, 340) rotate(45) scale(0.6)">
+                <rect x="-8" y="-8" width="16" height="16" rx="4" fill="#F4B320"/>
+              </g>
+            </svg>
+          </div>
+          <div class="founder-caption" style="position:relative; display:inline-block;">
+            <svg class="doodle-accent doodle-circle" viewBox="0 0 200 48" fill="none" style="position:absolute; top:-6px; left:-12px; width:calc(100% + 24px); height:calc(100% + 12px); pointer-events:none;" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M12 24 C 10 10, 70 4, 150 6 C 188 7, 196 26, 175 38 C 142 49, 44 47, 16 34 C 4 27, 14 12, 54 8" stroke="#2E6B5E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+            </svg>
+            Ayo Isiade, Founder
+          </div>
+        </div>
+        <div class="founder-content-col">
+          <div class="founder-quote-mark" aria-hidden="true">&ldquo;</div>
+          <p class="founder-pull-quote">
+            I started Hopesway after seeing how many families felt like a number in a system that was supposed to care for them. We built something different: support that actually listens.
+          </p>
+          <p class="founder-story-text">
+            We believe support should be as natural and dependable as having a thoughtful neighbour drop by. Every decision we make, from who we hire to how we answer the phone, is driven by respect for your home and genuine peace of mind for your family. No corporate scripts, no passing the buck, just genuine human care that shows up on time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION 3 — OUR VALUES (T.R.U.E.)
+         ================================================================ -->
+    <section class="values-section" id="values">
+      <div class="container">
+        <div class="values-header">
+          <span class="section-num font-display">01</span>
+          <h2>What we stand for.</h2>
+        </div>
+        <div class="values-grid">
+          <!-- T: Trust -->
+          <div class="value-card">
+            <div class="value-letter-watermark">T</div>
+            <div class="value-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Trust</h3>
+            <p>We do what we say we'll do, showing up consistently so you never have to wonder if your support will arrive.</p>
+          </div>
+          <!-- R: Respect -->
+          <div class="value-card">
+            <div class="value-letter-watermark">R</div>
+            <div class="value-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h3>Respect</h3>
+            <p>Every participant's choices, home, and comfort are respected without compromise or assumptions.</p>
+          </div>
+          <!-- U: Understanding -->
+          <div class="value-card">
+            <div class="value-letter-watermark">U</div>
+            <div class="value-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3>Understanding</h3>
+            <p>We take time to learn the person behind the plan, listening before offering solutions.</p>
+          </div>
+          <!-- E: Excellence -->
+          <div class="value-card">
+            <div class="value-letter-watermark">E</div>
+            <div class="value-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3>Excellence</h3>
+            <p>From registered compliance to everyday care, we hold ourselves to the highest standards without losing our warmth.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION 4 — OUR APPROACH (Timeline Style)
+         ================================================================ -->
+    <section class="approach-section" id="approach">
+      <div class="container">
+        <div class="approach-header">
+          <span class="section-num font-display">02</span>
+          <h2>How we actually work with you.</h2>
+        </div>
+        <div class="approach-timeline-wrap" id="timelineContainer">
+          <div class="timeline-track-line" aria-hidden="true"></div>
+          <div class="timeline-draw-line" id="timelineDrawLine" aria-hidden="true"></div>
+
+          <!-- Step 1 -->
+          <div class="timeline-step">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-step-tag">Step 01</div>
+              <h3>We listen first</h3>
+              <p>An initial no-pressure conversation over a cuppa or phone call to understand your personal goals, daily routines, and family dynamics before touching any paperwork.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="timeline-step">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-step-tag">Step 02</div>
+              <h3>We match carefully</h3>
+              <p>We pair participants with support workers based on genuine shared interests, energy, and personality, never just whoever happens to have an empty roster slot.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="timeline-step">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-step-tag">Step 03</div>
+              <h3>We stay involved</h3>
+              <p>Ongoing check-ins, proactive plan reviews, and direct communication so you always have a familiar coordinator who knows your name and follows through.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION 5 — CREDENTIALS STRIP
+         ================================================================ -->
+    <section class="credentials-strip" id="credentials">
+      <div class="credentials-inner">
+        <div class="credential-item">
+          <div class="credential-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div class="credential-text">NDIS Registered<br>#4050172088</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="credential-text">3+ Years<br>Active Care</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="credential-text">Gold Coast &amp;<br>Surrounds</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="credential-text">Fully Insured &amp;<br>Compliant</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION 6 — CTA
+         ================================================================ -->
+    <section class="about-cta" id="cta">
+      <div class="about-cta-inner">
+        <h2>Want to know more about how we work?</h2>
+        <p class="about-cta-sub">We're always up for a friendly, no-pressure chat about how we can support your family.</p>
+        <div class="about-cta-btns" style="position:relative;">
+          <a href="contact.html" class="btn-primary magnetic-btn">Enquire Now</a>
+          <!-- Doodle Arrow pointing from whitespace towards Enquire Now -->
+          <svg class="doodle-accent doodle-arrow" viewBox="0 0 54 42" fill="none" style="position:absolute; top:-28px; left:116px; width:38px; height:30px; pointer-events:none;" aria-hidden="true">
+            <path d="M6 6 C 18 2, 34 8, 38 24" stroke="#E4572E" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M28 20 L 38 25 L 42 14" stroke="#E4572E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <a href="tel:1300694673" class="btn-secondary">Call Us: 1300 694 673</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="footer">
+    <!-- Grounded Earth Strata & Deep Living Roots Line Art -->
+    <svg class="footer-roots-art" viewBox="0 0 1440 48" fill="none" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 8 C360 24 720 0 1080 18 T1440 8" stroke="var(--brand)" stroke-width="1.2" opacity="0.35"/>
+      <path d="M0 18 C400 36 800 12 1200 28 T1440 18" stroke="var(--logo-green)" stroke-width="1" stroke-dasharray="6 6" opacity="0.25"/>
+      <path d="M220 12 Q280 34 320 28" stroke="var(--logo-gold)" stroke-width="1.2" opacity="0.4"/>
+      <path d="M680 8 Q740 38 800 24" stroke="var(--logo-green)" stroke-width="1.2" opacity="0.4"/>
+      <path d="M1120 14 Q1180 38 1240 28" stroke="var(--logo-gold)" stroke-width="1.2" opacity="0.4"/>
+      <g transform="translate(740, 38) rotate(45)"><rect x="-3" y="-3" width="6" height="6" rx="1.5" fill="var(--logo-red)" opacity="0.5"/></g>
+    </svg>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand" style="display:flex;align-items:center;gap:10px;">
+            <svg class="brand-logo-icon" viewBox="0 0 180 180" width="28" height="28" aria-hidden="true">
+              <g transform="translate(88, 46) rotate(45)">
+                <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#EE2737" />
+              </g>
+              <g transform="translate(46.5, 89.5) rotate(45)">
+                <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#468C2C" />
+              </g>
+              <g transform="translate(130, 90) rotate(45)">
+                <rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#F4B320" />
+              </g>
+              <g stroke="#FAF7F4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <line x1="88.5" y1="165" x2="88.5" y2="46" />
+                <line x1="88.5" y1="130" x2="46" y2="89" />
+                <line x1="88.5" y1="130" x2="131" y2="89" />
+              </g>
+            </svg>
+            <span>Hopesway</span>
+          </div>
+          <div class="footer-tagline">Your care, your way.</div>
+          <div class="footer-reg">NDIS Registered Provider #4050172088</div>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#sil">Supported Independent Living</a></li>
+            <li><a href="services.html#support-coordination">Support Coordination</a></li>
+            <li><a href="services.html#respite">Respite / STA</a></li>
+            <li><a href="services.html#daily-activities">Daily Activities</a></li>
+            <li><a href="services.html#transport">Transport</a></li>
+            <li><a href="services.html#aged-care">Aged Care</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="locations.html">Where We Work</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="refer.html">Referrals</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <ul>
+            <li><a href="tel:1300694673">1300 694 673</a></li>
+            <li><a href="mailto:info@hopesway.com.au">info@hopesway.com.au</a></li>
+            <li><a href="#">Pimpama, QLD 4209</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Hopesway Care (ABN 54 425 985 105) &amp; Hopesway Support Services (ABN 41 659 270 765).</span>
+        <span class="footer-ndis">NDIS Registered Provider #4050172088 · Head Office: Pimpama QLD 4209 · 1300 694 673</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================================
+       SCRIPTS (MAGNETIC BUTTONS, SPLIT-TEXT H1, TIMELINE SCROLL OBSERVER)
+       ================================================================ -->
+  <script>
+    (function() {
+      'use strict';
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ------ NAV SCROLL SHADOW ------ */
+      const nav = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true });
+
+      /* ------ MOBILE HAMBURGER ------ */
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', String(open));
+      });
+      mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      /* ------ SPLIT-TEXT REVEAL ON H1 (40ms Stagger) ------ */
+      const h1 = document.getElementById('heroHeadline');
+      if (h1 && !prefersReducedMotion) {
+        const rawContent = [
+          { text: "We", isAccent: false },
+          { text: "started", isAccent: false },
+          { text: "Hopesway", isAccent: false },
+          { text: "because", isAccent: false },
+          { text: "families", isAccent: true },
+          { text: "deserve", isAccent: false },
+          { text: "more", isAccent: false },
+          { text: "than", isAccent: false },
+          { text: "a", isAccent: false },
+          { text: "service", isAccent: false },
+          { text: ".", isAccent: false },
+          { text: "they", isAccent: false },
+          { text: "deserve", isAccent: false },
+          { text: "people", isAccent: false },
+          { text: "who", isAccent: false },
+          { text: "show", isAccent: false },
+          { text: "up.", isAccent: false }
+        ];
+
+        const existingDoodle = h1.querySelector('.doodle-accent');
+        h1.innerHTML = '';
+        const spans = [];
+        rawContent.forEach((item) => {
+          const span = document.createElement('span');
+          span.className = 'word-span';
+          if (item.isAccent) {
+            span.classList.add('accent-word', 'font-display-500');
+            span.style.position = 'relative';
+            span.textContent = item.text + '\u00A0';
+            if (existingDoodle) span.appendChild(existingDoodle);
+          } else {
+            span.textContent = item.text + '\u00A0';
+          }
+          h1.appendChild(span);
+          spans.push(span);
+        });
+
+        // Trigger staggered reveal
+        requestAnimationFrame(() => {
+          spans.forEach((span, idx) => {
+            setTimeout(() => {
+              span.classList.add('revealed');
+            }, idx * 40);
+          });
+        });
+      }
+
+      /* ------ MAGNETIC BUTTON EFFECT (Max 6px Shift on Hover) ------ */
+      if (!prefersReducedMotion) {
+        const magneticBtns = document.querySelectorAll('.magnetic-btn');
+        magneticBtns.forEach(btn => {
+          btn.addEventListener('mousemove', e => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            // Dampen to max 6px
+            const moveX = Math.max(-6, Math.min(6, x * 0.18));
+            const moveY = Math.max(-6, Math.min(6, y * 0.18));
+            btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          });
+          btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0px, 0px)';
+          });
+        });
+      }
+
+      /* ------ SCROLL-DRAWN TIMELINE APPROACH ------ */
+      const timelineContainer = document.getElementById('timelineContainer');
+      const drawLine = document.getElementById('timelineDrawLine');
+      const timelineSteps = document.querySelectorAll('.timeline-step');
+
+      if (timelineContainer && !prefersReducedMotion) {
+        // Observe steps fading up
+        const stepObs = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+
+        timelineSteps.forEach(step => stepObs.observe(step));
+
+        // Animate the height of the connecting line on scroll
+        function updateTimelineLine() {
+          const rect = timelineContainer.getBoundingClientRect();
+          const viewportH = window.innerHeight;
+          // Calculate progress through the timeline container
+          const start = viewportH * 0.75;
+          const end = viewportH * 0.25;
+          const containerTop = rect.top;
+          const containerH = rect.height;
+
+          let progress = (start - containerTop) / (containerH);
+          progress = Math.max(0, Math.min(1, progress));
+          if (drawLine) {
+            drawLine.style.height = (progress * 100) + '%';
+          }
+        }
+
+        window.addEventListener('scroll', updateTimelineLine, { passive: true });
+        updateTimelineLine();
+      } else {
+        timelineSteps.forEach(s => s.classList.add('visible'));
+        if (drawLine) drawLine.style.height = '100%';
+      }
+    })();
+  </script>
+
+  <!-- LeadConnector / GHL Webchat Widget -->
+  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="YOUR_WIDGET_ID"></script>
+</body>
+</html>
