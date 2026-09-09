@@ -2014,50 +2014,74 @@
       transform: translateY(-3px);
       box-shadow: var(--shadow-card-hover);
     }
-    .team-avatar-wrap {
+    .team-badge-wrap {
       position: relative;
-      width: 92px;
-      height: 92px;
+      width: 88px;
+      height: 88px;
       margin: 0 auto 16px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .team-avatar-wreath {
+    .team-badge-canvas {
       position: absolute;
-      inset: -6px;
-      width: calc(100% + 12px);
-      height: calc(100% + 12px);
+      inset: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
-      transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      overflow: visible;
+      transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .team-card:hover .team-avatar-wreath {
-      transform: scale(1.1) rotate(6deg);
+    .team-card:hover .team-badge-canvas {
+      transform: scale(1.08) rotate(4deg);
     }
-    .team-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: var(--brand-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--brand);
+    .team-badge-initials {
       position: relative;
       z-index: 1;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      line-height: 1;
+      user-select: none;
+    }
+    .team-card-ndis .team-badge-initials {
+      color: #1C4B40;
+    }
+    .team-card-aged .team-badge-initials {
+      color: #8C5E1E;
+    }
+    .team-name-wrap {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     .team-card h3 {
       font-size: 18px;
       font-weight: 700;
       color: var(--text);
+      margin: 0;
+      line-height: 1.25;
+    }
+    .team-name-underline {
+      display: block;
+      width: 64px;
+      height: 7px;
+      margin-top: 3px;
+      pointer-events: none;
+      overflow: visible;
     }
     .team-card .team-role {
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
+      margin-top: 6px;
+      display: block;
+    }
+    .team-card-ndis .team-role {
       color: var(--brand);
-      margin-top: 4px;
+    }
+    .team-card-aged .team-role {
+      color: #B46C00;
     }
     .team-card .team-quote {
       font-size: 14px;
@@ -2066,9 +2090,18 @@
       font-style: italic;
       line-height: 1.45;
     }
+    .team-real-faces-note {
+      text-align: center;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--text-muted);
+      margin: 28px auto 0;
+      max-width: 520px;
+      line-height: 1.5;
+    }
     .team-cta {
       text-align: center;
-      margin-top: 48px;
+      margin-top: 24px;
     }
 
     /* ================================================================
@@ -3579,67 +3612,56 @@
           <p>Our coordinators and support workers are chosen for their experience and their empathy.</p>
         </div>
         <div class="team-grid">
-          <div class="team-card">
-            <div class="team-avatar-wrap">
-              <svg class="team-avatar-wreath" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-                <path d="M20 50 C20 28 35 15 50 15 C65 15 80 28 80 50 C80 72 65 85 50 85 C35 85 20 72 20 50" stroke="var(--logo-green)" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.5"/>
-                <g transform="translate(18, 35) rotate(-30)"><rect x="-3" y="-3" width="6" height="6" rx="1.5" fill="var(--logo-green)" opacity="0.7"/></g>
-                <g transform="translate(82, 35) rotate(30)"><rect x="-3" y="-3" width="6" height="6" rx="1.5" fill="var(--logo-gold)" opacity="0.7"/></g>
-                <g transform="translate(25, 68) rotate(45)"><rect x="-2.5" y="-2.5" width="5" height="5" rx="1.5" fill="var(--logo-gold)" opacity="0.6"/></g>
-                <g transform="translate(75, 68) rotate(-45)"><rect x="-2.5" y="-2.5" width="5" height="5" rx="1.5" fill="var(--logo-red)" opacity="0.6"/></g>
-              </svg>
-              <div class="team-avatar">SM</div>
+          <div class="team-card team-card-ndis">
+            <div class="team-badge-wrap">
+              <svg class="team-badge-canvas" width="88" height="88" viewBox="0 0 88 88" aria-hidden="true"></svg>
+              <div class="team-badge-initials">SM</div>
             </div>
-            <h3>Sarah M.</h3>
+            <div class="team-name-wrap">
+              <h3>Sarah M.</h3>
+              <svg class="team-name-underline" width="64" height="7" viewBox="0 0 64 7" aria-hidden="true"></svg>
+            </div>
             <span class="team-role">Lead Support Coordinator</span>
             <p class="team-quote">"I make NDIS funding make sense for families."</p>
           </div>
-          <div class="team-card">
-            <div class="team-avatar-wrap">
-              <svg class="team-avatar-wreath" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-                <path d="M20 50 C20 28 35 15 50 15 C65 15 80 28 80 50 C80 72 65 85 50 85 C35 85 20 72 20 50" stroke="var(--logo-green)" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.5"/>
-                <g transform="translate(18, 35) rotate(-30)"><rect x="-3" y="-3" width="6" height="6" rx="1.5" fill="var(--logo-green)" opacity="0.7"/></g>
-                <g transform="translate(82, 35) rotate(30)"><rect x="-3" y="-3" width="6" height="6" rx="1.5" fill="var(--logo-gold)" opacity="0.7"/></g>
-                <g transform="translate(25, 68) rotate(45)"><rect x="-2.5" y="-2.5" width="5" height="5" rx="1.5" fill="var(--logo-gold)" opacity="0.6"/></g>
-                <g transform="translate(75, 68) rotate(-45)"><rect x="-2.5" y="-2.5" width="5" height="5" rx="1.5" fill="var(--logo-red)" opacity="0.6"/></g>
-              </svg>
-              <div class="team-avatar">JO</div>
+          <div class="team-card team-card-ndis">
+            <div class="team-badge-wrap">
+              <svg class="team-badge-canvas" width="88" height="88" viewBox="0 0 88 88" aria-hidden="true"></svg>
+              <div class="team-badge-initials">JO</div>
             </div>
-            <h3>James O.</h3>
+            <div class="team-name-wrap">
+              <h3>James O.</h3>
+              <svg class="team-name-underline" width="64" height="7" viewBox="0 0 64 7" aria-hidden="true"></svg>
+            </div>
             <span class="team-role">SIL Specialist</span>
             <p class="team-quote">"Every SIL home should feel like a true home."</p>
           </div>
-          <div class="team-card">
-            <div class="team-avatar-wrap">
-              <svg class="team-avatar-wreath" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-                <path d="M20 50 C20 28 35 15 50 15 C65 15 80 28 80 50 C80 72 65 85 50 85 C35 85 20 72 20 50" stroke="var(--logo-green)" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.5"/>
-                <g transform="translate(18, 35) rotate(-30)"><rect x="-3" y="-3" width="6" height="6" rx="1.5" fill="var(--logo-green)" opacity="0.7"/></g>
-                <g transform="translate(82, 35) rotate(30)"><rect x="-3" y="-3" width="6" height="6" rx="1.5" fill="var(--logo-gold)" opacity="0.7"/></g>
-                <g transform="translate(25, 68) rotate(45)"><rect x="-2.5" y="-2.5" width="5" height="5" rx="1.5" fill="var(--logo-gold)" opacity="0.6"/></g>
-                <g transform="translate(75, 68) rotate(-45)"><rect x="-2.5" y="-2.5" width="5" height="5" rx="1.5" fill="var(--logo-red)" opacity="0.6"/></g>
-              </svg>
-              <div class="team-avatar">PK</div>
+          <div class="team-card team-card-aged">
+            <div class="team-badge-wrap">
+              <svg class="team-badge-canvas" width="88" height="88" viewBox="0 0 88 88" aria-hidden="true"></svg>
+              <div class="team-badge-initials">PK</div>
             </div>
-            <h3>Priya K.</h3>
+            <div class="team-name-wrap">
+              <h3>Priya K.</h3>
+              <svg class="team-name-underline" width="64" height="7" viewBox="0 0 64 7" aria-hidden="true"></svg>
+            </div>
             <span class="team-role">Community Support Worker</span>
             <p class="team-quote">"The best part is watching someone try something new."</p>
           </div>
-          <div class="team-card">
-            <div class="team-avatar-wrap">
-              <svg class="team-avatar-wreath" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-                <path d="M20 50 C20 28 35 15 50 15 C65 15 80 28 80 50 C80 72 65 85 50 85 C35 85 20 72 20 50" stroke="var(--logo-green)" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.5"/>
-                <g transform="translate(18, 35) rotate(-30)"><rect x="-3" y="-3" width="6" height="6" rx="1.5" fill="var(--logo-green)" opacity="0.7"/></g>
-                <g transform="translate(82, 35) rotate(30)"><rect x="-3" y="-3" width="6" height="6" rx="1.5" fill="var(--logo-gold)" opacity="0.7"/></g>
-                <g transform="translate(25, 68) rotate(45)"><rect x="-2.5" y="-2.5" width="5" height="5" rx="1.5" fill="var(--logo-gold)" opacity="0.6"/></g>
-                <g transform="translate(75, 68) rotate(-45)"><rect x="-2.5" y="-2.5" width="5" height="5" rx="1.5" fill="var(--logo-red)" opacity="0.6"/></g>
-              </svg>
-              <div class="team-avatar">DA</div>
+          <div class="team-card team-card-aged">
+            <div class="team-badge-wrap">
+              <svg class="team-badge-canvas" width="88" height="88" viewBox="0 0 88 88" aria-hidden="true"></svg>
+              <div class="team-badge-initials">DA</div>
             </div>
-            <h3>David A.</h3>
+            <div class="team-name-wrap">
+              <h3>David A.</h3>
+              <svg class="team-name-underline" width="64" height="7" viewBox="0 0 64 7" aria-hidden="true"></svg>
+            </div>
             <span class="team-role">Transport &amp; Daily Activities</span>
             <p class="team-quote">"Always on time, always up for a good yarn."</p>
           </div>
         </div>
+        <p class="team-real-faces-note">Real faces coming soon — meet the team in person by reaching out.</p>
         <div class="team-cta">
           <a href="about.html" class="btn-primary">Meet the full team →</a>
         </div>
@@ -4795,6 +4817,108 @@
             setTimeout(renderMobileSpine, 290);
           }
         });
+      })();
+
+      /* ------ TEAM SECTION HAND-DRAWN BADGES & UNDERLINES (Rough.js) ------ */
+      (function initTeamBadges() {
+        const teamSection = document.getElementById('team');
+        if (!teamSection) return;
+
+        function renderBadges() {
+          if (!window.rough) return;
+
+          const cards = teamSection.querySelectorAll('.team-card');
+          const variationsList = [
+            [1.03, 0.94, 1.05, 0.95, 1.04, 0.94, 1.05, 0.96],
+            [0.95, 1.04, 0.94, 1.05, 0.96, 1.04, 0.95, 1.03],
+            [1.04, 0.95, 1.03, 0.96, 1.05, 0.94, 1.03, 0.96],
+            [0.95, 1.03, 0.96, 1.04, 0.95, 1.05, 0.95, 1.03]
+          ];
+
+          cards.forEach((card, idx) => {
+            const badgeSvg = card.querySelector('.team-badge-canvas');
+            const underlineSvg = card.querySelector('.team-name-underline');
+            const isNdis = card.classList.contains('team-card-ndis');
+
+            // Colors matching role category (green for NDIS, amber for Aged Care)
+            const fillColor = isNdis ? 'rgba(46, 107, 94, 0.16)' : 'rgba(217, 162, 83, 0.20)';
+            const strokeColor = isNdis ? '#2E6B5E' : '#C98A3E';
+            const underlineColor = isNdis ? '#2E6B5E' : '#C98A3E';
+
+            // 1. Hand-drawn soft irregular blob/rosette badge
+            if (badgeSvg && badgeSvg.dataset.rendered !== 'true') {
+              badgeSvg.dataset.rendered = 'true';
+              badgeSvg.innerHTML = '';
+              const rc = window.rough.svg(badgeSvg);
+
+              const v = variationsList[idx % variationsList.length];
+              const pts = [];
+              const count = v.length;
+              const cx = 44, cy = 44, r = 36;
+              for (let i = 0; i < count; i++) {
+                const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
+                const currentR = r * v[i];
+                pts.push([
+                  Math.round(cx + currentR * Math.cos(angle)),
+                  Math.round(cy + currentR * Math.sin(angle))
+                ]);
+              }
+
+              const rosette = rc.polygon(pts, {
+                seed: 501 + idx,
+                roughness: 1.5,
+                fillStyle: 'hachure',
+                fill: fillColor,
+                stroke: strokeColor,
+                strokeWidth: 1.8,
+                fillWeight: 1.2,
+                hachureGap: 4.5,
+                hachureAngle: -35 + (idx * 30)
+              });
+              badgeSvg.appendChild(rosette);
+            }
+
+            // 2. Thin hand-drawn underline beneath name
+            if (underlineSvg && underlineSvg.dataset.rendered !== 'true') {
+              underlineSvg.dataset.rendered = 'true';
+              underlineSvg.innerHTML = '';
+              const rcU = window.rough.svg(underlineSvg);
+              const uWidth = 64;
+              const underline = rcU.curve([
+                [2, 3],
+                [Math.round(uWidth * 0.35), 4.5],
+                [Math.round(uWidth * 0.7), 2],
+                [uWidth - 2, 3.5]
+              ], {
+                seed: 601 + idx,
+                roughness: 1.5,
+                stroke: underlineColor,
+                strokeWidth: 1.8,
+                bowing: 1.1
+              });
+              underlineSvg.appendChild(underline);
+            }
+          });
+        }
+
+        if (window.rough) {
+          renderBadges();
+        } else {
+          let attempts = 0;
+          const timer = setInterval(() => {
+            attempts++;
+            if (window.rough) {
+              clearInterval(timer);
+              renderBadges();
+            } else if (attempts > 50) {
+              clearInterval(timer);
+            }
+          }, 50);
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', renderBadges);
+        }
       })();
 
       /* ------ LIVING AMBIENT SHADER ------ */
