@@ -1195,7 +1195,7 @@
       display: flex;
       flex-direction: column;
       gap: 32px;
-      padding-left: 54px; /* Space for the 60px wide vertical tree spine */
+      padding-left: 30px; /* Slim 30px margin for delicate vertical spine */
       align-items: stretch;
       max-width: 820px;
       margin: 0 auto;
@@ -1206,14 +1206,14 @@
         padding: 0 16px;
       }
       .leaf-canopy-container {
-        padding-left: 50px;
+        padding-left: 28px;
       }
     }
     .mobile-tree-spine {
       position: absolute;
       top: 0;
       left: 0;
-      width: 60px;
+      width: 36px;
       height: 100%;
       pointer-events: none;
       overflow: visible;
@@ -4624,7 +4624,7 @@
           const H = Math.round(canopyContainer.offsetHeight || containerRect.height);
           if (H <= 0) return;
 
-          const W = 60;
+          const W = 36;
           spineSvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
           spineSvg.setAttribute('width', `${W}`);
           spineSvg.setAttribute('height', `${H}`);
@@ -4633,35 +4633,29 @@
 
           const rc = window.rough.svg(spineSvg);
 
-          // 1. Vertical Tapered Trunk running the full height (~28px top, ~18px bottom)
+          // 1. Slim Vertical Trunk (consistent 10-14px width, lighter hachure fill)
           const trunkPoly = rc.polygon([
-            [6, 0],
-            [7, Math.round(H * 0.25)],
-            [9, Math.round(H * 0.5)],
-            [8, Math.round(H * 0.75)],
-            [10, H],
-            [28, H],
-            [29, Math.round(H * 0.75)],
-            [31, Math.round(H * 0.5)],
-            [32, Math.round(H * 0.25)],
-            [34, 0]
+            [2, 0],
+            [2.5, Math.round(H * 0.25)],
+            [2, Math.round(H * 0.5)],
+            [2.5, Math.round(H * 0.75)],
+            [2, H],
+            [14, H],
+            [13.5, Math.round(H * 0.75)],
+            [14, Math.round(H * 0.5)],
+            [13.5, Math.round(H * 0.25)],
+            [14, 0]
           ], {
             seed: 101,
             fillStyle: 'hachure',
             fill: '#6B4423',
-            fillWeight: 2,
-            hachureGap: 4,
+            fillWeight: 1.2,
+            hachureGap: 6,
             stroke: '#4A2F18',
-            strokeWidth: 2,
-            roughness: 2.2
+            strokeWidth: 1.5,
+            roughness: 1.8
           });
           spineSvg.appendChild(trunkPoly);
-
-          // Helper to calculate trunk right-edge X at given Y
-          function getTrunkX(y) {
-            const ratio = Math.max(0, Math.min(1, y / H));
-            return 34 - (6 * ratio);
-          }
 
           // 2. Category Header Rows (Main Bough Split Points)
           const crowns = canopyContainer.querySelectorAll('.branch-crown');
@@ -4671,37 +4665,36 @@
             const cRect = crown.getBoundingClientRect();
             const yCenter = Math.round((cRect.top + cRect.bottom) / 2 - containerRect.top);
             const xCard = Math.round(cRect.left - containerRect.left);
-            const xTrunk = getTrunkX(yCenter);
 
             const isNdis = crown.classList.contains('ndis-crown');
             const boughColor = isNdis ? '#2E6B5E' : '#C98A3E';
             const strokeColor = isNdis ? '#1C4B40' : '#8C5E1E';
             const seedBough = isNdis ? 201 : 301;
             const seedBud = isNdis ? 202 : 302;
-            const yAngleOffset = isNdis ? 12 : -12;
+            const yAngleOffset = isNdis ? 8 : -8;
 
-            // Thicker branch stub connecting at upward/downward angle
+            // Thicker branch stub connecting at upward/downward angle (~18-22px length)
             const boughStub = rc.curve([
-              [xTrunk - 4, yCenter + yAngleOffset],
-              [Math.round((xTrunk + xCard) / 2), yCenter + Math.round(yAngleOffset * 0.4)],
+              [10, yCenter + yAngleOffset],
+              [Math.round((10 + xCard) / 2), yCenter + Math.round(yAngleOffset * 0.35)],
               [xCard, yCenter]
             ], {
               seed: seedBough,
-              roughness: 2.0,
+              roughness: 1.8,
               stroke: boughColor,
-              strokeWidth: 4.5,
-              bowing: 1.2
+              strokeWidth: 3.0,
+              bowing: 1.1
             });
             spineSvg.appendChild(boughStub);
 
-            // Small bud circle at crown left edge
-            const bud = rc.circle(xCard, yCenter, 16, {
+            // Small bud circle (~11px) at crown left edge
+            const bud = rc.circle(xCard, yCenter, 11, {
               seed: seedBud,
               fillStyle: 'solid',
               fill: boughColor,
               stroke: strokeColor,
-              strokeWidth: 2,
-              roughness: 1.8
+              strokeWidth: 1.5,
+              roughness: 1.6
             });
             spineSvg.appendChild(bud);
           });
@@ -4714,34 +4707,33 @@
             const cardRect = card.getBoundingClientRect();
             const yCenter = Math.round((cardRect.top + cardRect.bottom) / 2 - containerRect.top);
             const xCard = Math.round(cardRect.left - containerRect.left);
-            const xTrunk = getTrunkX(yCenter);
 
             const isNdis = card.classList.contains('ndis-leaf');
             const stubColor = isNdis ? '#2E6B5E' : '#C98A3E';
             const strokeColor = isNdis ? '#1C4B40' : '#8C5E1E';
 
-            // Short horizontal curve stroke (~30-40px, roughness 2.2)
+            // Short horizontal curve stroke (~18-22px, roughness 2.0)
             const stub = rc.curve([
-              [xTrunk - 4, yCenter],
-              [Math.round((xTrunk + xCard) / 2), yCenter - 1],
+              [10, yCenter],
+              [Math.round((10 + xCard) / 2), yCenter - 0.5],
               [xCard, yCenter]
             ], {
               seed: 1000 + idx,
-              roughness: 2.2,
+              roughness: 2.0,
               stroke: stubColor,
-              strokeWidth: 2.5,
-              bowing: 1.1
+              strokeWidth: 1.8,
+              bowing: 1.05
             });
             spineSvg.appendChild(stub);
 
-            // Small bud circle (~14px) sitting right at the card's left edge
-            const bud = rc.circle(xCard, yCenter, 14, {
+            // Shrunk bud circle (~8-10px, 9px) sitting right at the card's left edge
+            const bud = rc.circle(xCard, yCenter, 9, {
               seed: 2000 + idx,
               fillStyle: 'solid',
               fill: stubColor,
               stroke: strokeColor,
-              strokeWidth: 1.5,
-              roughness: 1.8
+              strokeWidth: 1.2,
+              roughness: 1.5
             });
             spineSvg.appendChild(bud);
           });
