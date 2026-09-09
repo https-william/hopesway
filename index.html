@@ -1195,7 +1195,7 @@
       display: flex;
       flex-direction: column;
       gap: 32px;
-      padding-left: 30px; /* Slim 30px margin for delicate vertical spine */
+      padding-left: 20px; /* Delicate slim margin for featherweight vertical spine */
       align-items: stretch;
       max-width: 820px;
       margin: 0 auto;
@@ -1203,17 +1203,17 @@
     }
     @media (max-width: 640px) {
       .care-tree-inner {
-        padding: 0 16px;
+        padding: 0 14px;
       }
       .leaf-canopy-container {
-        padding-left: 28px;
+        padding-left: 16px;
       }
     }
     .mobile-tree-spine {
       position: absolute;
       top: 0;
       left: 0;
-      width: 36px;
+      width: 22px;
       height: 100%;
       pointer-events: none;
       overflow: visible;
@@ -2496,6 +2496,499 @@
       .mobile-call-fab:hover { transform: scale(1.08); }
       .mobile-call-fab svg { width: 24px; height: 24px; }
     }
+
+    /* ================================================================
+       COMMUNITY DIVERSE PHOTO CAROUSEL (React-Bits Inspired)
+       ================================================================ */
+    .community-carousel-wrap {
+      position: relative;
+      margin-top: 20px;
+    }
+    .community-carousel-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .carousel-nav-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 200ms ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .carousel-nav-btn:hover {
+      background: var(--brand);
+      color: #FFFFFF;
+      border-color: var(--brand);
+      transform: translateY(-1px);
+    }
+    .carousel-nav-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .community-carousel-viewport {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+      padding: 10px 4px 20px;
+      cursor: grab;
+      user-select: none;
+    }
+    .community-carousel-viewport::-webkit-scrollbar {
+      display: none;
+    }
+    .community-carousel-viewport.is-dragging {
+      cursor: grabbing;
+      scroll-snap-type: none;
+      scroll-behavior: auto;
+    }
+    .community-carousel-card {
+      flex: 0 0 295px;
+      max-width: 82vw;
+      scroll-snap-align: start;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(28,43,43,0.06);
+      transition: transform 250ms ease, box-shadow 250ms ease;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+    .community-carousel-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(28,43,43,0.12);
+    }
+    .community-card-media {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background: #E8ECE9;
+    }
+    .community-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 500ms cubic-bezier(0.25, 1, 0.5, 1);
+      display: block;
+    }
+    .community-carousel-card:hover .community-card-media img {
+      transform: scale(1.04);
+    }
+    .community-card-pill {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(28, 43, 43, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #FAFAFA;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      padding: 5px 11px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      z-index: 2;
+    }
+    .community-card-insta-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #E1306C;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .community-card-body {
+      padding: 16px 18px 18px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #FFFFFF;
+    }
+    .community-card-header {
+      margin-bottom: 8px;
+    }
+    .community-card-names {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+    .community-card-location {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .community-card-caption {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin: 0 0 10px;
+    }
+    .community-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--brand);
+      text-decoration: none;
+      transition: color 150ms;
+    }
+    .community-carousel-card:hover .community-card-cta {
+      color: var(--accent);
+    }
+    .carousel-progress-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(28, 43, 43, 0.15);
+      cursor: pointer;
+      transition: all 250ms ease;
+    }
+    .carousel-dot.active {
+      width: 24px;
+      background: var(--brand);
+    }
+
+    /* ================================================================
+       HOPESWAY LIVE CARE CHAT & INQUIRY WIDGET
+       ================================================================ */
+    .hopesway-chat-widget {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9995;
+      font-family: inherit;
+    }
+    @media (max-width: 767px) {
+      .hopesway-chat-widget {
+        bottom: 92px; /* Clears floating call button */
+        right: 24px;
+      }
+    }
+    .hopesway-chat-trigger {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2E6B5E 0%, #1F4D43 100%);
+      color: #FFFFFF;
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 6px 24px rgba(46, 107, 94, 0.42);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 250ms ease;
+    }
+    .hopesway-chat-trigger:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 30px rgba(46, 107, 94, 0.55);
+    }
+    .chat-trigger-pulse {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      width: 14px;
+      height: 14px;
+      background: #10B981;
+      border: 2.5px solid #FFFFFF;
+      border-radius: 50%;
+    }
+    .chat-trigger-pulse::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.45);
+      animation: chatPulse 2s infinite ease-out;
+    }
+    @keyframes chatPulse {
+      0% { transform: scale(0.8); opacity: 0.9; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+    .chat-trigger-teaser {
+      position: absolute;
+      right: 70px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #FFFFFF;
+      color: var(--text);
+      font-size: 12.5px;
+      font-weight: 600;
+      white-space: nowrap;
+      padding: 7px 14px;
+      border-radius: 20px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+      border: 1px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: none;
+      opacity: 0.96;
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+    .chat-trigger-teaser .teaser-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+    }
+    @media (max-width: 767px) {
+      .chat-trigger-teaser {
+        display: none;
+      }
+    }
+    .hopesway-chat-drawer {
+      position: fixed;
+      bottom: 98px;
+      right: 28px;
+      width: 360px;
+      max-width: calc(100vw - 32px);
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 44px rgba(28, 43, 43, 0.18);
+      display: none;
+      flex-direction: column;
+      z-index: 9999;
+      animation: drawerSlideUp 280ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @media (max-width: 767px) {
+      .hopesway-chat-drawer {
+        bottom: 160px;
+        right: 16px;
+        left: 16px;
+        width: auto;
+        max-width: none;
+      }
+    }
+    .hopesway-chat-drawer.is-open {
+      display: flex;
+    }
+    @keyframes drawerSlideUp {
+      from { opacity: 0; transform: translateY(14px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .chat-drawer-header {
+      background: linear-gradient(135deg, #2E6B5E 0%, #1C4B40 100%);
+      color: #FFFFFF;
+      padding: 16px 18px;
+      border-radius: 19px 19px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .chat-header-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .chat-header-info {
+      flex-grow: 1;
+    }
+    .chat-header-info h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0;
+      color: #FFFFFF;
+      letter-spacing: -0.2px;
+    }
+    .chat-online-status {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.85);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 2px;
+    }
+    .chat-pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: #34D399;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .chat-close-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: #FFFFFF;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 150ms;
+    }
+    .chat-close-btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+    .chat-drawer-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .chat-intro-bubble {
+      background: var(--brand-light);
+      border-radius: 14px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.45;
+      border: 1px solid rgba(46,107,94,0.15);
+    }
+    .chat-quick-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .chat-quick-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: #FAF7F4;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 180ms ease;
+    }
+    .chat-quick-btn:hover {
+      background: #FFFFFF;
+      border-color: var(--brand);
+      color: var(--brand);
+      transform: translateX(3px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .chat-quick-btn svg {
+      color: var(--brand);
+      flex-shrink: 0;
+    }
+    .chat-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .chat-form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .chat-form-field label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+    .chat-form-field input,
+    .chat-form-field textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--text);
+      background: #FAF7F4;
+      outline: none;
+      transition: border-color 150ms;
+      box-sizing: border-box;
+    }
+    .chat-form-field input:focus,
+    .chat-form-field textarea:focus {
+      border-color: var(--brand);
+      background: #FFFFFF;
+    }
+    .chat-submit-btn {
+      background: var(--brand);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: background 180ms ease;
+    }
+    .chat-submit-btn:hover {
+      background: #24544A;
+    }
+    .chat-success-msg {
+      text-align: center;
+      padding: 24px 16px;
+      background: var(--brand-light);
+      border-radius: 14px;
+      border: 1px solid rgba(46,107,94,0.2);
+    }
+    .chat-success-msg p {
+      margin: 8px 0 0;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.4;
+    }
   </style>
 
   <!-- Schema.org Structured Data: LocalBusiness & MedicalOrganization -->
@@ -3670,22 +4163,22 @@
              COMMUNITY GALLERY / INSTAGRAM FEED (@HOPESWAYCARE)
              ============================================================ -->
         <div class="instagram-gallery-wrap" id="gallery" style="margin-top:56px;">
-          <div style="text-align:center; max-width:620px; margin:0 auto 28px;">
+          <div style="text-align:center; max-width:640px; margin:0 auto 28px;">
             <div style="display:inline-flex; align-items:center; gap:8px; background:var(--brand-light); color:var(--brand); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:5px 14px; border-radius:20px; border:1px solid rgba(46,107,94,0.18); margin-bottom:10px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-              <span>Community Feed · @hopeswaycare</span>
+              <span>Community Stories · @hopeswaycare</span>
             </div>
             <h3 style="font-size:28px; font-weight:700; color:var(--text); margin:0 0 8px;">Life on the ground.</h3>
             <p style="font-size:15.5px; color:var(--text-muted); line-height:1.5; margin:0;">
-              Moments with our participants and support workers across Queensland. Your care, your way.
+              Real moments with our participants and dedicated support workers across Queensland. Your care, your way.
             </p>
           </div>
 
-          <!-- Rounded Card Frame (Matches site aesthetic, NO broken third-party iframes) -->
-          <div class="instagram-card-frame" style="background:#FFFFFF; border:1px solid var(--border); border-radius:20px; padding:28px; box-shadow:0 8px 30px rgba(28,43,43,0.05); position:relative;">
+          <!-- Rounded Card Frame (Fluid React-Bits Inspired Community Carousel) -->
+          <div class="instagram-card-frame" style="background:#FFFFFF; border:1px solid var(--border); border-radius:20px; padding:28px 24px; box-shadow:0 8px 30px rgba(28,43,43,0.05); position:relative;">
             
-            <!-- Instagram Profile Banner -->
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:22px; padding-bottom:18px; border-bottom:1px solid var(--border);">
+            <!-- Instagram Profile Banner & Carousel Navigation Controls -->
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid var(--border);">
               <div style="display:flex; align-items:center; gap:14px;">
                 <!-- Profile Avatar with Instagram Gradient Ring -->
                 <div style="width:52px; height:52px; border-radius:50%; padding:2.5px; background:linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
@@ -3712,64 +4205,268 @@
                 </div>
               </div>
 
-              <!-- Direct Follow Button -->
-              <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:8px 18px; font-size:13.5px; border-radius:10px; display:inline-flex; align-items:center; gap:8px;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                <span>Follow on Instagram</span>
-              </a>
+              <!-- Carousel Navigation & Follow CTA -->
+              <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                <div class="community-carousel-controls">
+                  <span id="communityCarouselCounter" style="font-size:12px; font-weight:600; color:var(--text-muted); padding:6px 12px; background:var(--bg-warm); border:1px solid var(--border); border-radius:16px;">1 / 10</span>
+                  <button id="communityCarouselPrev" class="carousel-nav-btn" aria-label="Previous story">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                  </button>
+                  <button id="communityCarouselNext" class="carousel-nav-btn" aria-label="Next story">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </button>
+                </div>
+                <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:8px 16px; font-size:13.5px; border-radius:10px; display:inline-flex; align-items:center; gap:8px;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  <span>Follow on Instagram</span>
+                </a>
+              </div>
             </div>
 
-            <!-- 6-Photo Responsive Grid (Hopesway Documentary Photography) -->
-            <div class="instagram-photo-grid" style="display:grid; grid-template-columns:repeat(6, 1fr); gap:12px;">
-              
-              <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="insta-grid-item" style="border-radius:12px; overflow:hidden; aspect-ratio:1/1; position:relative; display:block; box-shadow:0 2px 6px rgba(0,0,0,0.06);" title="Cooking & Daily Living · @hopeswaycare">
-                <img src="hero-support-worker.jpg" alt="Hopesway cooking and daily living support" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
-                <div class="insta-overlay" style="position:absolute; inset:0; background:rgba(28,43,43,0.35); opacity:0; transition:opacity 200ms ease; display:flex; align-items:center; justify-content:center; color:#FFFFFF;">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                </div>
-              </a>
+            <!-- 10 Diverse Documentary Stories Carousel Track -->
+            <div class="community-carousel-wrap">
+              <div id="communityCarouselViewport" class="community-carousel-viewport" tabindex="0" aria-label="Community documentary photo carousel">
+                
+                <!-- Card 1 -->
+                <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="community-carousel-card">
+                  <div class="community-card-media">
+                    <img src="community-kitchen-prep.jpg" alt="Support worker Liam and Margaret preparing meals together" loading="lazy">
+                    <span class="community-card-pill">Culinary Skills</span>
+                    <span class="community-card-insta-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                      Story
+                    </span>
+                  </div>
+                  <div class="community-card-body">
+                    <div class="community-card-header">
+                      <div class="community-card-names">Liam &amp; Margaret</div>
+                      <div class="community-card-location">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Hope Island · Gold Coast
+                      </div>
+                    </div>
+                    <p class="community-card-caption">Fresh kitchen meal prep and building confident daily living skills together.</p>
+                    <span class="community-card-cta">View on Instagram &rarr;</span>
+                  </div>
+                </a>
 
-              <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="insta-grid-item" style="border-radius:12px; overflow:hidden; aspect-ratio:1/1; position:relative; display:block; box-shadow:0 2px 6px rgba(0,0,0,0.06);" title="Life Skills & Independence · @hopeswaycare">
-                <img src="hero-bento-cooking.jpg" alt="Daily life skills and home cooking" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
-                <div class="insta-overlay" style="position:absolute; inset:0; background:rgba(28,43,43,0.35); opacity:0; transition:opacity 200ms ease; display:flex; align-items:center; justify-content:center; color:#FFFFFF;">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                </div>
-              </a>
+                <!-- Card 2 -->
+                <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="community-carousel-card">
+                  <div class="community-card-media">
+                    <img src="community-garden-walk.jpg" alt="Support worker Amina and Harold walking in botanical garden" loading="lazy">
+                    <span class="community-card-pill">Gentle Movement</span>
+                    <span class="community-card-insta-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                      Story
+                    </span>
+                  </div>
+                  <div class="community-card-body">
+                    <div class="community-card-header">
+                      <div class="community-card-names">Amina &amp; Harold</div>
+                      <div class="community-card-location">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Southport Botanical Gardens
+                      </div>
+                    </div>
+                    <p class="community-card-caption">Morning sunshine walks, fresh air, and mobility support amidst sub-tropical greenery.</p>
+                    <span class="community-card-cta">View on Instagram &rarr;</span>
+                  </div>
+                </a>
 
-              <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="insta-grid-item" style="border-radius:12px; overflow:hidden; aspect-ratio:1/1; position:relative; display:block; box-shadow:0 2px 6px rgba(0,0,0,0.06);" title="Community Outings · @hopeswaycare">
-                <img src="hero-bento-community.jpg" alt="Community outing and social participation" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
-                <div class="insta-overlay" style="position:absolute; inset:0; background:rgba(28,43,43,0.35); opacity:0; transition:opacity 200ms ease; display:flex; align-items:center; justify-content:center; color:#FFFFFF;">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                </div>
-              </a>
+                <!-- Card 3 -->
+                <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="community-carousel-card">
+                  <div class="community-card-media">
+                    <img src="community-coastal-outing.jpg" alt="Support worker Jarrah and Nathan strolling Burleigh beachfront" loading="lazy">
+                    <span class="community-card-pill">Coastal Outing</span>
+                    <span class="community-card-insta-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                      Story
+                    </span>
+                  </div>
+                  <div class="community-card-body">
+                    <div class="community-card-header">
+                      <div class="community-card-names">Jarrah &amp; Nathan</div>
+                      <div class="community-card-location">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Burleigh Heads Boardwalk
+                      </div>
+                    </div>
+                    <p class="community-card-caption">Ocean breezes, accessible foreshore pathways, and taking in the Gold Coast surf.</p>
+                    <span class="community-card-cta">View on Instagram &rarr;</span>
+                  </div>
+                </a>
 
-              <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="insta-grid-item" style="border-radius:12px; overflow:hidden; aspect-ratio:1/1; position:relative; display:block; box-shadow:0 2px 6px rgba(0,0,0,0.06);" title="Aged Care Companionship · @hopeswaycare">
-                <img src="hero-bento-aged-care.jpg" alt="In-home aged care companionship" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
-                <div class="insta-overlay" style="position:absolute; inset:0; background:rgba(28,43,43,0.35); opacity:0; transition:opacity 200ms ease; display:flex; align-items:center; justify-content:center; color:#FFFFFF;">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                </div>
-              </a>
+                <!-- Card 4 -->
+                <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="community-carousel-card">
+                  <div class="community-card-media">
+                    <img src="community-art-session.jpg" alt="Support worker Priya and Chloe painting watercolors" loading="lazy">
+                    <span class="community-card-pill">Creative Expression</span>
+                    <span class="community-card-insta-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                      Story
+                    </span>
+                  </div>
+                  <div class="community-card-body">
+                    <div class="community-card-header">
+                      <div class="community-card-names">Priya &amp; Chloe</div>
+                      <div class="community-card-location">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Robina Creative Studio
+                      </div>
+                    </div>
+                    <p class="community-card-caption">Watercolor creativity, fine motor skill fun, and exploring colorful new ideas.</p>
+                    <span class="community-card-cta">View on Instagram &rarr;</span>
+                  </div>
+                </a>
 
-              <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="insta-grid-item" style="border-radius:12px; overflow:hidden; aspect-ratio:1/1; position:relative; display:block; box-shadow:0 2px 6px rgba(0,0,0,0.06);" title="Respite / STA Stays · @hopeswaycare">
-                <img src="svc-respite.jpg" alt="Short term accommodation respite" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
-                <div class="insta-overlay" style="position:absolute; inset:0; background:rgba(28,43,43,0.35); opacity:0; transition:opacity 200ms ease; display:flex; align-items:center; justify-content:center; color:#FFFFFF;">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                </div>
-              </a>
+                <!-- Card 5 -->
+                <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="community-carousel-card">
+                  <div class="community-card-media">
+                    <img src="community-tea-veranda.jpg" alt="Support worker Sarah and Elsie sharing morning tea" loading="lazy">
+                    <span class="community-card-pill">Companionship</span>
+                    <span class="community-card-insta-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                      Story
+                    </span>
+                  </div>
+                  <div class="community-card-body">
+                    <div class="community-card-header">
+                      <div class="community-card-names">Sarah &amp; Elsie</div>
+                      <div class="community-card-location">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Tamborine Mountain
+                      </div>
+                    </div>
+                    <p class="community-card-caption">Veranda morning tea, listening to treasured life stories, and genuine human presence.</p>
+                    <span class="community-card-cta">View on Instagram &rarr;</span>
+                  </div>
+                </a>
 
-              <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="insta-grid-item" style="border-radius:12px; overflow:hidden; aspect-ratio:1/1; position:relative; display:block; box-shadow:0 2px 6px rgba(0,0,0,0.06);" title="Accessible Transport · @hopeswaycare">
-                <img src="svc-transport.jpg" alt="Accessible community transport" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
-                <div class="insta-overlay" style="position:absolute; inset:0; background:rgba(28,43,43,0.35); opacity:0; transition:opacity 200ms ease; display:flex; align-items:center; justify-content:center; color:#FFFFFF;">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                </div>
-              </a>
+                <!-- Card 6 -->
+                <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="community-carousel-card">
+                  <div class="community-card-media">
+                    <img src="community-transport-van.jpg" alt="Support worker Manoa assisting Arthur with transport van" loading="lazy">
+                    <span class="community-card-pill">Safe Transport</span>
+                    <span class="community-card-insta-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                      Story
+                    </span>
+                  </div>
+                  <div class="community-card-body">
+                    <div class="community-card-header">
+                      <div class="community-card-names">Manoa &amp; Arthur</div>
+                      <div class="community-card-location">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Broadbeach
+                      </div>
+                    </div>
+                    <p class="community-card-caption">Reliable, wheelchair-accessible transport to doctor visits, shopping, and family outings.</p>
+                    <span class="community-card-cta">View on Instagram &rarr;</span>
+                  </div>
+                </a>
 
+                <!-- Card 7 -->
+                <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="community-carousel-card">
+                  <div class="community-card-media">
+                    <img src="community-board-games.jpg" alt="Support worker Tyler playing board games with Ben" loading="lazy">
+                    <span class="community-card-pill">Social Connection</span>
+                    <span class="community-card-insta-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                      Story
+                    </span>
+                  </div>
+                  <div class="community-card-body">
+                    <div class="community-card-header">
+                      <div class="community-card-names">Tyler &amp; Ben</div>
+                      <div class="community-card-location">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Varsity Lakes
+                      </div>
+                    </div>
+                    <p class="community-card-caption">Friendly board game rivalries, strategy laughs, and weekend downtime connection.</p>
+                    <span class="community-card-cta">View on Instagram &rarr;</span>
+                  </div>
+                </a>
+
+                <!-- Card 8 -->
+                <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="community-carousel-card">
+                  <div class="community-card-media">
+                    <img src="community-market-stroll.jpg" alt="Support worker Mei and Grace picking fresh mangoes at market" loading="lazy">
+                    <span class="community-card-pill">Market Outing</span>
+                    <span class="community-card-insta-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                      Story
+                    </span>
+                  </div>
+                  <div class="community-card-body">
+                    <div class="community-card-header">
+                      <div class="community-card-names">Mei &amp; Grace</div>
+                      <div class="community-card-location">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Palm Beach Farmers Market
+                      </div>
+                    </div>
+                    <p class="community-card-caption">Choosing local Queensland fruit and practicing budgeting skills in the community.</p>
+                    <span class="community-card-cta">View on Instagram &rarr;</span>
+                  </div>
+                </a>
+
+                <!-- Card 9 -->
+                <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="community-carousel-card">
+                  <div class="community-card-media">
+                    <img src="community-park-bench.jpg" alt="Support worker Jordan and Samuel sketching under eucalyptus tree" loading="lazy">
+                    <span class="community-card-pill">Parkland Sketch</span>
+                    <span class="community-card-insta-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                      Story
+                    </span>
+                  </div>
+                  <div class="community-card-body">
+                    <div class="community-card-header">
+                      <div class="community-card-names">Jordan &amp; Samuel</div>
+                      <div class="community-card-location">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Helensvale Parkland
+                      </div>
+                    </div>
+                    <p class="community-card-caption">Shaded paperbark tree sketching, mindful recreation, and relaxing park conversation.</p>
+                    <span class="community-card-cta">View on Instagram &rarr;</span>
+                  </div>
+                </a>
+
+                <!-- Card 10 -->
+                <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" class="community-carousel-card">
+                  <div class="community-card-media">
+                    <img src="community-music-guitar.jpg" alt="Support worker Kofi playing acoustic guitar with George clapping" loading="lazy">
+                    <span class="community-card-pill">Music &amp; Song</span>
+                    <span class="community-card-insta-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                      Story
+                    </span>
+                  </div>
+                  <div class="community-card-body">
+                    <div class="community-card-header">
+                      <div class="community-card-names">Kofi &amp; George</div>
+                      <div class="community-card-location">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Surfers Paradise Living
+                      </div>
+                    </div>
+                    <p class="community-card-caption">Acoustic singalongs, vintage tunes, and clapping hands that bring smiles to the whole room.</p>
+                    <span class="community-card-cta">View on Instagram &rarr;</span>
+                  </div>
+                </a>
+
+              </div>
+
+              <!-- Carousel Progress Indicator Dots -->
+              <div id="communityCarouselDots" class="carousel-progress-bar" aria-hidden="true"></div>
             </div>
 
             <!-- Card Bottom Bar with direct link -->
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:20px; padding-top:16px; border-top:1px solid var(--border);">
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:16px; padding-top:16px; border-top:1px solid var(--border);">
               <span style="font-size:13px; color:var(--text-muted);">
-                Tag <strong>@hopeswaycare</strong> on Instagram to share stories from your week.
+                Tag <strong>@hopeswaycare</strong> on Instagram to share stories from your care journey.
               </span>
               <a href="https://www.instagram.com/hopeswaycare/" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:8px; font-size:13.5px; font-weight:600; color:var(--brand); text-decoration:none;">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
@@ -4550,12 +5247,14 @@
         // Leaf Node Interaction Logic (Hover / Tap / Smart boundary placement)
         let activeLeaf = null;
         let hoverTimeout = null;
+        let lastOpenTimestamp = 0;
 
         function openLeaf(leafEl) {
           if (activeLeaf && activeLeaf !== leafEl) {
             closeLeaf(activeLeaf);
           }
           activeLeaf = leafEl;
+          lastOpenTimestamp = Date.now();
           leafEl.classList.add('is-active');
           const btn = leafEl.querySelector('.tree-node-btn');
           if (btn) btn.setAttribute('aria-expanded', 'true');
@@ -4589,11 +5288,14 @@
           const btn = node.querySelector('.tree-node-btn');
           const card = node.querySelector('.tree-popover-card');
 
-          node.addEventListener('mouseenter', () => {
+          // Pointerenter/leave for desktop mouse; ignore touch-synthesized pointer events
+          node.addEventListener('pointerenter', (e) => {
+            if (e.pointerType === 'touch') return;
             clearTimeout(hoverTimeout);
             openLeaf(node);
           });
-          node.addEventListener('mouseleave', () => {
+          node.addEventListener('pointerleave', (e) => {
+            if (e.pointerType === 'touch') return;
             hoverTimeout = setTimeout(() => {
               closeLeaf(node);
             }, 180);
@@ -4602,6 +5304,10 @@
           if (btn) {
             btn.addEventListener('click', (e) => {
               e.stopPropagation();
+              // Prevent race condition on touch where pointerenter just opened the card <350ms ago
+              if (Date.now() - lastOpenTimestamp < 350) {
+                return;
+              }
               if (node.classList.contains('is-active')) {
                 closeLeaf(node);
               } else {
@@ -4646,7 +5352,7 @@
           const H = Math.round(canopyContainer.offsetHeight || containerRect.height);
           if (H <= 0) return;
 
-          const W = 36;
+          const W = 22;
           spineSvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
           spineSvg.setAttribute('width', `${W}`);
           spineSvg.setAttribute('height', `${H}`);
@@ -4655,29 +5361,36 @@
 
           const rc = window.rough.svg(spineSvg);
 
-          // 1. Slim Vertical Trunk (consistent 10-14px width, lighter hachure fill)
-          const trunkPoly = rc.polygon([
-            [2, 0],
-            [2.5, Math.round(H * 0.25)],
-            [2, Math.round(H * 0.5)],
-            [2.5, Math.round(H * 0.75)],
-            [2, H],
-            [14, H],
-            [13.5, Math.round(H * 0.75)],
-            [14, Math.round(H * 0.5)],
-            [13.5, Math.round(H * 0.25)],
-            [14, 0]
+          // 1. Slim Featherweight Vertical Spine Thread (delicate organic botanical guide line)
+          const spineLinePrimary = rc.curve([
+            [3.5, 0],
+            [3.0, Math.round(H * 0.25)],
+            [4.0, Math.round(H * 0.5)],
+            [3.2, Math.round(H * 0.75)],
+            [3.5, H]
           ], {
             seed: 101,
-            fillStyle: 'hachure',
-            fill: '#6B4423',
-            fillWeight: 1.2,
-            hachureGap: 6,
-            stroke: '#4A2F18',
-            strokeWidth: 1.5,
-            roughness: 1.8
+            stroke: '#5C3A1E',
+            strokeWidth: 2.0,
+            roughness: 1.3,
+            bowing: 0.8
           });
-          spineSvg.appendChild(trunkPoly);
+          spineSvg.appendChild(spineLinePrimary);
+
+          const spineLineSecondary = rc.curve([
+            [3.5, 0],
+            [4.0, Math.round(H * 0.25)],
+            [3.2, Math.round(H * 0.5)],
+            [3.8, Math.round(H * 0.75)],
+            [3.5, H]
+          ], {
+            seed: 102,
+            stroke: '#7D532C',
+            strokeWidth: 1.1,
+            roughness: 1.5,
+            bowing: 1.0
+          });
+          spineSvg.appendChild(spineLineSecondary);
 
           // 2. Category Header Rows (Main Bough Split Points)
           const crowns = canopyContainer.querySelectorAll('.branch-crown');
@@ -4693,35 +5406,35 @@
             const strokeColor = isNdis ? '#1C4B40' : '#8C5E1E';
             const seedBough = isNdis ? 201 : 301;
             const seedBud = isNdis ? 202 : 302;
-            const yAngleOffset = isNdis ? 8 : -8;
+            const yAngleOffset = isNdis ? 6 : -6;
 
-            // Thicker branch stub connecting at upward/downward angle (~18-22px length)
+            // Delicate bough stub connecting at slight angle
             const boughStub = rc.curve([
-              [10, yCenter + yAngleOffset],
-              [Math.round((10 + xCard) / 2), yCenter + Math.round(yAngleOffset * 0.35)],
+              [3.5, yCenter + yAngleOffset],
+              [Math.round((3.5 + xCard) / 2), yCenter + Math.round(yAngleOffset * 0.3)],
               [xCard, yCenter]
             ], {
               seed: seedBough,
-              roughness: 1.8,
+              roughness: 1.6,
               stroke: boughColor,
-              strokeWidth: 3.0,
-              bowing: 1.1
+              strokeWidth: 2.0,
+              bowing: 1.0
             });
             spineSvg.appendChild(boughStub);
 
-            // Small bud circle (~11px) at crown left edge
-            const bud = rc.circle(xCard, yCenter, 11, {
+            // Delicate bud circle (~7px) at crown left edge
+            const bud = rc.circle(xCard, yCenter, 7, {
               seed: seedBud,
               fillStyle: 'solid',
               fill: boughColor,
               stroke: strokeColor,
-              strokeWidth: 1.5,
-              roughness: 1.6
+              strokeWidth: 1.2,
+              roughness: 1.4
             });
             spineSvg.appendChild(bud);
           });
 
-          // 3. Branch Stubs for the 9 Service Cards
+          // 3. Delicate Branch Stubs for the 9 Service Cards
           const cards = canopyContainer.querySelectorAll('.leaf-node');
           cards.forEach((card, idx) => {
             if (card.offsetParent === null) return;
@@ -4734,28 +5447,28 @@
             const stubColor = isNdis ? '#2E6B5E' : '#C98A3E';
             const strokeColor = isNdis ? '#1C4B40' : '#8C5E1E';
 
-            // Short horizontal curve stroke (~18-22px, roughness 2.0)
+            // Short horizontal curve stroke
             const stub = rc.curve([
-              [10, yCenter],
-              [Math.round((10 + xCard) / 2), yCenter - 0.5],
+              [3.5, yCenter],
+              [Math.round((3.5 + xCard) / 2), yCenter - 0.4],
               [xCard, yCenter]
             ], {
               seed: 1000 + idx,
-              roughness: 2.0,
+              roughness: 1.8,
               stroke: stubColor,
-              strokeWidth: 1.8,
-              bowing: 1.05
+              strokeWidth: 1.4,
+              bowing: 1.0
             });
             spineSvg.appendChild(stub);
 
-            // Shrunk bud circle (~8-10px, 9px) sitting right at the card's left edge
-            const bud = rc.circle(xCard, yCenter, 9, {
+            // Tiny delicate bud circle (~6px) sitting right at the card's left edge
+            const bud = rc.circle(xCard, yCenter, 6, {
               seed: 2000 + idx,
               fillStyle: 'solid',
               fill: stubColor,
               stroke: strokeColor,
-              strokeWidth: 1.2,
-              roughness: 1.5
+              strokeWidth: 1.0,
+              roughness: 1.3
             });
             spineSvg.appendChild(bud);
           });
@@ -4976,7 +5689,327 @@
         renderShader();
       }
     })();
+
+    /* ============================================================
+       COMMUNITY CAROUSEL INTERACTION (React-Bits Inspired)
+       ============================================================ */
+    (function initCommunityCarousel() {
+      const viewport = document.getElementById('communityCarouselViewport');
+      const prevBtn = document.getElementById('communityCarouselPrev');
+      const nextBtn = document.getElementById('communityCarouselNext');
+      const counter = document.getElementById('communityCarouselCounter');
+      const dotsContainer = document.getElementById('communityCarouselDots');
+      if (!viewport) return;
+
+      const cards = viewport.querySelectorAll('.community-carousel-card');
+      const totalCards = cards.length;
+      if (totalCards === 0) return;
+
+      // Build dot indicators
+      if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        cards.forEach((_, idx) => {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
+          dot.style.border = 'none';
+          dot.style.padding = '0';
+          dot.addEventListener('click', () => {
+            scrollToIndex(idx);
+          });
+          dotsContainer.appendChild(dot);
+        });
+      }
+
+      function getCardWidth() {
+        const card = cards[0];
+        if (!card) return 310;
+        const style = window.getComputedStyle(viewport);
+        const gap = parseFloat(style.gap) || 16;
+        return card.offsetWidth + gap;
+      }
+
+      function updateCarouselState() {
+        const scrollLeft = viewport.scrollLeft;
+        const cardWidth = getCardWidth();
+        let activeIdx = Math.round(scrollLeft / cardWidth);
+        activeIdx = Math.max(0, Math.min(activeIdx, totalCards - 1));
+
+        if (counter) {
+          counter.textContent = `${activeIdx + 1} / ${totalCards}`;
+        }
+
+        if (dotsContainer) {
+          const dots = dotsContainer.querySelectorAll('.carousel-dot');
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === activeIdx);
+          });
+        }
+
+        if (prevBtn) prevBtn.disabled = activeIdx === 0;
+        if (nextBtn) nextBtn.disabled = activeIdx >= totalCards - 1;
+      }
+
+      function scrollToIndex(idx) {
+        const cardWidth = getCardWidth();
+        viewport.scrollTo({
+          left: idx * cardWidth,
+          behavior: 'smooth'
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          const cardWidth = getCardWidth();
+          viewport.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          const cardWidth = getCardWidth();
+          viewport.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+      }
+
+      let isDragging = false;
+      let startX = 0;
+      let scrollStart = 0;
+      let hasDragged = false;
+
+      viewport.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        hasDragged = false;
+        startX = e.pageX - viewport.offsetLeft;
+        scrollStart = viewport.scrollLeft;
+        viewport.classList.add('is-dragging');
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const x = e.pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 1.4;
+        if (Math.abs(walk) > 5) hasDragged = true;
+        viewport.scrollLeft = scrollStart - walk;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          viewport.classList.remove('is-dragging');
+        }
+      });
+
+      // Prevent card link triggers during drag
+      viewport.addEventListener('click', (e) => {
+        if (hasDragged) {
+          e.preventDefault();
+          e.stopPropagation();
+          hasDragged = false;
+        }
+      }, true);
+
+      let scrollTimeout = null;
+      viewport.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateCarouselState, 40);
+      }, { passive: true });
+
+      // Keyboard navigation
+      viewport.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          viewport.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+        } else if (e.key === 'ArrowRight') {
+          viewport.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+        }
+      });
+
+      updateCarouselState();
+    })();
+
+    /* ============================================================
+       HOPESWAY LIVE CARE CHAT & LEADCONNECTOR CONTROLLER
+       ============================================================ */
+    (function initHopeswayChat() {
+      const widget = document.getElementById('hopeswayChatWidget');
+      const trigger = document.getElementById('hopeswayChatTrigger');
+      const drawer = document.getElementById('hopeswayChatDrawer');
+      const closeBtn = document.getElementById('chatCloseBtn');
+      const iconOpen = document.getElementById('chatTriggerIconOpen');
+      const iconClose = document.getElementById('chatTriggerIconClose');
+      const form = document.getElementById('chatMessageForm');
+      const successMsg = document.getElementById('chatSuccessMsg');
+      if (!widget || !trigger || !drawer) return;
+
+      function openDrawer() {
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        trigger.setAttribute('aria-expanded', 'true');
+        if (iconOpen) iconOpen.style.display = 'none';
+        if (iconClose) iconClose.style.display = 'inline-flex';
+        const teaser = trigger.querySelector('.chat-trigger-teaser');
+        if (teaser) teaser.style.display = 'none';
+        const nameInput = drawer.querySelector('#chatName');
+        if (nameInput) setTimeout(() => nameInput.focus(), 150);
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        trigger.setAttribute('aria-expanded', 'false');
+        if (iconOpen) iconOpen.style.display = 'inline-flex';
+        if (iconClose) iconClose.style.display = 'none';
+        trigger.focus();
+      }
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (drawer.classList.contains('is-open')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      });
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          closeDrawer();
+        });
+      }
+
+      // Close on escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+          closeDrawer();
+        }
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', (e) => {
+        if (drawer.classList.contains('is-open') && !widget.contains(e.target)) {
+          closeDrawer();
+        }
+      });
+
+      // Handle chat message submit
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const submitBtn = form.querySelector('.chat-submit-btn');
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Sending...';
+          }
+          setTimeout(() => {
+            form.style.display = 'none';
+            if (successMsg) successMsg.style.display = 'block';
+          }, 600);
+        });
+      }
+
+      // LeadConnector / GHL auto-detection: if native GHL widget ever injects into DOM, yield to it
+      const ghlObserver = new MutationObserver(() => {
+        const nativeGhl = document.querySelector('#chat-widget-container, iframe[src*="leadconnectorhq"]');
+        if (nativeGhl) {
+          widget.style.display = 'none';
+          ghlObserver.disconnect();
+        }
+      });
+      ghlObserver.observe(document.body, { childList: true, subtree: true });
+    })();
   </script>
+
+  <!-- ============================================================
+       HOPESWAY LIVE CARE CHAT & INQUIRY WIDGET
+       ============================================================ -->
+  <div id="hopeswayChatWidget" class="hopesway-chat-widget">
+    <!-- Chat Drawer Modal -->
+    <div id="hopeswayChatDrawer" class="hopesway-chat-drawer" role="dialog" aria-modal="true" aria-labelledby="chatDrawerTitle" aria-hidden="true">
+      <div class="chat-drawer-header">
+        <div class="chat-header-avatar">
+          <svg viewBox="0 0 180 180" width="28" height="28">
+            <g transform="translate(88, 46) rotate(45)"><rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#EE2737" /></g>
+            <g transform="translate(46.5, 89.5) rotate(45)"><rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#468C2C" /></g>
+            <g transform="translate(130, 90) rotate(45)"><rect x="-23.5" y="-23.5" width="47" height="47" rx="10" ry="10" fill="#F4B320" /></g>
+            <g stroke="#392E2D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="88.5" y1="165" x2="88.5" y2="46" /><line x1="88.5" y1="130" x2="46" y2="89" /><line x1="88.5" y1="130" x2="131" y2="89" /></g>
+          </svg>
+        </div>
+        <div class="chat-header-info">
+          <h3 id="chatDrawerTitle">Hopesway Care Support</h3>
+          <span class="chat-online-status"><span class="chat-pulse-dot"></span> Online · Response in ~5 mins</span>
+        </div>
+        <button id="chatCloseBtn" class="chat-close-btn" aria-label="Close live chat">&times;</button>
+      </div>
+      
+      <div class="chat-drawer-body">
+        <div class="chat-intro-bubble">
+          <p style="margin:0 0 6px;"><strong>G'day! Welcome to Hopesway.</strong></p>
+          <p style="margin:0;">How can our local team assist you today? Choose an option or send a message below:</p>
+        </div>
+
+        <!-- Quick 1-Tap Action Pills -->
+        <div class="chat-quick-actions">
+          <a href="tel:1300314114" class="chat-quick-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>Call Intake: 1300 314 114</span>
+          </a>
+          <a href="https://wa.me/61413204907" target="_blank" rel="noopener noreferrer" class="chat-quick-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            <span>WhatsApp / Quick SMS</span>
+          </a>
+          <a href="refer.html" class="chat-quick-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            <span>Make an Online Referral</span>
+          </a>
+        </div>
+
+        <!-- Direct Message Form -->
+        <form id="chatMessageForm" class="chat-form">
+          <div class="chat-form-field">
+            <label for="chatName">Your Name</label>
+            <input type="text" id="chatName" name="name" placeholder="e.g. Sarah Mitchell" required>
+          </div>
+          <div class="chat-form-field">
+            <label for="chatContact">Phone or Email</label>
+            <input type="text" id="chatContact" name="contact" placeholder="e.g. 0412 345 678" required>
+          </div>
+          <div class="chat-form-field">
+            <label for="chatMessage">How can we support you?</label>
+            <textarea id="chatMessage" name="message" rows="2" placeholder="NDIS plan, aged care support, respite inquiry..." required></textarea>
+          </div>
+          <button type="submit" class="chat-submit-btn">
+            <span>Send Direct Message</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+        </form>
+        <div id="chatSuccessMsg" class="chat-success-msg" style="display:none;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E6B5E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 6px; display:block;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <p><strong>Message received!</strong><br>Our intake coordinator will reach out to you within minutes.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Chat Trigger Button -->
+    <button id="hopeswayChatTrigger" class="hopesway-chat-trigger" aria-label="Open live chat with Hopesway care coordinator" aria-expanded="false">
+      <span class="chat-trigger-pulse"></span>
+      <span id="chatTriggerIconOpen" class="chat-trigger-icon-chat">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+      </span>
+      <span id="chatTriggerIconClose" class="chat-trigger-icon-close" style="display:none;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </span>
+      <!-- Teaser Pill -->
+      <span class="chat-trigger-teaser">
+        <span class="teaser-dot"></span> Chat with Care Team
+      </span>
+    </button>
+  </div>
 
   <!-- LeadConnector / GHL Webchat Widget -->
   <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="YOUR_WIDGET_ID"></script>
