@@ -4282,25 +4282,124 @@
           const rc = window.rough.svg(svg);
           const elements = [];
 
-          // 1. Trunk: [450,650], [440,550], [460,450], [450,400]. Color #6B4423 (brown), strokeWidth 8
-          const trunk = rc.curve([
-            [450, 650], [440, 550], [460, 450], [450, 400]
-          ], { roughness: 1.8, stroke: '#6B4423', strokeWidth: 8, bowing: 1.2 });
-          elements.push({ node: trunk, delay: 0 });
+          // Leaf node coordinate map
+          const leafPoints = [
+            { x: 90, y: 280, type: 'ndis' },
+            { x: 70, y: 190, type: 'ndis' },
+            { x: 150, y: 110, type: 'ndis' },
+            { x: 260, y: 80, type: 'ndis' },
+            { x: 320, y: 180, type: 'ndis' },
+            { x: 630, y: 80, type: 'aged' },
+            { x: 760, y: 100, type: 'aged' },
+            { x: 830, y: 190, type: 'aged' },
+            { x: 810, y: 280, type: 'aged' }
+          ];
 
-          // 2. Left main bough (NDIS side): [450,400], [380,370], [300,340], [220,310]. Color #2E6B5E, strokeWidth 6
-          const leftBough = rc.curve([
-            [450, 400], [380, 370], [300, 340], [220, 310]
-          ], { roughness: 1.8, stroke: '#2E6B5E', strokeWidth: 6, bowing: 1.1 });
-          elements.push({ node: leftBough, delay: 150 });
+          // 1. FOLIAGE CLUSTERS (drawn FIRST in z-order in SVG so white node circles sit on top)
+          leafPoints.forEach((lp, idx) => {
+            const isNdis = lp.type === 'ndis';
+            const fColor = isNdis ? 'rgba(58, 125, 108, 0.35)' : 'rgba(217, 162, 83, 0.35)';
+            const sColor = isNdis ? 'rgba(46, 107, 94, 0.55)' : 'rgba(201, 138, 62, 0.55)';
+            const folOpts = {
+              fillStyle: 'hachure',
+              fill: fColor,
+              stroke: sColor,
+              strokeWidth: 1.4,
+              fillWeight: 1.5,
+              hachureGap: 4,
+              roughness: 2
+            };
 
-          // 3. Right main bough (Aged Care side): [450,400], [520,370], [600,340], [680,310]. Color #C98A3E, strokeWidth 6
-          const rightBough = rc.curve([
-            [450, 400], [520, 370], [600, 340], [680, 310]
-          ], { roughness: 1.8, stroke: '#C98A3E', strokeWidth: 6, bowing: 1.1 });
-          elements.push({ node: rightBough, delay: 150 });
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            g.appendChild(rc.circle(lp.x - 16, lp.y - 14, 42, folOpts));
+            g.appendChild(rc.circle(lp.x + 16, lp.y - 12, 40, folOpts));
+            g.appendChild(rc.circle(lp.x, lp.y + 18, 38, folOpts));
+            g.appendChild(rc.circle(lp.x - 2, lp.y - 20, 36, folOpts));
 
-          // 4. 5 sub-branches from left bough [220,310] to NDIS leaves (color #2E6B5E, strokeWidth 4)
+            elements.push({ node: g, delay: 500 + idx * 30 });
+          });
+
+          // 2. TRUNK: Tapered closed polygon (base width ~44px, top width ~16px)
+          const trunkPoly = rc.polygon([
+            [428, 650], [422, 550], [448, 450], [442, 400],
+            [458, 400], [472, 450], [458, 550], [472, 650]
+          ], {
+            fillStyle: 'hachure',
+            fill: '#6B4423',
+            fillWeight: 2,
+            hachureGap: 4,
+            stroke: '#4A2F18',
+            strokeWidth: 2,
+            roughness: 2.2
+          });
+          elements.push({ node: trunkPoly, delay: 0 });
+
+          // 3. MAIN BOUGHS (tapered polygons, base ~22px, tapering to ~8px at branch ends)
+          // Left Main Bough (NDIS, green)
+          const leftBoughPoly = rc.polygon([
+            [444, 392], [382, 362], [302, 334], [222, 306],
+            [218, 310],
+            [222, 314], [298, 346], [378, 378], [452, 412]
+          ], {
+            fillStyle: 'hachure',
+            fill: '#3A7D6C',
+            fillWeight: 2,
+            hachureGap: 4,
+            stroke: '#1C4B40',
+            strokeWidth: 2,
+            roughness: 2.2
+          });
+          elements.push({ node: leftBoughPoly, delay: 180 });
+
+          // Right Main Bough (Aged Care, amber)
+          const rightBoughPoly = rc.polygon([
+            [456, 392], [518, 362], [598, 334], [678, 306],
+            [682, 310],
+            [678, 314], [602, 346], [522, 378], [448, 412]
+          ], {
+            fillStyle: 'hachure',
+            fill: '#D9A253',
+            fillWeight: 2,
+            hachureGap: 4,
+            stroke: '#8C5E1E',
+            strokeWidth: 2,
+            roughness: 2.2
+          });
+          elements.push({ node: rightBoughPoly, delay: 180 });
+
+          // 4. SECONDARY TWIGS (4-6 decorative sprigs 40-70px branching off main boughs)
+          const twigs = [
+            // Left twigs
+            { pts: [[395, 365], [375, 335], [350, 320]], color: '#2E6B5E', tip: [350, 320], type: 'ndis' },
+            { pts: [[335, 345], [315, 370], [290, 385]], color: '#2E6B5E', tip: [290, 385], type: 'ndis' },
+            { pts: [[255, 318], [240, 285], [225, 260]], color: '#2E6B5E', tip: [225, 260], type: 'ndis' },
+            // Right twigs
+            { pts: [[505, 365], [525, 335], [550, 320]], color: '#C98A3E', tip: [550, 320], type: 'aged' },
+            { pts: [[565, 345], [585, 370], [610, 385]], color: '#C98A3E', tip: [610, 385], type: 'aged' },
+            { pts: [[645, 318], [660, 285], [675, 260]], color: '#C98A3E', tip: [675, 260], type: 'aged' }
+          ];
+
+          twigs.forEach((tw, idx) => {
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            // Twig stem
+            g.appendChild(rc.curve(tw.pts, { roughness: 2.5, stroke: tw.color, strokeWidth: 2, bowing: 1.3 }));
+            // Small tip leaf accent
+            const isNdis = tw.type === 'ndis';
+            const fColor = isNdis ? 'rgba(58, 125, 108, 0.35)' : 'rgba(217, 162, 83, 0.35)';
+            const sColor = isNdis ? 'rgba(46, 107, 94, 0.5)' : 'rgba(201, 138, 62, 0.5)';
+            g.appendChild(rc.circle(tw.tip[0], tw.tip[1], 20, {
+              fillStyle: 'hachure',
+              fill: fColor,
+              stroke: sColor,
+              strokeWidth: 1.2,
+              fillWeight: 1.2,
+              hachureGap: 3.5,
+              roughness: 2
+            }));
+            elements.push({ node: g, delay: 320 + idx * 40 });
+          });
+
+          // 5. SUB-BRANCHES (9 thin lines to each node, roughness 2.5, double-stroke hand-inked look)
           const ndisBranches = [
             [[220, 310], [150, 305], [90, 280]],
             [[220, 310], [135, 250], [70, 190]],
@@ -4310,11 +4409,13 @@
           ];
 
           ndisBranches.forEach((pts, i) => {
-            const b = rc.curve(pts, { roughness: 1.8, stroke: '#2E6B5E', strokeWidth: 4, bowing: 1.1 });
-            elements.push({ node: b, delay: 300 + i * 75 });
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            // Double stroke for organic hand-inked line weight
+            g.appendChild(rc.curve(pts, { roughness: 2.5, stroke: '#2E6B5E', strokeWidth: 2.5, bowing: 1.2 }));
+            g.appendChild(rc.curve(pts, { roughness: 2.5, stroke: '#2E6B5E', strokeWidth: 2.5, bowing: 1.2 }));
+            elements.push({ node: g, delay: 420 + i * 45 });
           });
 
-          // 5. 4 sub-branches from right bough [680,310] to Aged Care leaves (color #C98A3E, strokeWidth 4)
           const agedBranches = [
             [[680, 310], [750, 305], [810, 280]],
             [[680, 310], [765, 250], [830, 190]],
@@ -4323,8 +4424,11 @@
           ];
 
           agedBranches.forEach((pts, i) => {
-            const b = rc.curve(pts, { roughness: 1.8, stroke: '#C98A3E', strokeWidth: 4, bowing: 1.1 });
-            elements.push({ node: b, delay: 300 + i * 75 });
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            // Double stroke for organic hand-inked line weight
+            g.appendChild(rc.curve(pts, { roughness: 2.5, stroke: '#C98A3E', strokeWidth: 2.5, bowing: 1.2 }));
+            g.appendChild(rc.curve(pts, { roughness: 2.5, stroke: '#C98A3E', strokeWidth: 2.5, bowing: 1.2 }));
+            elements.push({ node: g, delay: 420 + i * 45 });
           });
 
           // Append to SVG and animate paths
@@ -4337,7 +4441,7 @@
                   const len = p.getTotalLength();
                   p.style.strokeDasharray = len + ' ' + len;
                   p.style.strokeDashoffset = len;
-                  p.style.transition = `stroke-dashoffset 420ms cubic-bezier(0.25, 1, 0.5, 1) ${item.delay}ms, opacity 250ms ease ${item.delay}ms`;
+                  p.style.transition = `stroke-dashoffset 450ms cubic-bezier(0.25, 1, 0.5, 1) ${item.delay}ms, opacity 250ms ease ${item.delay}ms`;
                   p.style.opacity = '0';
                   setTimeout(() => {
                     p.style.strokeDashoffset = '0';
@@ -4361,9 +4465,9 @@
               leafNodes.forEach((n, i) => {
                 setTimeout(() => {
                   n.classList.add('is-revealed');
-                }, i * 50);
+                }, i * 45);
               });
-            }, 650);
+            }, 750);
           }
           return true;
         }
