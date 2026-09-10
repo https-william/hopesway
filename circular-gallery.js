@@ -61,6 +61,9 @@ class Title {
     const { texture, width, height } = createTextTexture(this.gl, this.text, this.font, this.textColor);
     const geometry = new Plane(this.gl);
     const program = new Program(this.gl, {
+      depthTest: false,
+      depthWrite: false,
+      cullFace: null,
       vertex: `
         attribute vec3 position;
         attribute vec2 uv;
@@ -87,10 +90,10 @@ class Title {
     });
     this.mesh = new Mesh(this.gl, { geometry, program });
     const aspect = width / height;
-    const textHeight = this.plane.scale.y * 0.12;
+    const textHeight = 0.13;
     const textWidth = textHeight * aspect;
     this.mesh.scale.set(textWidth, textHeight, 1);
-    this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeight * 0.5 - 0.08;
+    this.mesh.position.y = -0.5 - textHeight * 0.5 - 0.06;
     this.mesh.setParent(this.plane);
   }
 }
@@ -143,6 +146,7 @@ class Media {
     this.program = new Program(this.gl, {
       depthTest: false,
       depthWrite: false,
+      cullFace: null,
       vertex: `
         precision highp float;
         attribute vec3 position;
@@ -203,12 +207,18 @@ class Media {
       transparent: true
     });
     const img = new Image();
-    img.crossOrigin = 'anonymous';
+    if (this.image && (this.image.startsWith('http://') || this.image.startsWith('https://'))) {
+      img.crossOrigin = 'anonymous';
+    }
     img.src = this.image;
     img.onload = () => {
       texture.image = img;
       this.program.uniforms.uImageSizes.value = [img.naturalWidth || 800, img.naturalHeight || 600];
     };
+    if (img.complete && img.naturalWidth) {
+      texture.image = img;
+      this.program.uniforms.uImageSizes.value = [img.naturalWidth, img.naturalHeight];
+    }
   }
   createMesh() {
     this.plane = new Mesh(this.gl, {
@@ -282,13 +292,13 @@ class Media {
     const isMobile = width < 640;
     const isTablet = width < 1024;
 
-    // Responsive scaling for ideal card proportions on all devices
-    const scaleFactor = isMobile ? 0.46 : (isTablet ? 0.40 : 0.36);
+    // Responsive scaling for ideal 4:3 card proportions that fit nicely on all screens
+    const scaleFactor = isMobile ? 0.44 : (isTablet ? 0.40 : 0.38);
     this.plane.scale.y = this.viewport.height * scaleFactor;
-    this.plane.scale.x = this.plane.scale.y * 1.32; // 4:3 card proportion
+    this.plane.scale.x = this.plane.scale.y * 1.333; // 4:3 card proportion
 
     this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
-    this.padding = isMobile ? 0.7 : 1.2;
+    this.padding = isMobile ? 0.65 : 0.95;
     this.width = this.plane.scale.x + this.padding;
     this.widthTotal = this.width * this.length;
     this.x = this.width * this.index;
@@ -328,6 +338,7 @@ export class CircularGalleryApp {
     this.renderer = new Renderer({
       alpha: true,
       antialias: true,
+      preserveDrawingBuffer: true,
       dpr: Math.min(window.devicePixelRatio || 1, 2)
     });
     this.gl = this.renderer.gl;
