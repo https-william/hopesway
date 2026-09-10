@@ -17,7 +17,10 @@
   --border-focus: #2E6B5E;
   
   --text-primary: #1C2B2B;
-  --text-muted: #4B5563;
+  --text-muted: #3E4D4B; /* Calibrated high-contrast muted text (8.2:1 against #FAF7F4, WCAG AAA) */
+  --text-ochre: #8C5310;
+  --text-green-deep: #1E5045;
+  --text-coral: #C94420;
   --text-inverse: #FFFFFF;
 
   --brand-primary: #2E6B5E;

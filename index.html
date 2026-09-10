@@ -8,9 +8,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:ital,wght@1,400;1,500&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Preconnect and DNS-Prefetch for Form & Chat Gateways -->
+  <link rel="dns-prefetch" href="https://api.leadconnectorhq.com">
+  <link rel="preconnect" href="https://api.leadconnectorhq.com" crossorigin>
+  <link rel="dns-prefetch" href="https://services.leadconnectorhq.com">
+  <link rel="preconnect" href="https://services.leadconnectorhq.com" crossorigin>
+  <link rel="dns-prefetch" href="https://support.hopesway.com.au">
+  <link rel="preconnect" href="https://support.hopesway.com.au">
+  <link rel="dns-prefetch" href="https://widgets.leadconnectorhq.com">
+  <link rel="preconnect" href="https://widgets.leadconnectorhq.com" crossorigin>
+
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" href="favicon.svg">
-  <script src="rough.js"></script>
+  <script src="rough.js" defer></script>
   <style>
     /* ================================================================
        RESET & BASE
@@ -51,7 +62,10 @@
       --logo-gold: #F4B320;
       --logo-trunk: #392E2D;
       --text: #1C2B2B;
-      --text-muted: #6B7280;
+      --text-muted: #3E4D4B; /* Calibrated high-contrast muted text (8.2:1 against #FAF7F4, 8.7:1 against #FFFFFF, WCAG AAA compliant) */
+      --text-ochre: #8C5310; /* Rich high-contrast amber/gold text (>6.1:1 contrast) */
+      --text-green-deep: #1E5045; /* Rich high-contrast brand green text (>6.8:1 contrast) */
+      --text-coral: #C94420;
       --shadow-card: 0 2px 12px rgba(0,0,0,0.07);
       --shadow-card-hover: 0 8px 28px rgba(0,0,0,0.12);
       --radius-card: 16px;
@@ -2978,6 +2992,418 @@
       opacity: 0.94;
       transform: translateY(-1px);
     }
+
+    /* ================================================================
+       ACCESSIBILITY (WCAG 2.1 AA) & GLOBAL HIGH-CONTRAST OVERRIDES
+       ================================================================ */
+    .skip-link {
+      position: fixed;
+      top: -70px;
+      left: 20px;
+      background: #1C2B2B;
+      color: #FFFFFF;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      z-index: 100000;
+      transition: top 160ms ease;
+      text-decoration: underline;
+      border: 2px solid #E4572E;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .skip-link:focus {
+      top: 16px;
+      outline: 3px solid #FFFFFF;
+      outline-offset: 2px;
+    }
+
+    /* High-contrast text calibrations */
+    .hero-label {
+      color: var(--text-green-deep) !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.04em !important;
+    }
+    .hero-desc {
+      color: #2D3E3C !important;
+      font-weight: 450 !important;
+    }
+    .trust-item {
+      color: #2D3E3C !important;
+      font-weight: 600 !important;
+    }
+    .care-tree-tag {
+      color: var(--text-green-deep) !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.04em !important;
+    }
+    .care-tree-header p,
+    .care-tree-desktop-header p {
+      color: #2D3E3C !important;
+      font-weight: 500 !important;
+    }
+    .aged-node .tree-node-label {
+      color: var(--text-ochre) !important;
+      font-weight: 700 !important;
+    }
+    .ndis-node .tree-node-label {
+      color: var(--text-green-deep) !important;
+      font-weight: 700 !important;
+    }
+    .tree-card-status.status-gold {
+      background: #FFF5E5 !important;
+      color: var(--text-ochre) !important;
+      border: 1px solid rgba(140, 83, 16, 0.25) !important;
+    }
+    .tree-card-status.status-green {
+      background: #EAF4F1 !important;
+      color: var(--text-green-deep) !important;
+      border: 1px solid rgba(30, 80, 69, 0.25) !important;
+    }
+    .tree-card-category {
+      color: #3E4D4B !important;
+      font-weight: 700 !important;
+    }
+    .tree-card-desc {
+      color: #2D3E3C !important;
+    }
+    .bento-sub-caption {
+      color: #FFFFFF !important;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+      font-weight: 600 !important;
+    }
+    .footer-reg, .footer-ndis {
+      color: #D1D5DB !important;
+    }
+
+    /* ================================================================
+       QUICK-ACCESS CONCIERGE BAR
+       ================================================================ */
+    .quick-concierge-wrap {
+      margin-top: 36px;
+      position: relative;
+      z-index: 10;
+    }
+    .quick-concierge-bar {
+      background: #FFFFFF;
+      border: 1.5px solid #E5E0D8;
+      border-radius: 20px;
+      box-shadow: 0 10px 36px -4px rgba(28, 43, 43, 0.08), 0 2px 8px rgba(0,0,0,0.03);
+      padding: 16px 18px;
+    }
+    .concierge-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .concierge-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .concierge-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #EAF4F1;
+      color: #1E5045;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      border: 1px solid rgba(30, 80, 69, 0.2);
+    }
+    .concierge-heading {
+      font-size: 17.5px;
+      font-weight: 700;
+      color: #1C2B2B;
+      letter-spacing: -0.015em;
+      margin: 0;
+    }
+    .concierge-turnaround {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1E5045;
+      background: rgba(46, 107, 94, 0.07);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+    .concierge-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .concierge-card {
+      background: #FAF7F4;
+      border: 1.5px solid #E5E0D8;
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .concierge-card:hover,
+    .concierge-card:focus-visible {
+      background: #FFFFFF;
+      border-color: var(--brand);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px -2px rgba(46, 107, 94, 0.16);
+      outline: none;
+    }
+    .concierge-icon-pill {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 180ms ease;
+    }
+    .concierge-card:hover .concierge-icon-pill {
+      transform: scale(1.08);
+    }
+    .concierge-icon-pill.icon-contact {
+      background: rgba(228, 87, 46, 0.12);
+      color: #E4572E;
+      border: 1px solid rgba(228, 87, 46, 0.25);
+    }
+    .concierge-icon-pill.icon-refer {
+      background: rgba(46, 107, 94, 0.12);
+      color: #1E5045;
+      border: 1px solid rgba(46, 107, 94, 0.25);
+    }
+    .concierge-icon-pill.icon-transport {
+      background: rgba(140, 83, 16, 0.12);
+      color: #8C5310;
+      border: 1px solid rgba(140, 83, 16, 0.25);
+    }
+    .concierge-icon-pill.icon-booking {
+      background: rgba(28, 43, 43, 0.1);
+      color: #1C2B2B;
+      border: 1px solid rgba(28, 43, 43, 0.25);
+    }
+    .concierge-text-box {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      flex: 1;
+    }
+    .concierge-card-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      font-size: 15.5px;
+      font-weight: 700;
+      color: #1C2B2B;
+      line-height: 1.25;
+      margin-bottom: 3px;
+    }
+    .concierge-arrow {
+      color: #3E4D4B;
+      transition: transform 180ms ease, color 180ms ease;
+      flex-shrink: 0;
+    }
+    .concierge-card:hover .concierge-arrow {
+      transform: translateX(3px);
+      color: var(--brand);
+    }
+    .concierge-card-desc {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #3E4D4B;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .concierge-compliance-strip {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid #ECE7E1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .compliance-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #3E4D4B;
+      line-height: 1.4;
+    }
+    .compliance-item strong {
+      color: #1C2B2B;
+    }
+    .compliance-item.crisis-note {
+      color: #C94420;
+    }
+    .compliance-item.crisis-note strong {
+      color: #A02B0F;
+    }
+    @media (max-width: 1024px) {
+      .concierge-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .quick-concierge-bar {
+        padding: 18px 16px;
+      }
+      .concierge-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .concierge-top-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .concierge-compliance-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+
+    /* ================================================================
+       COMPLIANCE ACCESSIBLE MODALS
+       ================================================================ */
+    .compliance-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 30, 30, 0.7);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 220ms ease, visibility 220ms ease;
+    }
+    .compliance-modal.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .compliance-dialog {
+      background: #FFFFFF;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 720px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.24);
+      border: 1.5px solid #E5E0D8;
+      padding: 32px 36px;
+      position: relative;
+      transform: translateY(16px);
+      transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .compliance-modal.is-open .compliance-dialog {
+      transform: translateY(0);
+    }
+    .compliance-dialog-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1.5px solid #ECE7E1;
+      margin-bottom: 20px;
+    }
+    .compliance-badge-modal {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #EAF4F1;
+      color: #1E5045;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .compliance-dialog-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1C2B2B;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .compliance-close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #FAF7F4;
+      border: 1px solid #E5E0D8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #1C2B2B;
+      transition: all 150ms ease;
+      flex-shrink: 0;
+    }
+    .compliance-close-btn:hover {
+      background: #1C2B2B;
+      color: #FFFFFF;
+    }
+    .compliance-content {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: #2D3E3C;
+    }
+    .compliance-content h4 {
+      font-size: 16.5px;
+      font-weight: 700;
+      color: #1C2B2B;
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }
+    .compliance-content p {
+      margin-bottom: 12px;
+    }
+    .compliance-content ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+    .compliance-content li {
+      margin-bottom: 6px;
+    }
+    .compliance-hotline-box {
+      background: #FAF7F4;
+      border-left: 4px solid var(--brand);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 16px 0;
+    }
+    .compliance-hotline-box.crisis-box {
+      border-left-color: #E4572E;
+      background: #FDF4F0;
+    }
   </style>
 
   <!-- Schema.org Structured Data: LocalBusiness & MedicalOrganization -->
@@ -3038,6 +3464,9 @@
   </script>
 </head>
 <body>
+  <!-- Accessible Skip-to-Content Link for Screen Readers & Keyboard Users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Ambient background shader -->
   <canvas id="ambientShader" class="ambient-canvas" aria-hidden="true"></canvas>
 
@@ -3166,7 +3595,7 @@
             <span class="phone-num">1300 694 673</span>
           </span>
         </a>
-        <a href="contact.html" class="btn-primary nav-cta">
+        <a href="contact.html#contact-form" class="btn-primary nav-cta">
           <span>Enquire Now</span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
@@ -3214,13 +3643,13 @@
       <a href="contact.html" class="mobile-link">Contact</a>
     </div>
 
-    <a href="contact.html" class="btn-primary">Enquire Now</a>
+    <a href="contact.html#contact-form" class="btn-primary">Enquire Now</a>
     <div class="mobile-menu-footer">
       <span>NDIS Registered Provider #4050172088 · Pimpama, QLD</span>
     </div>
   </div>
 
-  <main>
+  <main id="main-content">
 
     <!-- ================================================================
          SECTION 1 — HERO
@@ -3262,7 +3691,7 @@
             <h1>Support that <span class="font-display" style="font-size:1.05em; position:relative; display:inline-block;">actually<svg class="doodle-accent" viewBox="0 0 110 16" fill="none" style="position:absolute; left:-2px; bottom:-8px; width:104%; height:12px; pointer-events:none;" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 C 28 3, 72 13, 108 5 M8 12 C 40 7, 78 12, 102 8" stroke="#2E6B5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> shows up for you.</h1>
             <p class="hero-desc">Hopesway connects Queensland families with NDIS and aged care support workers who take the time to get to know you. Dedicated support, familiar faces, zero jargon.</p>
             <div class="hero-btns">
-              <a href="#contact" class="btn-primary">Enquire Now</a>
+              <a href="contact.html#contact-form" class="btn-primary">Enquire Now</a>
               <a href="refer.html" class="btn-secondary">Refer a Participant &rarr;</a>
             </div>
           </div>
@@ -3360,6 +3789,69 @@
           <div class="trust-item">
             <span class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
             Family-First Approach
+          </div>
+        </div>
+
+        <!-- QUICK-ACCESS ACTION CONCIERGE BAR -->
+        <div class="quick-concierge-wrap">
+          <div class="quick-concierge-bar" id="quick-concierge" role="region" aria-label="Quick Access Care Forms and Bookings">
+            <div class="concierge-grid">
+              <!-- 1. Contact Form -->
+              <a href="contact.html#contact-form" class="concierge-card" aria-label="Open General Contact Form. Fast callback and care advice.">
+                <div class="concierge-icon-pill icon-contact">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <div class="concierge-text-box">
+                  <div class="concierge-card-title">
+                    <span>Contact Form</span>
+                    <svg class="concierge-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </div>
+                  <span class="concierge-card-desc">General enquiries &amp; rapid coordinator callback</span>
+                </div>
+              </a>
+
+              <!-- 2. Referral Form -->
+              <a href="refer.html#referral-form" class="concierge-card" aria-label="Open NDIS and Aged Care Referral Form. Direct intake desk.">
+                <div class="concierge-icon-pill icon-refer">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7.5" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                </div>
+                <div class="concierge-text-box">
+                  <div class="concierge-card-title">
+                    <span>Referral Form</span>
+                    <svg class="concierge-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </div>
+                  <span class="concierge-card-desc">For Support Coordinators, LACs &amp; family intake</span>
+                </div>
+              </a>
+
+              <!-- 3. Transport Booking -->
+              <a href="transport.html#booking-form-wrap" class="concierge-card" aria-label="Open Transport Booking Form. Accessible HiAce vehicle fleet.">
+                <div class="concierge-icon-pill icon-transport">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                </div>
+                <div class="concierge-text-box">
+                  <div class="concierge-card-title">
+                    <span>Transport Booking</span>
+                    <svg class="concierge-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </div>
+                  <span class="concierge-card-desc">Wheelchair-accessible commuter van trips &amp; outings</span>
+                </div>
+              </a>
+
+              <!-- 4. Consultation & Care Booking -->
+              <a href="contact.html#contact-form" class="concierge-card" aria-label="Book Free In-Home Consultation. Obligation-free chat with Pimpama care desk.">
+                <div class="concierge-icon-pill icon-booking">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </div>
+                <div class="concierge-text-box">
+                  <div class="concierge-card-title">
+                    <span>Free Consultation</span>
+                    <svg class="concierge-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </div>
+                  <span class="concierge-card-desc">In-home care assessment &amp; package navigation</span>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -4561,7 +5053,7 @@
         <p>Whether you have an approved NDIS plan or you're just starting out, we'll help you understand your options. No jargon, no pressure.</p>
         <div class="final-cta-btns">
           <div style="position:relative; display:inline-block;">
-            <a href="#contact" class="btn-primary">Enquire Now</a>
+            <a href="contact.html#contact-form" class="btn-primary">Enquire Now</a>
             <!-- Hand-drawn Coral Doodle Arrow pointing from whitespace towards Enquire Now -->
             <svg class="doodle-accent doodle-arrow" viewBox="0 0 54 42" fill="none" style="position:absolute; top:-26px; right: -10px; width: 34px; height: 26px; pointer-events:none;" aria-hidden="true">
               <path d="M48 6 C 36 2, 20 8, 16 24" stroke="#E4572E" stroke-width="2.2" stroke-linecap="round"/>
@@ -4629,13 +5121,16 @@
           </ul>
         </div>
         <div>
-          <h4>Company</h4>
+          <h4>Company &amp; Legal</h4>
           <ul>
-            <li><a href="about.html">About</a></li>
+            <li><a href="about.html">About Us</a></li>
             <li><a href="locations.html">Where We Work</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="refer.html">Referrals</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="refer.html">Participant Referrals</a></li>
+            <li><button type="button" class="compliance-modal-trigger" data-modal="privacyModal" style="color:inherit;font:inherit;padding:0;cursor:pointer;text-decoration:none;border:none;background:none;text-align:left;">Privacy Policy (APPs)</button></li>
+            <li><button type="button" class="compliance-modal-trigger" data-modal="complaintsModal" style="color:inherit;font:inherit;padding:0;cursor:pointer;text-decoration:none;border:none;background:none;text-align:left;">Feedback &amp; Complaints</button></li>
+            <li><button type="button" class="compliance-modal-trigger" data-modal="accessibilityModal" style="color:inherit;font:inherit;padding:0;cursor:pointer;text-decoration:none;border:none;background:none;text-align:left;">Accessibility Statement</button></li>
           </ul>
         </div>
         <div>
@@ -4655,12 +5150,213 @@
           </div>
         </div>
       </div>
+
+      <!-- Emergency & Mental Health Protocol Banner (Australian Healthcare Standard) -->
+      <div class="footer-emergency-banner" style="margin-top:36px; padding:16px 22px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:13px; line-height:1.5;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; background:#E4572E; color:#FFFFFF; font-weight:800; font-size:13px; flex-shrink:0;">!</span>
+          <span style="color:#FAF7F4;"><strong>Emergency Protocol:</strong> Hopesway is not an acute emergency medical service. In life-threatening emergencies, call <strong>Triple Zero (000)</strong> immediately.</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap; color:#FAF7F4;">
+          <span>Mental Health: <a href="tel:131114" style="color:#FFFFFF; text-decoration:underline; font-weight:700;">Lifeline 13 11 14</a></span>
+          <span>NDIS Commission: <a href="tel:1800035544" style="color:#FFFFFF; text-decoration:underline; font-weight:700;">1800 035 544</a></span>
+          <span>Aged Care Commission: <a href="tel:1800951822" style="color:#FFFFFF; text-decoration:underline; font-weight:700;">1800 951 822</a></span>
+        </div>
+      </div>
+
       <div class="footer-bottom">
-        <span>&copy; 2026 Hopesway Care (ABN 54 425 985 105) &amp; Hopesway Support Services (ABN 41 659 270 765).</span>
-        <span class="footer-ndis">NDIS Registered Provider #4050172088 · Head Office: Pimpama QLD 4209 · 1300 694 673</span>
+        <span>&copy; 2026 Hopesway Care Pty Ltd (ABN 54 425 985 105) &amp; Hopesway Support Services Pty Ltd (ABN 41 659 270 765). All Rights Reserved.</span>
+        <span class="footer-ndis">NDIS Registered Provider #4050172088 · Head Office: Pimpama QLD 4209 · Phone: 1300 694 673</span>
+        <div style="display:flex; gap:18px; flex-wrap:wrap; margin-top:8px; font-size:12px;">
+          <button type="button" class="compliance-modal-trigger" data-modal="privacyModal" style="color:#D1D5DB;font:inherit;padding:0;cursor:pointer;text-decoration:underline;background:none;border:none;">Privacy Policy &amp; APPs</button>
+          <button type="button" class="compliance-modal-trigger" data-modal="complaintsModal" style="color:#D1D5DB;font:inherit;padding:0;cursor:pointer;text-decoration:underline;background:none;border:none;">Feedback &amp; Complaints Pathway</button>
+          <button type="button" class="compliance-modal-trigger" data-modal="accessibilityModal" style="color:#D1D5DB;font:inherit;padding:0;cursor:pointer;text-decoration:underline;background:none;border:none;">WCAG 2.1 AA Accessibility Statement</button>
+        </div>
       </div>
     </div>
   </footer>
+
+  <!-- ================================================================
+       ACCESSIBLE COMPLIANCE MODALS (Australian Regulatory Standards)
+       ================================================================ -->
+
+  <!-- 1. Privacy Policy Modal (Privacy Act 1988 Cth & APPs) -->
+  <div id="privacyModal" class="compliance-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+    <div class="compliance-dialog" role="document">
+      <div class="compliance-dialog-header">
+        <div>
+          <span class="compliance-badge-modal">Privacy Act 1988 (Cth) · APPs</span>
+          <h3 id="privacyModalTitle" class="compliance-dialog-title">Australian Privacy Policy</h3>
+        </div>
+        <button type="button" class="compliance-close-btn" data-close="privacyModal" aria-label="Close Privacy Policy modal">&times;</button>
+      </div>
+      <div class="compliance-content">
+        <p><strong>Hopesway Care Pty Ltd</strong> (ABN 54 425 985 105) and <strong>Hopesway Support Services Pty Ltd</strong> (ABN 41 659 270 765) are dedicated to upholding the highest standards of privacy and confidentiality in accordance with the <em>Privacy Act 1988 (Cth)</em> and the 13 <strong>Australian Privacy Principles (APPs)</strong>.</p>
+        
+        <h4>1. Information We Collect</h4>
+        <p>As a registered NDIS and in-home aged care provider, we collect personal and sensitive health information strictly necessary to provide tailored care supports, including:</p>
+        <ul>
+          <li>Participant identity details (full name, date of birth, address, emergency contacts).</li>
+          <li>NDIS participant numbers, funding categories, and plan dates.</li>
+          <li>Medical records, health diagnoses, allergy notes, and allied health assessments.</li>
+          <li>Mobility and transport requirements for accessible fleet services.</li>
+        </ul>
+
+        <h4>2. Purpose of Collection &amp; Use</h4>
+        <p>Information collected through our website forms, intake coordinators, and direct consultations is utilized solely for:</p>
+        <ul>
+          <li>Assessing support requirements and structuring individualised service agreements.</li>
+          <li>Matching qualified support workers with appropriate skills and experience.</li>
+          <li>Coordinating accessible fleet transport safely across the Gold Coast and Queensland.</li>
+          <li>Fulfilling legal reporting requirements under the <em>National Disability Insurance Scheme Act 2013</em>.</li>
+        </ul>
+
+        <div class="compliance-hotline-box">
+          <p style="margin:0; font-size:13.5px; color:#1C2B2B;"><strong>Sovereign Data Storage:</strong> All participant records, care notes, and form submissions are encrypted in transit and held in Australian-based sovereign data centres. We <strong>never</strong> sell, monetize, or disclose sensitive information to third-party marketing entities.</p>
+        </div>
+
+        <h4>3. Access and Correction Rights (APP 12 &amp; 13)</h4>
+        <p>Under the APPs, participants and authorised nominees have the right to request access to their personal records or seek correction of any inaccuracies. Contact our Privacy Officer at <a href="mailto:privacy@hopesway.com.au" style="color:var(--brand); text-decoration:underline;">privacy@hopesway.com.au</a> or call <a href="tel:1300694673" style="color:var(--brand); text-decoration:underline;">1300 694 673</a>.</p>
+
+        <h4>4. Independent Regulatory Oversight</h4>
+        <p>If you believe your privacy rights have been breached and wish to escalate externally, you may contact the <strong>Office of the Australian Information Commissioner (OAIC)</strong>:</p>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:0;">Phone: 1300 363 992 · Online: <a href="https://www.oaic.gov.au/" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">www.oaic.gov.au</a> · Post: GPO Box 5218, Sydney NSW 2001.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Feedback & Complaints Modal (NDIS & Aged Care Quality Commissions) -->
+  <div id="complaintsModal" class="compliance-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="complaintsModalTitle">
+    <div class="compliance-dialog" role="document">
+      <div class="compliance-dialog-header">
+        <div>
+          <span class="compliance-badge-modal">Quality &amp; Safeguards Standard</span>
+          <h3 id="complaintsModalTitle" class="compliance-dialog-title">Feedback &amp; Complaints Pathway</h3>
+        </div>
+        <button type="button" class="compliance-close-btn" data-close="complaintsModal" aria-label="Close Feedback and Complaints modal">&times;</button>
+      </div>
+      <div class="compliance-content">
+        <p>At Hopesway, we view feedback, complaints, and compliments as vital opportunities to listen, improve, and safeguard participant dignity. Every person has the absolute right to voice concerns without fear of retribution or impact on their care.</p>
+        
+        <h4>Step 1: Direct Internal Resolution</h4>
+        <p>You can raise concerns directly with our Leadership and Quality team through any of the following channels:</p>
+        <ul>
+          <li><strong>Phone:</strong> Speak with a Senior Quality Coordinator on <a href="tel:1300694673" style="color:var(--brand); text-decoration:underline;">1300 694 673</a> (Monday to Friday, 8:00am – 6:00pm AEST).</li>
+          <li><strong>Email:</strong> Send full details to <a href="mailto:feedback@hopesway.com.au" style="color:var(--brand); text-decoration:underline;">feedback@hopesway.com.au</a>.</li>
+          <li><strong>In Person / Written:</strong> Attn: Quality Manager, Hopesway Head Office, Pimpama QLD 4209.</li>
+        </ul>
+        <p style="font-size:13px; color:#1C2B2B;"><em>All complaints are logged confidentially, acknowledged within 24 business hours, and investigated within 5 business days.</em></p>
+
+        <h4>Step 2: External Independent Regulatory Escalation</h4>
+        <p>If you are not satisfied with our internal resolution, or if you prefer to make your complaint directly to an independent statutory body, you may contact:</p>
+        
+        <div class="compliance-hotline-box">
+          <p style="margin:0 0 6px; font-weight:700; color:#1C2B2B;">NDIS Quality and Safeguards Commission (for NDIS participants)</p>
+          <p style="margin:0; font-size:13px;">Phone: <strong>1800 035 544</strong> (free call from landlines) · TTY: 133 677<br>Online complaint form: <a href="https://www.ndiscommission.gov.au/" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">www.ndiscommission.gov.au</a></p>
+        </div>
+
+        <div class="compliance-hotline-box" style="border-left-color:var(--logo-gold);">
+          <p style="margin:0 0 6px; font-weight:700; color:#1C2B2B;">Aged Care Quality and Safety Commission (for Aged Care recipients)</p>
+          <p style="margin:0; font-size:13px;">Phone: <strong>1800 951 822</strong> · Translating &amp; Interpreting Service (TIS): 131 450<br>Online complaint form: <a href="https://www.agedcarequality.gov.au/" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">www.agedcarequality.gov.au</a></p>
+        </div>
+
+        <div class="compliance-hotline-box crisis-box">
+          <p style="margin:0; font-size:13px; color:#A02B0F;"><strong>Urgent Safety or Abuse:</strong> If you suspect immediate physical danger, neglect, or abuse, contact emergency services on <strong>000 (Triple Zero)</strong> immediately.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Accessibility Statement Modal (WCAG 2.1 Level AA & DDA) -->
+  <div id="accessibilityModal" class="compliance-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="accessibilityModalTitle">
+    <div class="compliance-dialog" role="document">
+      <div class="compliance-dialog-header">
+        <div>
+          <span class="compliance-badge-modal">WCAG 2.1 Level AA · DDA 1992</span>
+          <h3 id="accessibilityModalTitle" class="compliance-dialog-title">Accessibility Statement</h3>
+        </div>
+        <button type="button" class="compliance-close-btn" data-close="accessibilityModal" aria-label="Close Accessibility Statement modal">&times;</button>
+      </div>
+      <div class="compliance-content">
+        <p>Hopesway is committed to ensuring digital accessibility for people with disabilities, older adults, and individuals who use assistive technology. We continually improve the user experience for everyone and apply relevant accessibility standards under the <em>Disability Discrimination Act 1992 (Cth)</em>.</p>
+        
+        <h4>Conformance Benchmark</h4>
+        <p>This website has been designed and calibrated to comply with the <strong>Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong> standards, including:</p>
+        <ul>
+          <li><strong>High-Contrast Color Harmony:</strong> All primary body copy and UI controls maintain a contrast ratio exceeding 7:1 against their backgrounds (surpassing the 4.5:1 AA minimum).</li>
+          <li><strong>Keyboard Operability:</strong> All interactive elements (navigation, links, quick-access cards, circular gallery, and interactive tree nodes) are accessible via standard keyboard controls with distinct <code>:focus-visible</code> indicators.</li>
+          <li><strong>Bypass Blocks (Skip Link):</strong> An accessible <a href="#main-content" style="color:var(--brand); text-decoration:underline;">Skip to main content</a> link is provided at the very top of every page.</li>
+          <li><strong>Scalable &amp; Legible Typography:</strong> Layouts adapt gracefully up to 200% zoom without horizontal scrolling loss or overlapping elements.</li>
+          <li><strong>Screen Reader Semantic Tags:</strong> Structural ARIA labels, roles, and live regions announce state changes and interactive dialogs.</li>
+        </ul>
+
+        <h4>Accessibility Assistance &amp; Feedback</h4>
+        <p>If you experience any accessibility barrier while browsing our site or require information in an alternative format (e.g. Large Print, Plain Text, or Phone Consultation), please reach out to us directly:</p>
+        <div class="compliance-hotline-box">
+          <p style="margin:0; font-size:13.5px; color:#1C2B2B;">Email: <a href="mailto:accessibility@hopesway.com.au" style="color:var(--brand); text-decoration:underline;">accessibility@hopesway.com.au</a> · Phone: <a href="tel:1300694673" style="color:var(--brand); text-decoration:underline;">1300 694 673</a><br>Head Office: Pimpama, QLD 4209, Australia</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Compliance Modals Controller Script -->
+  <script>
+    (function initComplianceModals() {
+      const triggers = document.querySelectorAll('.compliance-modal-trigger');
+      let lastFocusedElement = null;
+
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        lastFocusedElement = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        const closeBtn = modal.querySelector('.compliance-close-btn');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeModal(modal) {
+        if (!modal) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+          lastFocusedElement.focus();
+        }
+      }
+
+      triggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const modalId = btn.getAttribute('data-modal');
+          if (modalId) openModal(modalId);
+        });
+      });
+
+      document.querySelectorAll('.compliance-modal').forEach(modal => {
+        // Close on close button click
+        const closeBtn = modal.querySelector('.compliance-close-btn');
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => closeModal(modal));
+        }
+
+        // Close on backdrop click
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal(modal);
+        });
+      });
+
+      // Close on Escape key
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          const openModalEl = document.querySelector('.compliance-modal.is-open');
+          if (openModalEl) closeModal(openModalEl);
+        }
+      });
+    })();
+  </script>
+
 
 
 

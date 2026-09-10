@@ -72,12 +72,37 @@
       --logo-gold: #F4B320;
       --logo-trunk: #392E2D;
       --text: #1C2B2B;
-      --text-muted: #6B7280;
+      --text-muted: #3E4D4B; /* Calibrated high-contrast muted text (8.2:1 against #FAF7F4, WCAG AAA) */
+      --text-ochre: #8C5310;
+      --text-green-deep: #1E5045;
+      --text-coral: #C94420;
       --shadow-card: 0 4px 18px rgba(28, 43, 43, 0.06);
       --shadow-card-hover: 0 14px 36px rgba(28, 43, 43, 0.12);
       --radius-card: 16px;
       --radius-btn: 12px;
       --nav-h: 72px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: -70px;
+      left: 20px;
+      background: #1C2B2B;
+      color: #FFFFFF;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      z-index: 100000;
+      transition: top 160ms ease;
+      text-decoration: underline;
+      border: 2px solid #E4572E;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .skip-link:focus {
+      top: 16px;
+      outline: 3px solid #FFFFFF;
+      outline-offset: 2px;
     }
 
     /* Secondary Display Font: Fraunces (italic only) */
@@ -1237,6 +1262,8 @@
   </script>
 </head>
 <body>
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- ================================================================
        NAVIGATION
@@ -1414,7 +1441,7 @@
     </div>
   </div>
 
-  <main>
+  <main id="main-content">
     <!-- ================================================================
          HERO SECTION
          ================================================================ -->
@@ -1830,13 +1857,16 @@
           </ul>
         </div>
         <div>
-          <h4>Company</h4>
+          <h4>Company &amp; Legal</h4>
           <ul>
-            <li><a href="about.html">About</a></li>
+            <li><a href="about.html">About Us</a></li>
             <li><a href="locations.html" style="color:var(--brand-light);font-weight:600;">Where We Work</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
             <li><a href="refer.html">Referrals</a></li>
+            <li><a href="index.html#privacyModal">Privacy Policy (APPs)</a></li>
+            <li><a href="index.html#complaintsModal">Feedback &amp; Complaints</a></li>
+            <li><a href="index.html#accessibilityModal">Accessibility Statement</a></li>
           </ul>
         </div>
         <div>
@@ -1856,9 +1886,23 @@
           </div>
         </div>
       </div>
+
+      <!-- Emergency & Mental Health Protocol Banner (Australian Healthcare Standard) -->
+      <div class="footer-emergency-banner" style="margin-top:36px; padding:16px 22px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:13px; line-height:1.5;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; background:#E4572E; color:#FFFFFF; font-weight:800; font-size:13px; flex-shrink:0;">!</span>
+          <span style="color:#FAF7F4;"><strong>Emergency Protocol:</strong> Hopesway is not an acute emergency medical service. In life-threatening emergencies, call <strong>Triple Zero (000)</strong> immediately.</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap; color:#FAF7F4;">
+          <span>Mental Health: <a href="tel:131114" style="color:#FFFFFF; text-decoration:underline; font-weight:700;">Lifeline 13 11 14</a></span>
+          <span>NDIS Commission: <a href="tel:1800035544" style="color:#FFFFFF; text-decoration:underline; font-weight:700;">1800 035 544</a></span>
+          <span>Aged Care Commission: <a href="tel:1800951822" style="color:#FFFFFF; text-decoration:underline; font-weight:700;">1800 951 822</a></span>
+        </div>
+      </div>
+
       <div class="footer-bottom">
-        <span>&copy; 2026 Hopesway Care (ABN 54 425 985 105) &amp; Hopesway Support Services (ABN 41 659 270 765).</span>
-        <span class="footer-ndis">NDIS Registered Provider #4050172088 · Head Office: Pimpama QLD 4209 · 1300 694 673</span>
+        <span>&copy; 2026 Hopesway Care Pty Ltd (ABN 54 425 985 105) &amp; Hopesway Support Services Pty Ltd (ABN 41 659 270 765). All Rights Reserved.</span>
+        <span class="footer-ndis">NDIS Registered Provider #4050172088 · Head Office: Pimpama QLD 4209 · Phone: 1300 694 673</span>
       </div>
     </div>
   </footer>
