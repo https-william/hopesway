@@ -1335,14 +1335,22 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      background: #FDF0EC;
+      color: #E4572E;
+      border: 1.5px solid rgba(228, 87, 46, 0.25);
+      transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
     }
-    .ndis-leaf .leaf-icon-pill {
-      background: var(--brand-light);
-      color: var(--brand);
-    }
+    .ndis-leaf .leaf-icon-pill,
     .aged-leaf .leaf-icon-pill {
-      background: #FEF6E6;
-      color: #C07000;
+      background: #FDF0EC;
+      color: #E4572E;
+      border: 1.5px solid rgba(228, 87, 46, 0.25);
+    }
+    .leaf-node:hover .leaf-icon-pill,
+    .leaf-node.is-expanded .leaf-icon-pill {
+      background: #E4572E;
+      color: #FFFFFF;
+      border-color: #E4572E;
     }
     .leaf-heading-box {
       display: flex;
@@ -1647,20 +1655,19 @@
       height: 68px;
       border-radius: 50%;
       background: #FFFFFF;
-      box-shadow: 0 6px 20px rgba(28, 43, 43, 0.1), 0 2px 6px rgba(0,0,0,0.04);
+      border: 2.5px solid #E4572E;
+      color: #E4572E;
+      box-shadow: 0 6px 20px rgba(228, 87, 46, 0.16), 0 2px 6px rgba(0,0,0,0.04);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 200ms ease, border-width 200ms ease, box-shadow 200ms ease;
+      transition: transform 200ms ease, border-width 200ms ease, box-shadow 200ms ease, background 200ms ease, color 200ms ease;
       position: relative;
     }
-    .ndis-node .tree-node-circle {
-      border: 2.5px solid #2E6B5E;
-      color: #2E6B5E;
-    }
+    .ndis-node .tree-node-circle,
     .aged-node .tree-node-circle {
-      border: 2.5px solid #C98A3E;
-      color: #C98A3E;
+      border: 2.5px solid #E4572E;
+      color: #E4572E;
     }
     .tree-node-label {
       margin-top: 8px;
@@ -1688,19 +1695,25 @@
     .tree-node-btn:focus-visible .tree-node-circle {
       transform: scale(1.15);
       border-width: 3.5px;
+      background: #E4572E;
+      color: #FFFFFF;
+      box-shadow: 0 10px 28px rgba(228, 87, 46, 0.42);
     }
     .ndis-node:hover .tree-node-circle,
     .tree-leaf-node.is-active .ndis-node .tree-node-circle,
-    .ndis-node:focus-visible .tree-node-circle {
-      box-shadow: 0 10px 28px rgba(46, 107, 94, 0.28);
-    }
+    .ndis-node:focus-visible .tree-node-circle,
     .aged-node:hover .tree-node-circle,
     .tree-leaf-node.is-active .aged-node .tree-node-circle,
     .aged-node:focus-visible .tree-node-circle {
-      box-shadow: 0 10px 28px rgba(201, 138, 62, 0.32);
+      box-shadow: 0 10px 28px rgba(228, 87, 46, 0.42);
+    }
+    .tree-leaf-node:hover .tree-node-label,
+    .tree-leaf-node.is-active .tree-node-label {
+      color: #E4572E;
+      font-weight: 700;
     }
     .tree-node-btn:focus-visible .tree-node-circle {
-      outline: 2px solid var(--brand);
+      outline: 2px solid #E4572E;
       outline-offset: 4px;
     }
 
@@ -3657,7 +3670,7 @@
         <!-- Clean Filter Pills -->
         <div class="tree-filter-bar" role="tablist" aria-label="Filter service branches">
           <button type="button" class="tree-filter-btn active" data-filter="all" role="tab" aria-selected="true">
-            <span class="filter-dot" style="background:var(--brand);"></span>
+            <span class="filter-dot" style="background:var(--accent);"></span>
             <span>All Care Pathways</span>
           </button>
           <button type="button" class="tree-filter-btn" data-filter="ndis" role="tab" aria-selected="false">
@@ -4850,15 +4863,12 @@
             { x: 810, y: 280, type: 'aged' }
           ];
 
-          // 1. FOLIAGE CLUSTERS (drawn FIRST in z-order in SVG so white node circles sit on top)
+          // 1. FOLIAGE & FRUIT CLUSTERS (drawn FIRST in z-order in SVG so white node circles sit on top)
           leafPoints.forEach((lp, idx) => {
-            const isNdis = lp.type === 'ndis';
-            const fColor = isNdis ? 'rgba(58, 125, 108, 0.35)' : 'rgba(217, 162, 83, 0.35)';
-            const sColor = isNdis ? 'rgba(46, 107, 94, 0.55)' : 'rgba(201, 138, 62, 0.55)';
             const folOpts = {
               fillStyle: 'hachure',
-              fill: fColor,
-              stroke: sColor,
+              fill: 'rgba(228, 87, 46, 0.22)',
+              stroke: 'rgba(228, 87, 46, 0.65)',
               strokeWidth: 1.4,
               fillWeight: 1.5,
               hachureGap: 4,
@@ -4938,10 +4948,9 @@
             const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
             // Twig stem
             g.appendChild(rc.curve(tw.pts, { roughness: 2.5, stroke: tw.color, strokeWidth: 2, bowing: 1.3 }));
-            // Small tip leaf accent
-            const isNdis = tw.type === 'ndis';
-            const fColor = isNdis ? 'rgba(58, 125, 108, 0.35)' : 'rgba(217, 162, 83, 0.35)';
-            const sColor = isNdis ? 'rgba(46, 107, 94, 0.5)' : 'rgba(201, 138, 62, 0.5)';
+            // Small tip fruit accent (Company Red)
+            const fColor = 'rgba(228, 87, 46, 0.32)';
+            const sColor = 'rgba(228, 87, 46, 0.65)';
             g.appendChild(rc.circle(tw.tip[0], tw.tip[1], 20, {
               fillStyle: 'hachure',
               fill: fColor,
@@ -5288,12 +5297,12 @@
             });
             spineSvg.appendChild(stub);
 
-            // Tiny delicate bud circle (~6px) sitting right at the card's left edge
+            // Tiny delicate fruit bud circle (~6px) sitting right at the card's left edge (Company Red)
             const bud = rc.circle(xCard, yCenter, 6, {
               seed: 2000 + idx,
               fillStyle: 'solid',
-              fill: stubColor,
-              stroke: strokeColor,
+              fill: '#E4572E',
+              stroke: '#C94420',
               strokeWidth: 1.0,
               roughness: 1.3
             });
