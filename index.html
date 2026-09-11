@@ -21,7 +21,7 @@
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" href="favicon.svg">
-  <script src="rough.js" defer></script>
+  <script src="rough.js"></script>
   <style>
     /* ================================================================
        RESET & BASE
@@ -1261,6 +1261,10 @@
       border-left: 4px solid var(--brand);
       background: linear-gradient(135deg, rgba(46, 107, 94, 0.05) 0%, #FFFFFF 100%);
     }
+    .branch-crown.community-crown {
+      border-left: 4px solid #EE2737;
+      background: linear-gradient(135deg, rgba(238, 39, 55, 0.06) 0%, #FFFFFF 100%);
+    }
     .branch-crown.aged-crown {
       border-left: 4px solid #D98200;
       background: linear-gradient(135deg, rgba(244, 179, 32, 0.08) 0%, #FFFFFF 100%);
@@ -1286,6 +1290,10 @@
     .ndis-crown .crown-count-badge {
       background: var(--brand-light);
       color: var(--brand);
+    }
+    .community-crown .crown-count-badge {
+      background: #FEE8E9;
+      color: #C0202F;
     }
     .aged-crown .crown-count-badge {
       background: #FEF6E6;
@@ -1321,6 +1329,11 @@
       border-color: var(--brand);
       background: linear-gradient(165deg, #FFFFFF 70%, rgba(234, 244, 241, 0.5) 100%);
     }
+    .leaf-node.community-leaf:hover,
+    .leaf-node.community-leaf.is-expanded {
+      border-color: #EE2737;
+      background: linear-gradient(165deg, #FFFFFF 70%, rgba(254, 232, 233, 0.5) 100%);
+    }
     .leaf-node.aged-leaf:hover,
     .leaf-node.aged-leaf.is-expanded {
       border-color: #D98200;
@@ -1350,21 +1363,42 @@
       justify-content: center;
       flex-shrink: 0;
       background: #FDF0EC;
-      color: #E4572E;
-      border: 1.5px solid rgba(228, 87, 46, 0.25);
+      color: #EE2737;
+      border: 1.5px solid rgba(238, 39, 55, 0.25);
       transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
     }
-    .ndis-leaf .leaf-icon-pill,
-    .aged-leaf .leaf-icon-pill {
-      background: #FDF0EC;
-      color: #E4572E;
-      border: 1.5px solid rgba(228, 87, 46, 0.25);
+    .ndis-leaf .leaf-icon-pill {
+      background: #EAF4F1;
+      color: #2E6B5E;
+      border: 1.5px solid rgba(46, 107, 94, 0.25);
     }
-    .leaf-node:hover .leaf-icon-pill,
-    .leaf-node.is-expanded .leaf-icon-pill {
-      background: #E4572E;
+    .community-leaf .leaf-icon-pill {
+      background: #FDF0EC;
+      color: #EE2737;
+      border: 1.5px solid rgba(238, 39, 55, 0.25);
+    }
+    .aged-leaf .leaf-icon-pill {
+      background: #FFF8EE;
+      color: #D98200;
+      border: 1.5px solid rgba(217, 130, 0, 0.25);
+    }
+    .leaf-node.ndis-leaf:hover .leaf-icon-pill,
+    .leaf-node.ndis-leaf.is-expanded .leaf-icon-pill {
+      background: #2E6B5E;
       color: #FFFFFF;
-      border-color: #E4572E;
+      border-color: #2E6B5E;
+    }
+    .leaf-node.community-leaf:hover .leaf-icon-pill,
+    .leaf-node.community-leaf.is-expanded .leaf-icon-pill {
+      background: #EE2737;
+      color: #FFFFFF;
+      border-color: #EE2737;
+    }
+    .leaf-node.aged-leaf:hover .leaf-icon-pill,
+    .leaf-node.aged-leaf.is-expanded .leaf-icon-pill {
+      background: #D98200;
+      color: #FFFFFF;
+      border-color: #D98200;
     }
     .leaf-heading-box {
       display: flex;
@@ -1473,6 +1507,9 @@
     .aged-leaf .leaf-feature-chip svg {
       color: #D98200;
     }
+    .community-leaf .leaf-feature-chip svg {
+      color: #EE2737;
+    }
     .leaf-action-row {
       display: flex;
       align-items: center;
@@ -1494,6 +1531,12 @@
       border-radius: 50%;
       background: #468C2C;
     }
+    .pulse-dot-red {
+      width: 6.5px;
+      height: 6.5px;
+      border-radius: 50%;
+      background: #EE2737;
+    }
     .pulse-dot-gold {
       width: 6.5px;
       height: 6.5px;
@@ -1508,6 +1551,9 @@
       gap: 4px;
       transition: transform 150ms ease;
       text-decoration: none;
+    }
+    .community-leaf .leaf-link-btn {
+      color: #C0202F;
     }
     .aged-leaf .leaf-link-btn {
       color: #C07000;
@@ -1647,8 +1693,8 @@
       position: absolute;
       transform: translate(-50%, -50%);
       z-index: 10;
-      opacity: 0;
-      transition: opacity 300ms ease, transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      opacity: 1;
+      transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 200ms ease;
     }
     .tree-leaf-node.is-revealed {
       opacity: 1;
@@ -1669,19 +1715,29 @@
       height: 68px;
       border-radius: 50%;
       background: #FFFFFF;
-      border: 2.5px solid #E4572E;
-      color: #E4572E;
-      box-shadow: 0 6px 20px rgba(228, 87, 46, 0.16), 0 2px 6px rgba(0,0,0,0.04);
+      border: 2.5px solid #2E6B5E;
+      color: #2E6B5E;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: transform 200ms ease, border-width 200ms ease, box-shadow 200ms ease, background 200ms ease, color 200ms ease;
       position: relative;
     }
-    .ndis-node .tree-node-circle,
+    .ndis-node .tree-node-circle {
+      border: 2.5px solid #2E6B5E;
+      color: #2E6B5E;
+      box-shadow: 0 6px 20px rgba(46, 107, 94, 0.16), 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .community-node .tree-node-circle {
+      border: 2.5px solid #EE2737;
+      color: #EE2737;
+      box-shadow: 0 6px 20px rgba(238, 39, 55, 0.18), 0 2px 6px rgba(0,0,0,0.04);
+    }
     .aged-node .tree-node-circle {
-      border: 2.5px solid #E4572E;
-      color: #E4572E;
+      border: 2.5px solid #D98200;
+      color: #C07000;
+      box-shadow: 0 6px 20px rgba(217, 130, 0, 0.18), 0 2px 6px rgba(0,0,0,0.04);
     }
     .tree-node-label {
       margin-top: 8px;
@@ -1699,8 +1755,11 @@
     .ndis-node .tree-node-label {
       color: #2E6B5E;
     }
+    .community-node .tree-node-label {
+      color: #A02B0F;
+    }
     .aged-node .tree-node-label {
-      color: #C98A3E;
+      color: #8C5310;
     }
 
     /* Node Hover / Active States */
@@ -1709,26 +1768,62 @@
     .tree-node-btn:focus-visible .tree-node-circle {
       transform: scale(1.15);
       border-width: 3.5px;
-      background: #E4572E;
-      color: #FFFFFF;
-      box-shadow: 0 10px 28px rgba(228, 87, 46, 0.42);
     }
     .ndis-node:hover .tree-node-circle,
     .tree-leaf-node.is-active .ndis-node .tree-node-circle,
-    .ndis-node:focus-visible .tree-node-circle,
+    .ndis-node:focus-visible .tree-node-circle {
+      background: #2E6B5E;
+      color: #FFFFFF;
+      box-shadow: 0 10px 28px rgba(46, 107, 94, 0.42);
+    }
+    .community-node:hover .tree-node-circle,
+    .tree-leaf-node.is-active .community-node .tree-node-circle,
+    .community-node:focus-visible .tree-node-circle {
+      background: #EE2737;
+      color: #FFFFFF;
+      box-shadow: 0 10px 28px rgba(238, 39, 55, 0.42);
+    }
     .aged-node:hover .tree-node-circle,
     .tree-leaf-node.is-active .aged-node .tree-node-circle,
     .aged-node:focus-visible .tree-node-circle {
-      box-shadow: 0 10px 28px rgba(228, 87, 46, 0.42);
+      background: #D98200;
+      color: #FFFFFF;
+      box-shadow: 0 10px 28px rgba(217, 130, 0, 0.42);
     }
-    .tree-leaf-node:hover .tree-node-label,
-    .tree-leaf-node.is-active .tree-node-label {
-      color: #E4572E;
+    .tree-leaf-node:hover .ndis-node .tree-node-label,
+    .tree-leaf-node.is-active .ndis-node .tree-node-label {
+      color: #2E6B5E;
       font-weight: 700;
     }
-    .tree-node-btn:focus-visible .tree-node-circle {
-      outline: 2px solid #E4572E;
+    .tree-leaf-node:hover .community-node .tree-node-label,
+    .tree-leaf-node.is-active .community-node .tree-node-label {
+      color: #EE2737;
+      font-weight: 700;
+    }
+    .tree-leaf-node:hover .aged-node .tree-node-label,
+    .tree-leaf-node.is-active .aged-node .tree-node-label {
+      color: #D98200;
+      font-weight: 700;
+    }
+    .ndis-node:focus-visible .tree-node-circle {
+      outline: 2px solid #2E6B5E;
       outline-offset: 4px;
+    }
+    .community-node:focus-visible .tree-node-circle {
+      outline: 2px solid #EE2737;
+      outline-offset: 4px;
+    }
+    .aged-node:focus-visible .tree-node-circle {
+      outline: 2px solid #D98200;
+      outline-offset: 4px;
+    }
+
+    /* Desktop Pathway Filter Dimming */
+    .tree-leaf-node.is-dimmed {
+      opacity: 0.20;
+      pointer-events: none;
+      filter: grayscale(0.7);
+      transition: opacity 250ms ease, filter 250ms ease;
     }
 
     /* Detail Card Popover */
@@ -1785,6 +1880,17 @@
       top: 36px;
       border-left: none;
       border-bottom: none;
+    }
+    .tree-popover-card.pos-down {
+      left: 50%;
+      top: calc(100% + 14px);
+      transform: translateX(-50%);
+    }
+    .tree-popover-card.pos-down .tree-card-arrow {
+      top: -6px;
+      left: calc(50% - 6px);
+      border-bottom: none;
+      border-right: none;
     }
     .tree-popover-card.pos-down-right {
       left: -20px;
@@ -1865,6 +1971,10 @@
       background: #EAF4F1;
       color: #2E6B5E;
     }
+    .tree-card-status.status-red {
+      background: #FEE8E9;
+      color: #C0202F;
+    }
     .tree-card-status.status-gold {
       background: #FFF8EE;
       color: #C07000;
@@ -1921,6 +2031,9 @@
     }
     .tree-card-cta.ndis-cta {
       color: #2E6B5E;
+    }
+    .tree-card-cta.community-cta {
+      color: #C0202F;
     }
     .tree-card-cta.aged-cta {
       color: #C98A3E;
@@ -3886,17 +3999,36 @@
       <div class="care-tree-desktop-view">
         <div class="care-tree-desktop-header">
           <h2>Which support are you looking for?</h2>
-          <p>Tap a branch to explore.</p>
+          <p>Tap a branch or filter below to explore our care pathways.</p>
+          <div class="tree-filter-bar desktop-tree-filter" role="tablist" aria-label="Filter service pathways">
+            <button type="button" class="tree-filter-btn active" data-filter="all" role="tab" aria-selected="true">
+              <span class="filter-dot" style="background:var(--accent);"></span>
+              <span>All Care Pathways</span>
+            </button>
+            <button type="button" class="tree-filter-btn" data-filter="ndis" role="tab" aria-selected="false">
+              <span class="filter-dot" style="background:#468C2C;"></span>
+              <span>NDIS Living (3)</span>
+            </button>
+            <button type="button" class="tree-filter-btn" data-filter="community" role="tab" aria-selected="false">
+              <span class="filter-dot" style="background:#EE2737;"></span>
+              <span>Mobility &amp; Respite (3)</span>
+            </button>
+            <button type="button" class="tree-filter-btn" data-filter="aged" role="tab" aria-selected="false">
+              <span class="filter-dot" style="background:#F4B320;"></span>
+              <span>In-Home Aged Care (3)</span>
+            </button>
+          </div>
         </div>
 
         <div class="tree-stage-wrap" id="treeStageWrap">
           <!-- The Drawn Tree SVG Canvas -->
-          <svg id="treeCanvas" viewBox="0 0 900 650" aria-label="Interactive hand-drawn tree diagram showing NDIS and Aged Care services"></svg>
+          <svg id="treeCanvas" viewBox="0 0 900 650" aria-label="Interactive hand-drawn tree diagram showing NDIS, Mobility & Respite, and Aged Care services"></svg>
 
-          <!-- 9 ABSOLUTELY POSITIONED LEAF NODES -->
+          <!-- 9 ABSOLUTELY POSITIONED LEAF NODES (Arranged in 3 Logo Clusters) -->
 
-          <!-- NDIS 1: SIL & SDA [90, 280] -->
-          <div class="tree-leaf-node" data-node="sil" style="left: 10%; top: 43.08%;">
+          <!-- LEFT BOUGH (GREEN): NDIS LIVING & SUPPORTS -->
+          <!-- 1. SIL & SDA [80, 290] -->
+          <div class="tree-leaf-node" data-node="sil" data-branch="ndis" style="left: 8.89%; top: 44.62%;">
             <button type="button" class="tree-node-btn ndis-node" aria-label="Supported Independent Living (SIL &amp; SDA)" aria-expanded="false">
               <span class="tree-node-circle">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -3921,8 +4053,8 @@
             </div>
           </div>
 
-          <!-- NDIS 2: Support Coordination [70, 190] -->
-          <div class="tree-leaf-node" data-node="coordination" style="left: 7.78%; top: 29.23%;">
+          <!-- 2. Support Coordination [110, 170] -->
+          <div class="tree-leaf-node" data-node="coordination" data-branch="ndis" style="left: 12.22%; top: 26.15%;">
             <button type="button" class="tree-node-btn ndis-node" aria-label="Support Coordination &amp; Plan Navigation" aria-expanded="false">
               <span class="tree-node-circle">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
@@ -3947,41 +4079,15 @@
             </div>
           </div>
 
-          <!-- NDIS 3: Respite / STA [150, 110] -->
-          <div class="tree-leaf-node" data-node="respite" style="left: 16.67%; top: 16.92%;">
-            <button type="button" class="tree-node-btn ndis-node" aria-label="Respite &amp; Short Term Accommodation (STA)" aria-expanded="false">
-              <span class="tree-node-circle">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg>
-              </span>
-              <span class="tree-node-label">Respite</span>
-            </button>
-            <div class="tree-popover-card pos-right ndis-popover" role="region" aria-label="Respite details">
-              <div class="tree-card-arrow"></div>
-              <div class="tree-card-header">
-                <span class="tree-card-status status-green"><span class="pulse-dot-green"></span> Weekend Slots Open</span>
-                <span class="tree-card-category">NDIS Support</span>
-              </div>
-              <h4 class="tree-card-title">Respite &amp; Short Term Accommodation (STA)</h4>
-              <div class="tree-card-sub">Overnight &amp; Weekend Getaways</div>
-              <p class="tree-card-desc">Recharging getaways with fun social outings and 1-on-1 support, providing essential rest and peace of mind for family carers.</p>
-              <div class="tree-card-tags">
-                <span class="tree-tag-chip">All Meals Included</span>
-                <span class="tree-tag-chip">Gold Coast Outings</span>
-                <span class="tree-tag-chip">Flexible Dates</span>
-              </div>
-              <a href="services.html#respite" class="tree-card-cta ndis-cta">Book Respite &rarr;</a>
-            </div>
-          </div>
-
-          <!-- NDIS 4: Daily Activities [260, 80] -->
-          <div class="tree-leaf-node" data-node="daily-activities" style="left: 28.89%; top: 12.31%;">
+          <!-- 3. Daily Activities & Life Skills [240, 230] -->
+          <div class="tree-leaf-node" data-node="daily-activities" data-branch="ndis" style="left: 26.67%; top: 35.38%;">
             <button type="button" class="tree-node-btn ndis-node" aria-label="Daily Activities &amp; Life Skills" aria-expanded="false">
               <span class="tree-node-circle">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path></svg>
               </span>
               <span class="tree-node-label">Daily Activities</span>
             </button>
-            <div class="tree-popover-card pos-down-right ndis-popover" role="region" aria-label="Daily Activities details">
+            <div class="tree-popover-card pos-right ndis-popover" role="region" aria-label="Daily Activities details">
               <div class="tree-card-arrow"></div>
               <div class="tree-card-header">
                 <span class="tree-card-status status-green"><span class="pulse-dot-green"></span> 7 Days a Week</span>
@@ -3999,19 +4105,20 @@
             </div>
           </div>
 
-          <!-- NDIS 5: Transport [320, 180] -->
-          <div class="tree-leaf-node" data-node="transport" style="left: 35.56%; top: 27.69%;">
-            <button type="button" class="tree-node-btn ndis-node" aria-label="Accessible Community Transport" aria-expanded="false">
+          <!-- TOP CROWN (RED): ACTIVE MOBILITY, RESPITE & COMMUNITY -->
+          <!-- 4. Accessible Community Transport [340, 120] -->
+          <div class="tree-leaf-node" data-node="transport" data-branch="community" style="left: 37.78%; top: 18.46%;">
+            <button type="button" class="tree-node-btn community-node" aria-label="Accessible Community Transport" aria-expanded="false">
               <span class="tree-node-circle">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
               </span>
               <span class="tree-node-label">Transport</span>
             </button>
-            <div class="tree-popover-card pos-right ndis-popover" role="region" aria-label="Transport details">
+            <div class="tree-popover-card pos-down-right community-popover" role="region" aria-label="Transport details">
               <div class="tree-card-arrow"></div>
               <div class="tree-card-header">
-                <span class="tree-card-status status-green"><span class="pulse-dot-green"></span> Booking Quickly</span>
-                <span class="tree-card-category">NDIS Support</span>
+                <span class="tree-card-status status-red"><span class="pulse-dot-red"></span> Booking Quickly</span>
+                <span class="tree-card-category">Mobility &amp; Outings</span>
               </div>
               <h4 class="tree-card-title">Accessible Community Transport</h4>
               <div class="tree-card-sub">Punctual Door-to-Door Rides</div>
@@ -4021,19 +4128,72 @@
                 <span class="tree-tag-chip">Accessible Vehicles</span>
                 <span class="tree-tag-chip">Trusted Drivers</span>
               </div>
-              <a href="services.html#transport" class="tree-card-cta ndis-cta">Book Transit &rarr;</a>
+              <a href="services.html#transport" class="tree-card-cta community-cta">Book Transit &rarr;</a>
             </div>
           </div>
 
-          <!-- AGED CARE 1: CHSP & HCP [630, 80] -->
-          <div class="tree-leaf-node" data-node="chsp" style="left: 70.00%; top: 12.31%;">
+          <!-- 5. Respite & Short Term Accommodation [450, 60] -->
+          <div class="tree-leaf-node" data-node="respite" data-branch="community" style="left: 50.00%; top: 9.23%;">
+            <button type="button" class="tree-node-btn community-node" aria-label="Respite &amp; Short Term Accommodation (STA)" aria-expanded="false">
+              <span class="tree-node-circle">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg>
+              </span>
+              <span class="tree-node-label">Respite &amp; STA</span>
+            </button>
+            <div class="tree-popover-card pos-down community-popover" role="region" aria-label="Respite details">
+              <div class="tree-card-arrow"></div>
+              <div class="tree-card-header">
+                <span class="tree-card-status status-red"><span class="pulse-dot-red"></span> Weekend Slots Open</span>
+                <span class="tree-card-category">Respite &amp; Short Term</span>
+              </div>
+              <h4 class="tree-card-title">Respite &amp; Short Term Accommodation (STA)</h4>
+              <div class="tree-card-sub">Overnight &amp; Weekend Getaways</div>
+              <p class="tree-card-desc">Recharging getaways with fun social outings and 1-on-1 support, providing essential rest and peace of mind for family carers.</p>
+              <div class="tree-card-tags">
+                <span class="tree-tag-chip">All Meals Included</span>
+                <span class="tree-tag-chip">Gold Coast Outings</span>
+                <span class="tree-tag-chip">Flexible Dates</span>
+              </div>
+              <a href="services.html#respite" class="tree-card-cta community-cta">Book Respite &rarr;</a>
+            </div>
+          </div>
+
+          <!-- 6. Companionship & Social Connection [560, 120] -->
+          <div class="tree-leaf-node" data-node="companionship" data-branch="community" style="left: 62.22%; top: 18.46%;">
+            <button type="button" class="tree-node-btn community-node" aria-label="Companionship &amp; Social Connection" aria-expanded="false">
+              <span class="tree-node-circle">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </span>
+              <span class="tree-node-label">Companionship</span>
+            </button>
+            <div class="tree-popover-card pos-down-left community-popover" role="region" aria-label="Companionship details">
+              <div class="tree-card-arrow"></div>
+              <div class="tree-card-header">
+                <span class="tree-card-status status-red"><span class="pulse-dot-red"></span> Trusted Relief</span>
+                <span class="tree-card-category">Social &amp; Outings</span>
+              </div>
+              <h4 class="tree-card-title">Companionship &amp; Social Connection</h4>
+              <div class="tree-card-sub">Friendly Chats, Garden Walks &amp; Family Relief</div>
+              <p class="tree-card-desc">Genuine companionship over a warm cup of tea, garden walks, board games, and in-home respite giving devoted family members essential breathing room.</p>
+              <div class="tree-card-tags">
+                <span class="tree-tag-chip">Empathetic Match</span>
+                <span class="tree-tag-chip">Flexible Respite Hours</span>
+                <span class="tree-tag-chip">Community Outings</span>
+              </div>
+              <a href="services.html#companionship" class="tree-card-cta community-cta">Learn More &rarr;</a>
+            </div>
+          </div>
+
+          <!-- RIGHT BOUGH (GOLD): IN-HOME AGED CARE & DOMESTIC DIGNITY -->
+          <!-- 7. Commonwealth Home Support (CHSP & HCP) [660, 230] -->
+          <div class="tree-leaf-node" data-node="chsp" data-branch="aged" style="left: 73.33%; top: 35.38%;">
             <button type="button" class="tree-node-btn aged-node" aria-label="Commonwealth Home Support (CHSP &amp; HCP)" aria-expanded="false">
               <span class="tree-node-circle">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
               </span>
               <span class="tree-node-label">CHSP &amp; HCP</span>
             </button>
-            <div class="tree-popover-card pos-down-left aged-popover" role="region" aria-label="CHSP &amp; HCP details">
+            <div class="tree-popover-card pos-left aged-popover" role="region" aria-label="CHSP &amp; HCP details">
               <div class="tree-card-arrow"></div>
               <div class="tree-card-header">
                 <span class="tree-card-status status-gold"><span class="pulse-dot-gold"></span> Immediate Onboarding</span>
@@ -4051,8 +4211,8 @@
             </div>
           </div>
 
-          <!-- AGED CARE 2: Personal Care [760, 100] -->
-          <div class="tree-leaf-node" data-node="personal-care" style="left: 84.44%; top: 15.38%;">
+          <!-- 8. Personal Care & Medication Prompts [790, 170] -->
+          <div class="tree-leaf-node" data-node="personal-care" data-branch="aged" style="left: 87.78%; top: 26.15%;">
             <button type="button" class="tree-node-btn aged-node" aria-label="Personal Care &amp; Medication Prompts" aria-expanded="false">
               <span class="tree-node-circle">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -4077,8 +4237,8 @@
             </div>
           </div>
 
-          <!-- AGED CARE 3: Domestic Help [830, 190] -->
-          <div class="tree-leaf-node" data-node="domestic-help" style="left: 92.22%; top: 29.23%;">
+          <!-- 9. Domestic Help & Nutritious Meals [820, 290] -->
+          <div class="tree-leaf-node" data-node="domestic-help" data-branch="aged" style="left: 91.11%; top: 44.62%;">
             <button type="button" class="tree-node-btn aged-node" aria-label="Domestic Help &amp; Nutritious Meals" aria-expanded="false">
               <span class="tree-node-circle">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>
@@ -4100,32 +4260,6 @@
                 <span class="tree-tag-chip">Errand Support</span>
               </div>
               <a href="services.html#aged-care" class="tree-card-cta aged-cta">View Domestic Help &rarr;</a>
-            </div>
-          </div>
-
-          <!-- AGED CARE 4: Companionship [810, 280] -->
-          <div class="tree-leaf-node" data-node="companionship" style="left: 90.00%; top: 43.08%;">
-            <button type="button" class="tree-node-btn aged-node" aria-label="Companionship &amp; Carer Respite" aria-expanded="false">
-              <span class="tree-node-circle">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-              </span>
-              <span class="tree-node-label">Companionship</span>
-            </button>
-            <div class="tree-popover-card pos-left aged-popover" role="region" aria-label="Companionship details">
-              <div class="tree-card-arrow"></div>
-              <div class="tree-card-header">
-                <span class="tree-card-status status-gold"><span class="pulse-dot-gold"></span> Trusted Relief</span>
-                <span class="tree-card-category">Aged Care Support</span>
-              </div>
-              <h4 class="tree-card-title">Companionship &amp; Carer Respite</h4>
-              <div class="tree-card-sub">Friendly Chats, Garden Walks &amp; Family Relief</div>
-              <p class="tree-card-desc">Genuine companionship over a warm cup of tea, garden walks, board games, and in-home respite giving devoted family members essential breathing room.</p>
-              <div class="tree-card-tags">
-                <span class="tree-tag-chip">Empathetic Match</span>
-                <span class="tree-tag-chip">Flexible Respite Hours</span>
-                <span class="tree-tag-chip">Dementia Sensitive</span>
-              </div>
-              <a href="services.html#aged-care" class="tree-card-cta aged-cta">Learn More &rarr;</a>
             </div>
           </div>
 
@@ -4159,34 +4293,38 @@
           <p>Explore our dual pathways of care. Structured for genuine independence, empathy, and peace of mind across the Gold Coast.</p>
         </div>
 
-        <!-- Clean Filter Pills -->
+        <!-- Clean Filter Pills (4 Pathways) -->
         <div class="tree-filter-bar" role="tablist" aria-label="Filter service branches">
           <button type="button" class="tree-filter-btn active" data-filter="all" role="tab" aria-selected="true">
             <span class="filter-dot" style="background:var(--accent);"></span>
             <span>All Care Pathways</span>
           </button>
           <button type="button" class="tree-filter-btn" data-filter="ndis" role="tab" aria-selected="false">
-            <span class="filter-dot" style="background:var(--logo-green);"></span>
-            <span>NDIS Disability Supports (5)</span>
+            <span class="filter-dot" style="background:#468C2C;"></span>
+            <span>NDIS Living (3)</span>
+          </button>
+          <button type="button" class="tree-filter-btn" data-filter="community" role="tab" aria-selected="false">
+            <span class="filter-dot" style="background:#EE2737;"></span>
+            <span>Mobility &amp; Respite (3)</span>
           </button>
           <button type="button" class="tree-filter-btn" data-filter="aged" role="tab" aria-selected="false">
-            <span class="filter-dot" style="background:var(--logo-gold);"></span>
-            <span>In-Home Aged Care (4)</span>
+            <span class="filter-dot" style="background:#F4B320;"></span>
+            <span>In-Home Aged Care (3)</span>
           </button>
         </div>
 
-        <!-- Dual-Branch Clean Canopy with Mobile/Tablet Tree Spine -->
+        <!-- 3-Branch Clean Canopy with Mobile/Tablet Tree Spine -->
         <div class="leaf-canopy-container" id="leafCanopyContainer">
           <svg class="mobile-tree-spine" id="mobileTreeSpine" aria-hidden="true"></svg>
           
-          <!-- LEFT LIMB: NDIS DISABILITY SUPPORTS -->
+          <!-- LEFT LIMB: NDIS LIVING & SUPPORTS -->
           <div class="branch-limb branch-ndis" id="branchNdis">
             <div class="branch-crown ndis-crown">
               <div class="crown-title-group">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E6B5E" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 <h3 class="crown-title">NDIS Living &amp; Supports</h3>
               </div>
-              <span class="crown-count-badge">5 Core Services</span>
+              <span class="crown-count-badge">3 Core Services</span>
             </div>
 
             <div class="leaf-cards-list">
@@ -4261,42 +4399,7 @@
                 </div>
               </div>
 
-              <!-- Leaf 3: Respite / STA -->
-              <div class="leaf-node ndis-leaf" tabindex="0" role="button" aria-expanded="false" aria-label="Respite and Short Term Accommodation leaf. Tap to expand.">
-                <div class="leaf-summary-row">
-                  <div class="leaf-title-wrap">
-                    <div class="leaf-icon-pill">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg>
-                    </div>
-                    <div class="leaf-heading-box">
-                      <h4 class="leaf-name">Respite &amp; Short Term Accommodation (STA)</h4>
-                      <span class="leaf-sub-tag">Overnight &amp; Weekend Getaways</span>
-                    </div>
-                  </div>
-                  <span class="leaf-toggle-badge">
-                    <span>Details</span>
-                    <svg class="leaf-chevron-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 8 10 12 14 8"></polyline></svg>
-                  </span>
-                </div>
-                <div class="leaf-details-grid">
-                  <div class="leaf-details-inner">
-                    <div class="leaf-expanded-content">
-                      <p class="leaf-desc">Recharging getaways with fun social outings and 1-on-1 support, providing essential rest and peace of mind for family carers.</p>
-                      <div class="leaf-features-list">
-                        <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> All Meals Included</span>
-                        <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Gold Coast Outings</span>
-                        <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Flexible Dates</span>
-                      </div>
-                      <div class="leaf-action-row">
-                        <span class="leaf-availability"><span class="pulse-dot-green"></span> Weekend Slots Open</span>
-                        <a href="services.html#respite" class="leaf-link-btn">Book Respite &rarr;</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Leaf 4: Daily Activities -->
+              <!-- Leaf 3: Daily Activities & Life Skills -->
               <div class="leaf-node ndis-leaf" tabindex="0" role="button" aria-expanded="false" aria-label="Daily Life and Social Activities leaf. Tap to expand.">
                 <div class="leaf-summary-row">
                   <div class="leaf-title-wrap">
@@ -4331,8 +4434,23 @@
                 </div>
               </div>
 
-              <!-- Leaf 5: Community Transport -->
-              <div class="leaf-node ndis-leaf" tabindex="0" role="button" aria-expanded="false" aria-label="Community Transport leaf. Tap to expand.">
+            </div>
+          </div>
+
+          <!-- CENTER LIMB: ACTIVE MOBILITY, RESPITE & COMMUNITY (RED) -->
+          <div class="branch-limb branch-community" id="branchCommunity">
+            <div class="branch-crown community-crown">
+              <div class="crown-title-group">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EE2737" stroke-width="2.2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                <h3 class="crown-title">Mobility &amp; Respite</h3>
+              </div>
+              <span class="crown-count-badge">3 Core Services</span>
+            </div>
+
+            <div class="leaf-cards-list">
+
+              <!-- Leaf 4: Community Transport -->
+              <div class="leaf-node community-leaf" tabindex="0" role="button" aria-expanded="false" aria-label="Community Transport leaf. Tap to expand.">
                 <div class="leaf-summary-row">
                   <div class="leaf-title-wrap">
                     <div class="leaf-icon-pill">
@@ -4358,8 +4476,78 @@
                         <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Trusted Drivers</span>
                       </div>
                       <div class="leaf-action-row">
-                        <span class="leaf-availability"><span class="pulse-dot-green"></span> Booking Quickly</span>
+                        <span class="leaf-availability"><span class="pulse-dot-red"></span> Booking Quickly</span>
                         <a href="services.html#transport" class="leaf-link-btn">Book Transit &rarr;</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Leaf 5: Respite / STA -->
+              <div class="leaf-node community-leaf" tabindex="0" role="button" aria-expanded="false" aria-label="Respite and Short Term Accommodation leaf. Tap to expand.">
+                <div class="leaf-summary-row">
+                  <div class="leaf-title-wrap">
+                    <div class="leaf-icon-pill">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg>
+                    </div>
+                    <div class="leaf-heading-box">
+                      <h4 class="leaf-name">Respite &amp; Short Term Accommodation (STA)</h4>
+                      <span class="leaf-sub-tag">Overnight &amp; Weekend Getaways</span>
+                    </div>
+                  </div>
+                  <span class="leaf-toggle-badge">
+                    <span>Details</span>
+                    <svg class="leaf-chevron-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 8 10 12 14 8"></polyline></svg>
+                  </span>
+                </div>
+                <div class="leaf-details-grid">
+                  <div class="leaf-details-inner">
+                    <div class="leaf-expanded-content">
+                      <p class="leaf-desc">Recharging getaways with fun social outings and 1-on-1 support, providing essential rest and peace of mind for family carers.</p>
+                      <div class="leaf-features-list">
+                        <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> All Meals Included</span>
+                        <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Gold Coast Outings</span>
+                        <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Flexible Dates</span>
+                      </div>
+                      <div class="leaf-action-row">
+                        <span class="leaf-availability"><span class="pulse-dot-red"></span> Weekend Slots Open</span>
+                        <a href="services.html#respite" class="leaf-link-btn">Book Respite &rarr;</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Leaf 6: Companionship & Social Connection -->
+              <div class="leaf-node community-leaf" tabindex="0" role="button" aria-expanded="false" aria-label="Companionship and Social Connection leaf. Tap to expand.">
+                <div class="leaf-summary-row">
+                  <div class="leaf-title-wrap">
+                    <div class="leaf-icon-pill">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <div class="leaf-heading-box">
+                      <h4 class="leaf-name">Companionship &amp; Social Connection</h4>
+                      <span class="leaf-sub-tag">Friendly Chats, Garden Walks &amp; Family Relief</span>
+                    </div>
+                  </div>
+                  <span class="leaf-toggle-badge">
+                    <span>Details</span>
+                    <svg class="leaf-chevron-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 8 10 12 14 8"></polyline></svg>
+                  </span>
+                </div>
+                <div class="leaf-details-grid">
+                  <div class="leaf-details-inner">
+                    <div class="leaf-expanded-content">
+                      <p class="leaf-desc">Genuine companionship over a warm cup of tea, garden walks, board games, and in-home respite giving devoted family members essential breathing room.</p>
+                      <div class="leaf-features-list">
+                        <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Empathetic Match</span>
+                        <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Flexible Respite Hours</span>
+                        <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Community Outings</span>
+                      </div>
+                      <div class="leaf-action-row">
+                        <span class="leaf-availability"><span class="pulse-dot-red"></span> Trusted Relief</span>
+                        <a href="services.html#companionship" class="leaf-link-btn">Learn More &rarr;</a>
                       </div>
                     </div>
                   </div>
@@ -4369,19 +4557,19 @@
             </div>
           </div>
 
-          <!-- RIGHT LIMB: IN-HOME AGED CARE -->
+          <!-- RIGHT LIMB: IN-HOME AGED CARE (GOLD) -->
           <div class="branch-limb branch-aged" id="branchAged">
             <div class="branch-crown aged-crown">
               <div class="crown-title-group">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D98200" stroke-width="2.2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
                 <h3 class="crown-title">In-Home Aged Care</h3>
               </div>
-              <span class="crown-count-badge">CHSP &amp; HCP Packages</span>
+              <span class="crown-count-badge">3 Core Services</span>
             </div>
 
             <div class="leaf-cards-list">
 
-              <!-- Leaf 6: CHSP & Home Care -->
+              <!-- Leaf 7: CHSP & Home Care -->
               <div class="leaf-node aged-leaf" tabindex="0" role="button" aria-expanded="false" aria-label="Commonwealth Home Support leaf. Tap to expand.">
                 <div class="leaf-summary-row">
                   <div class="leaf-title-wrap">
@@ -4416,7 +4604,7 @@
                 </div>
               </div>
 
-              <!-- Leaf 7: Personal Care & Grooming -->
+              <!-- Leaf 8: Personal Care & Grooming -->
               <div class="leaf-node aged-leaf" tabindex="0" role="button" aria-expanded="false" aria-label="Personal Care and Grooming leaf. Tap to expand.">
                 <div class="leaf-summary-row">
                   <div class="leaf-title-wrap">
@@ -4451,7 +4639,7 @@
                 </div>
               </div>
 
-              <!-- Leaf 8: Domestic Help & Meals -->
+              <!-- Leaf 9: Domestic Help & Meals -->
               <div class="leaf-node aged-leaf" tabindex="0" role="button" aria-expanded="false" aria-label="Domestic Help and Meal Prep leaf. Tap to expand.">
                 <div class="leaf-summary-row">
                   <div class="leaf-title-wrap">
@@ -4480,41 +4668,6 @@
                       <div class="leaf-action-row">
                         <span class="leaf-availability"><span class="pulse-dot-gold"></span> Weekly Visits</span>
                         <a href="services.html#aged-care" class="leaf-link-btn">View Domestic Help &rarr;</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Leaf 9: Companionship & Respite -->
-              <div class="leaf-node aged-leaf" tabindex="0" role="button" aria-expanded="false" aria-label="Social Wellness and Carer Respite leaf. Tap to expand.">
-                <div class="leaf-summary-row">
-                  <div class="leaf-title-wrap">
-                    <div class="leaf-icon-pill">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                    </div>
-                    <div class="leaf-heading-box">
-                      <h4 class="leaf-name">Companionship &amp; Carer Respite</h4>
-                      <span class="leaf-sub-tag">Friendly Chats, Garden Walks &amp; Family Relief</span>
-                    </div>
-                  </div>
-                  <span class="leaf-toggle-badge">
-                    <span>Details</span>
-                    <svg class="leaf-chevron-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 8 10 12 14 8"></polyline></svg>
-                  </span>
-                </div>
-                <div class="leaf-details-grid">
-                  <div class="leaf-details-inner">
-                    <div class="leaf-expanded-content">
-                      <p class="leaf-desc">Genuine companionship over a warm cup of tea, garden walks, board games, and in-home respite giving devoted family members essential breathing room.</p>
-                      <div class="leaf-features-list">
-                        <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Empathetic Match</span>
-                        <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Flexible Respite Hours</span>
-                        <span class="leaf-feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Dementia Sensitive</span>
-                      </div>
-                      <div class="leaf-action-row">
-                        <span class="leaf-availability"><span class="pulse-dot-gold"></span> Trusted Relief</span>
-                        <a href="services.html#aged-care" class="leaf-link-btn">Learn More &rarr;</a>
                       </div>
                     </div>
                   </div>
@@ -5486,28 +5639,49 @@
       /* ------ CARE TREE PATHWAY FILTER TABS & EXPANDABLE LEAVES ------ */
       const treeFilterBtns = document.querySelectorAll('.tree-filter-btn');
       const branchNdis = document.getElementById('branchNdis');
+      const branchCommunity = document.getElementById('branchCommunity');
       const branchAged = document.getElementById('branchAged');
+      const desktopLeafNodes = document.querySelectorAll('.tree-leaf-node');
 
       treeFilterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-          treeFilterBtns.forEach(b => {
-            b.classList.remove('active');
-            b.setAttribute('aria-selected', 'false');
-          });
-          btn.classList.add('active');
-          btn.setAttribute('aria-selected', 'true');
-
           const filter = btn.getAttribute('data-filter');
+
+          // Synchronize all filter tabs across desktop and mobile
+          treeFilterBtns.forEach(b => {
+            const matches = b.getAttribute('data-filter') === filter;
+            b.classList.toggle('active', matches);
+            b.setAttribute('aria-selected', String(matches));
+          });
+
+          // 1. Mobile Limbs Filter
           if (filter === 'all') {
             if (branchNdis) branchNdis.classList.remove('filtered-out');
+            if (branchCommunity) branchCommunity.classList.remove('filtered-out');
             if (branchAged) branchAged.classList.remove('filtered-out');
           } else if (filter === 'ndis') {
             if (branchNdis) branchNdis.classList.remove('filtered-out');
+            if (branchCommunity) branchCommunity.classList.add('filtered-out');
+            if (branchAged) branchAged.classList.add('filtered-out');
+          } else if (filter === 'community') {
+            if (branchNdis) branchNdis.classList.add('filtered-out');
+            if (branchCommunity) branchCommunity.classList.remove('filtered-out');
             if (branchAged) branchAged.classList.add('filtered-out');
           } else if (filter === 'aged') {
             if (branchNdis) branchNdis.classList.add('filtered-out');
+            if (branchCommunity) branchCommunity.classList.add('filtered-out');
             if (branchAged) branchAged.classList.remove('filtered-out');
           }
+
+          // 2. Desktop Nodes Dimming Filter
+          desktopLeafNodes.forEach(node => {
+            const branch = node.getAttribute('data-branch');
+            if (filter === 'all' || branch === filter) {
+              node.classList.remove('is-dimmed');
+            } else {
+              node.classList.add('is-dimmed');
+            }
+          });
         });
       });
 
@@ -5531,7 +5705,7 @@
       });
       
 
-      /* ------ DESKTOP HAND-DRAWN ROUGH.JS TREE ------ */
+      /* ------ DESKTOP HAND-DRAWN ROUGH.JS TREE (3-Branch Logo-Tree) ------ */
       (function initInteractiveTree() {
         const svg = document.getElementById('treeCanvas');
         const treeStage = document.getElementById('treeStageWrap');
@@ -5544,197 +5718,257 @@
           svg.innerHTML = '';
 
           const rc = window.rough.svg(svg);
-          const elements = [];
 
-          // Leaf node coordinate map
+          // 1. SOFT MINIMALIST CANOPY HALOS (Subtle tripartite brand allusion)
+          // Left Zone (NDIS Living - Sage Green)
+          const leftHalo = rc.circle(170, 240, 190, {
+            fill: 'rgba(46, 107, 94, 0.05)',
+            stroke: 'rgba(46, 107, 94, 0.16)',
+            strokeWidth: 1.2,
+            fillStyle: 'solid',
+            roughness: 1.2
+          });
+          svg.appendChild(leftHalo);
+
+          // Top Zone (Mobility & Respite - Ruby Red)
+          const topHalo = rc.circle(450, 105, 175, {
+            fill: 'rgba(238, 39, 55, 0.05)',
+            stroke: 'rgba(238, 39, 55, 0.16)',
+            strokeWidth: 1.2,
+            fillStyle: 'solid',
+            roughness: 1.2
+          });
+          svg.appendChild(topHalo);
+
+          // Right Zone (In-Home Aged Care - Warm Honey Gold)
+          const rightHalo = rc.circle(730, 240, 190, {
+            fill: 'rgba(217, 130, 0, 0.05)',
+            stroke: 'rgba(217, 130, 0, 0.16)',
+            strokeWidth: 1.2,
+            fillStyle: 'solid',
+            roughness: 1.2
+          });
+          svg.appendChild(rightHalo);
+
+          // 2. SUBTLE CONCENTRIC HALOS AROUND EACH OF THE 9 SERVICE NODES
           const leafPoints = [
-            { x: 90, y: 280, type: 'ndis' },
-            { x: 70, y: 190, type: 'ndis' },
-            { x: 150, y: 110, type: 'ndis' },
-            { x: 260, y: 80, type: 'ndis' },
-            { x: 320, y: 180, type: 'ndis' },
-            { x: 630, y: 80, type: 'aged' },
-            { x: 760, y: 100, type: 'aged' },
-            { x: 830, y: 190, type: 'aged' },
-            { x: 810, y: 280, type: 'aged' }
+            // Left Bough (NDIS Living - Green)
+            { x: 80, y: 290, type: 'ndis' },
+            { x: 110, y: 170, type: 'ndis' },
+            { x: 240, y: 230, type: 'ndis' },
+            // Top Crown (Mobility & Respite - Red)
+            { x: 340, y: 120, type: 'community' },
+            { x: 450, y: 60, type: 'community' },
+            { x: 560, y: 120, type: 'community' },
+            // Right Bough (In-Home Aged Care - Gold)
+            { x: 660, y: 230, type: 'aged' },
+            { x: 790, y: 170, type: 'aged' },
+            { x: 820, y: 290, type: 'aged' }
           ];
 
-          // 1. FOLIAGE & FRUIT CLUSTERS (drawn FIRST in z-order in SVG so white node circles sit on top)
-          leafPoints.forEach((lp, idx) => {
-            const folOpts = {
-              fillStyle: 'hachure',
-              fill: 'rgba(228, 87, 46, 0.22)',
-              stroke: 'rgba(228, 87, 46, 0.65)',
-              strokeWidth: 1.4,
-              fillWeight: 1.5,
-              hachureGap: 4,
-              roughness: 2
-            };
-
-            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-            g.appendChild(rc.circle(lp.x - 16, lp.y - 14, 42, folOpts));
-            g.appendChild(rc.circle(lp.x + 16, lp.y - 12, 40, folOpts));
-            g.appendChild(rc.circle(lp.x, lp.y + 18, 38, folOpts));
-            g.appendChild(rc.circle(lp.x - 2, lp.y - 20, 36, folOpts));
-
-            elements.push({ node: g, delay: 500 + idx * 30 });
-          });
-
-          // 2. TRUNK: Tapered closed polygon (base width ~44px, top width ~16px)
-          const trunkPoly = rc.polygon([
-            [428, 650], [422, 550], [448, 450], [442, 400],
-            [458, 400], [472, 450], [458, 550], [472, 650]
-          ], {
-            fillStyle: 'hachure',
-            fill: '#6B4423',
-            fillWeight: 2,
-            hachureGap: 4,
-            stroke: '#4A2F18',
-            strokeWidth: 2,
-            roughness: 2.2
-          });
-          elements.push({ node: trunkPoly, delay: 0 });
-
-          // 3. MAIN BOUGHS (tapered polygons, base ~22px, tapering to ~8px at branch ends)
-          // Left Main Bough (NDIS, green)
-          const leftBoughPoly = rc.polygon([
-            [444, 392], [382, 362], [302, 334], [222, 306],
-            [218, 310],
-            [222, 314], [298, 346], [378, 378], [452, 412]
-          ], {
-            fillStyle: 'hachure',
-            fill: '#3A7D6C',
-            fillWeight: 2,
-            hachureGap: 4,
-            stroke: '#1C4B40',
-            strokeWidth: 2,
-            roughness: 2.2
-          });
-          elements.push({ node: leftBoughPoly, delay: 180 });
-
-          // Right Main Bough (Aged Care, amber)
-          const rightBoughPoly = rc.polygon([
-            [456, 392], [518, 362], [598, 334], [678, 306],
-            [682, 310],
-            [678, 314], [602, 346], [522, 378], [448, 412]
-          ], {
-            fillStyle: 'hachure',
-            fill: '#D9A253',
-            fillWeight: 2,
-            hachureGap: 4,
-            stroke: '#8C5E1E',
-            strokeWidth: 2,
-            roughness: 2.2
-          });
-          elements.push({ node: rightBoughPoly, delay: 180 });
-
-          // 4. SECONDARY TWIGS (4-6 decorative sprigs 40-70px branching off main boughs)
-          const twigs = [
-            // Left twigs
-            { pts: [[395, 365], [375, 335], [350, 320]], color: '#2E6B5E', tip: [350, 320], type: 'ndis' },
-            { pts: [[335, 345], [315, 370], [290, 385]], color: '#2E6B5E', tip: [290, 385], type: 'ndis' },
-            { pts: [[255, 318], [240, 285], [225, 260]], color: '#2E6B5E', tip: [225, 260], type: 'ndis' },
-            // Right twigs
-            { pts: [[505, 365], [525, 335], [550, 320]], color: '#C98A3E', tip: [550, 320], type: 'aged' },
-            { pts: [[565, 345], [585, 370], [610, 385]], color: '#C98A3E', tip: [610, 385], type: 'aged' },
-            { pts: [[645, 318], [660, 285], [675, 260]], color: '#C98A3E', tip: [675, 260], type: 'aged' }
-          ];
-
-          twigs.forEach((tw, idx) => {
-            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-            // Twig stem
-            g.appendChild(rc.curve(tw.pts, { roughness: 2.5, stroke: tw.color, strokeWidth: 2, bowing: 1.3 }));
-            // Small tip fruit accent (Company Red)
-            const fColor = 'rgba(228, 87, 46, 0.32)';
-            const sColor = 'rgba(228, 87, 46, 0.65)';
-            g.appendChild(rc.circle(tw.tip[0], tw.tip[1], 20, {
-              fillStyle: 'hachure',
-              fill: fColor,
-              stroke: sColor,
-              strokeWidth: 1.2,
-              fillWeight: 1.2,
-              hachureGap: 3.5,
-              roughness: 2
-            }));
-            elements.push({ node: g, delay: 320 + idx * 40 });
-          });
-
-          // 5. SUB-BRANCHES (9 thin lines to each node, roughness 2.5, double-stroke hand-inked look)
-          const ndisBranches = [
-            [[220, 310], [150, 305], [90, 280]],
-            [[220, 310], [135, 250], [70, 190]],
-            [[220, 310], [175, 195], [150, 110]],
-            [[220, 310], [235, 185], [260, 80]],
-            [[220, 310], [275, 240], [320, 180]]
-          ];
-
-          ndisBranches.forEach((pts, i) => {
-            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-            // Double stroke for organic hand-inked line weight
-            g.appendChild(rc.curve(pts, { roughness: 2.5, stroke: '#2E6B5E', strokeWidth: 2.5, bowing: 1.2 }));
-            g.appendChild(rc.curve(pts, { roughness: 2.5, stroke: '#2E6B5E', strokeWidth: 2.5, bowing: 1.2 }));
-            elements.push({ node: g, delay: 420 + i * 45 });
-          });
-
-          const agedBranches = [
-            [[680, 310], [750, 305], [810, 280]],
-            [[680, 310], [765, 250], [830, 190]],
-            [[680, 310], [725, 195], [760, 100]],
-            [[680, 310], [665, 185], [630, 80]]
-          ];
-
-          agedBranches.forEach((pts, i) => {
-            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-            // Double stroke for organic hand-inked line weight
-            g.appendChild(rc.curve(pts, { roughness: 2.5, stroke: '#C98A3E', strokeWidth: 2.5, bowing: 1.2 }));
-            g.appendChild(rc.curve(pts, { roughness: 2.5, stroke: '#C98A3E', strokeWidth: 2.5, bowing: 1.2 }));
-            elements.push({ node: g, delay: 420 + i * 45 });
-          });
-
-          // Append to SVG and animate paths
-          elements.forEach(item => {
-            svg.appendChild(item.node);
-            if (!prefersReducedMotion) {
-              const paths = item.node.querySelectorAll('path');
-              paths.forEach(p => {
-                try {
-                  const len = p.getTotalLength();
-                  p.style.strokeDasharray = len + ' ' + len;
-                  p.style.strokeDashoffset = len;
-                  p.style.transition = `stroke-dashoffset 450ms cubic-bezier(0.25, 1, 0.5, 1) ${item.delay}ms, opacity 250ms ease ${item.delay}ms`;
-                  p.style.opacity = '0';
-                  setTimeout(() => {
-                    p.style.strokeDashoffset = '0';
-                    p.style.opacity = '1';
-                  }, 25);
-                } catch (e) {
-                  p.style.opacity = '0';
-                  p.style.transition = `opacity 350ms ease ${item.delay}ms`;
-                  setTimeout(() => { p.style.opacity = '1'; }, 25);
-                }
-              });
+          leafPoints.forEach(lp => {
+            let strokeCol = 'rgba(46, 107, 94, 0.35)';
+            let fillCol = 'rgba(46, 107, 94, 0.06)';
+            if (lp.type === 'community') {
+              strokeCol = 'rgba(238, 39, 55, 0.35)';
+              fillCol = 'rgba(238, 39, 55, 0.06)';
+            } else if (lp.type === 'aged') {
+              strokeCol = 'rgba(217, 130, 0, 0.35)';
+              fillCol = 'rgba(217, 130, 0, 0.06)';
             }
+            const halo = rc.circle(lp.x, lp.y, 82, {
+              stroke: strokeCol,
+              strokeWidth: 1.1,
+              strokeLineDash: [3, 4],
+              fill: fillCol,
+              fillStyle: 'solid',
+              roughness: 1.1
+            });
+            svg.appendChild(halo);
           });
 
-          // Stagger reveal leaf nodes
-          // Stagger reveal leaf nodes promptly with tree branches
+          // 3. CENTRAL GROUND & ORGANIC BARK TRUNK (#392E2D matching logo)
+          // Ground turf base
+          const ground = rc.curve([
+            [370, 634], [410, 633], [450, 632], [490, 633], [530, 634]
+          ], {
+            stroke: 'rgba(57, 46, 45, 0.4)',
+            strokeWidth: 1.4,
+            roughness: 1.1
+          });
+          svg.appendChild(ground);
+
+          // Trunk silhouette (slender, organic, gentle bark wash)
+          const trunkBody = rc.polygon([
+            [428, 633], [437, 535], [441, 450], [442, 375],
+            [458, 375], [459, 450], [463, 535], [472, 633]
+          ], {
+            fillStyle: 'solid',
+            fill: '#EFE9E2',
+            stroke: '#392E2D',
+            strokeWidth: 2,
+            roughness: 1.15
+          });
+          svg.appendChild(trunkBody);
+
+          // Subtle organic bark grain lines
+          const barkGrain = rc.curve([
+            [449, 620], [448, 520], [451, 440], [450, 385]
+          ], {
+            stroke: 'rgba(57, 46, 45, 0.45)',
+            strokeWidth: 1.2,
+            roughness: 1.2
+          });
+          svg.appendChild(barkGrain);
+
+          // 4. THREE MAIN LOGO-ALIGNED BOUGHS (Branching out from junction [450, 375])
+          // 4A. Left Bough (NDIS Living - Green #2E6B5E)
+          const leftBough1 = rc.curve([
+            [442, 375], [360, 345], [265, 310], [170, 260]
+          ], {
+            stroke: '#2E6B5E',
+            strokeWidth: 2.8,
+            roughness: 1.15,
+            bowing: 1.1
+          });
+          const leftBough2 = rc.curve([
+            [440, 383], [365, 353], [272, 320], [175, 266]
+          ], {
+            stroke: '#2E6B5E',
+            strokeWidth: 1.6,
+            roughness: 1.15,
+            bowing: 1.1
+          });
+          svg.appendChild(leftBough1);
+          svg.appendChild(leftBough2);
+
+          // 4B. Center Bough (Mobility & Respite - Red #EE2737)
+          const centerBough1 = rc.curve([
+            [446, 375], [447, 265], [448, 160]
+          ], {
+            stroke: '#EE2737',
+            strokeWidth: 2.8,
+            roughness: 1.15,
+            bowing: 1.05
+          });
+          const centerBough2 = rc.curve([
+            [454, 375], [453, 265], [452, 160]
+          ], {
+            stroke: '#EE2737',
+            strokeWidth: 1.6,
+            roughness: 1.15,
+            bowing: 1.05
+          });
+          svg.appendChild(centerBough1);
+          svg.appendChild(centerBough2);
+
+          // 4C. Right Bough (In-Home Aged Care - Gold #C98A3E)
+          const rightBough1 = rc.curve([
+            [458, 375], [540, 345], [635, 310], [730, 260]
+          ], {
+            stroke: '#C98A3E',
+            strokeWidth: 2.8,
+            roughness: 1.15,
+            bowing: 1.1
+          });
+          const rightBough2 = rc.curve([
+            [460, 383], [535, 353], [628, 320], [725, 266]
+          ], {
+            stroke: '#C98A3E',
+            strokeWidth: 1.6,
+            roughness: 1.15,
+            bowing: 1.1
+          });
+          svg.appendChild(rightBough1);
+          svg.appendChild(rightBough2);
+
+          // 5. SUB-BRANCHES CONNECTING TO 9 SERVICE NODES
+          // Green NDIS sub-branches
+          const ndisBranches = [
+            [[170, 260], [120, 280], [80, 290]],      // SIL & SDA
+            [[170, 260], [135, 205], [110, 170]],     // Coordination
+            [[265, 310], [250, 265], [240, 230]]      // Daily Activities
+          ];
+          ndisBranches.forEach(pts => {
+            const b = rc.curve(pts, {
+              stroke: '#2E6B5E',
+              strokeWidth: 2,
+              roughness: 1.15
+            });
+            svg.appendChild(b);
+          });
+
+          // Red Mobility & Respite sub-branches
+          const commBranches = [
+            [[450, 160], [450, 105], [450, 60]],       // Respite & STA
+            [[448, 200], [390, 150], [340, 120]],      // Transport
+            [[452, 200], [510, 150], [560, 120]]       // Companionship
+          ];
+          commBranches.forEach(pts => {
+            const b = rc.curve(pts, {
+              stroke: '#EE2737',
+              strokeWidth: 2,
+              roughness: 1.15
+            });
+            svg.appendChild(b);
+          });
+
+          // Gold Aged Care sub-branches
+          const agedBranches = [
+            [[635, 310], [650, 265], [660, 230]],     // CHSP & HCP
+            [[730, 260], [765, 205], [790, 170]],     // Personal Care
+            [[730, 260], [780, 280], [820, 290]]      // Domestic Help
+          ];
+          agedBranches.forEach(pts => {
+            const b = rc.curve(pts, {
+              stroke: '#C98A3E',
+              strokeWidth: 2,
+              roughness: 1.15
+            });
+            svg.appendChild(b);
+          });
+
+          // 6. DELICATE BOTANICAL LEAF ACCENTS ALONG BOUGHS (Natural & Minimalist)
+          const leaves = [
+            // Left bough leaves (Green)
+            { x: 320, y: 325, rx: 7, ry: 4, rot: -25, color: '#2E6B5E', fill: 'rgba(46, 107, 94, 0.25)' },
+            { x: 220, y: 285, rx: 7, ry: 4, rot: -35, color: '#2E6B5E', fill: 'rgba(46, 107, 94, 0.25)' },
+            { x: 145, y: 235, rx: 6, ry: 3.5, rot: -45, color: '#2E6B5E', fill: 'rgba(46, 107, 94, 0.25)' },
+            { x: 195, y: 260, rx: 6, ry: 3.5, rot: 15, color: '#2E6B5E', fill: 'rgba(46, 107, 94, 0.25)' },
+            // Center bough leaves (Red)
+            { x: 435, y: 290, rx: 7, ry: 4, rot: -75, color: '#EE2737', fill: 'rgba(238, 39, 55, 0.25)' },
+            { x: 465, y: 270, rx: 7, ry: 4, rot: 75, color: '#EE2737', fill: 'rgba(238, 39, 55, 0.25)' },
+            { x: 410, y: 155, rx: 6, ry: 3.5, rot: -30, color: '#EE2737', fill: 'rgba(238, 39, 55, 0.25)' },
+            { x: 490, y: 155, rx: 6, ry: 3.5, rot: 30, color: '#EE2737', fill: 'rgba(238, 39, 55, 0.25)' },
+            // Right bough leaves (Gold)
+            { x: 580, y: 325, rx: 7, ry: 4, rot: 25, color: '#C98A3E', fill: 'rgba(217, 130, 0, 0.25)' },
+            { x: 680, y: 285, rx: 7, ry: 4, rot: 35, color: '#C98A3E', fill: 'rgba(217, 130, 0, 0.25)' },
+            { x: 755, y: 235, rx: 6, ry: 3.5, rot: 45, color: '#C98A3E', fill: 'rgba(217, 130, 0, 0.25)' },
+            { x: 705, y: 260, rx: 6, ry: 3.5, rot: -15, color: '#C98A3E', fill: 'rgba(217, 130, 0, 0.25)' }
+          ];
+
+          leaves.forEach(lf => {
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            g.setAttribute('transform', `translate(${lf.x}, ${lf.y}) rotate(${lf.rot})`);
+            const ell = rc.ellipse(0, 0, lf.rx * 2, lf.ry * 2, {
+              stroke: lf.color,
+              strokeWidth: 1.2,
+              fill: lf.fill,
+              fillStyle: 'solid',
+              roughness: 1.1
+            });
+            g.appendChild(ell);
+            svg.appendChild(g);
+          });
+
+          // 7. Ensure leaf nodes are marked revealed immediately
           const leafNodes = treeStage.querySelectorAll('.tree-leaf-node');
-          if (prefersReducedMotion) {
-            leafNodes.forEach(n => n.classList.add('is-revealed'));
-          } else {
-            setTimeout(() => {
-              leafNodes.forEach((n, i) => {
-                setTimeout(() => {
-                  n.classList.add('is-revealed');
-                }, i * 25);
-              });
-            }, 80);
-          }
+          leafNodes.forEach(n => n.classList.add('is-revealed'));
+
           return true;
         }
 
         function checkAndRender() {
-          if (window.innerWidth < 1024) return;
           if (svg.dataset.rendered === 'true') return;
           if (window.rough) {
             renderTree();
@@ -5748,27 +5982,28 @@
               } else if (attempts > 30) {
                 clearInterval(timer);
               }
-            }, 30);
+            }, 10);
           }
         }
+        window.renderCareTree = renderTree;
 
-        // Use generous rootMargin so tree pre-renders well before scrolling into view
+        // Trigger immediately on load & DOM ready so tree appears instantaneously
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', checkAndRender);
+        } else {
+          checkAndRender();
+        }
+        window.addEventListener('load', checkAndRender);
+
+        // Fallback observer
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               checkAndRender();
             }
           });
-        }, { rootMargin: '450px 0px', threshold: 0 });
-
+        }, { rootMargin: '600px 0px', threshold: 0 });
         observer.observe(treeStage);
-
-        // Pre-render during idle time so it appears instantaneously
-        if (window.requestIdleCallback) {
-          window.requestIdleCallback(() => checkAndRender(), { timeout: 1200 });
-        } else {
-          setTimeout(checkAndRender, 300);
-        }
 
         window.addEventListener('resize', () => {
           if (window.innerWidth >= 1024 && svg.dataset.rendered !== 'true') {
@@ -5934,11 +6169,25 @@
             const xCard = Math.round(cRect.left - containerRect.left);
 
             const isNdis = crown.classList.contains('ndis-crown');
-            const boughColor = isNdis ? '#2E6B5E' : '#C98A3E';
-            const strokeColor = isNdis ? '#1C4B40' : '#8C5E1E';
-            const seedBough = isNdis ? 201 : 301;
-            const seedBud = isNdis ? 202 : 302;
-            const yAngleOffset = isNdis ? 6 : -6;
+            const isCommunity = crown.classList.contains('community-crown');
+            let boughColor = '#2E6B5E';
+            let strokeColor = '#1C4B40';
+            let seedBough = 201;
+            let seedBud = 202;
+            let yAngleOffset = 6;
+            if (isCommunity) {
+              boughColor = '#EE2737';
+              strokeColor = '#C0202F';
+              seedBough = 251;
+              seedBud = 252;
+              yAngleOffset = 0;
+            } else if (!isNdis) {
+              boughColor = '#C98A3E';
+              strokeColor = '#8C5E1E';
+              seedBough = 301;
+              seedBud = 302;
+              yAngleOffset = -6;
+            }
 
             // Delicate bough stub connecting at slight angle
             const boughStub = rc.curve([
@@ -5976,8 +6225,19 @@
             const xCard = Math.round(cardRect.left - containerRect.left);
 
             const isNdis = card.classList.contains('ndis-leaf');
-            const stubColor = isNdis ? '#2E6B5E' : '#C98A3E';
-            const strokeColor = isNdis ? '#1C4B40' : '#8C5E1E';
+            const isCommunity = card.classList.contains('community-leaf');
+            let stubColor = '#2E6B5E';
+            let budFill = '#2E6B5E';
+            let budStroke = '#1C4B40';
+            if (isCommunity) {
+              stubColor = '#EE2737';
+              budFill = '#EE2737';
+              budStroke = '#C0202F';
+            } else if (!isNdis) {
+              stubColor = '#C98A3E';
+              budFill = '#D98200';
+              budStroke = '#8C5E1E';
+            }
 
             // Short horizontal curve stroke
             const stub = rc.curve([
@@ -5993,12 +6253,12 @@
             });
             spineSvg.appendChild(stub);
 
-            // Tiny delicate fruit bud circle (~6px) sitting right at the card's left edge (Company Red)
+            // Tiny delicate fruit bud circle (~6px) sitting right at the card's left edge
             const bud = rc.circle(xCard, yCenter, 6, {
               seed: 2000 + idx,
               fillStyle: 'solid',
-              fill: '#E4572E',
-              stroke: '#C94420',
+              fill: budFill,
+              stroke: budStroke,
               strokeWidth: 1.0,
               roughness: 1.3
             });
